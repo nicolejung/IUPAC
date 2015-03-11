@@ -1,0 +1,27 @@
+= iupac
+
+* {Homepage}[https://rubygems.org/gems/iupac]
+* {Documentation}[http://rubydoc.info/gems/iupac/frames]
+* {Email}[mailto:]
+
+== Description
+
+TODO: Description
+
+== Features
+
+== Examples
+
+  require 'iupac'
+
+== Requirements
+
+== Install
+
+  $ gem install iupac
+
+== Copyright
+
+Copyright (c) 2015 
+
+See LICENSE.txt for details.
