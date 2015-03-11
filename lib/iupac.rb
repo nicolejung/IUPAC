@@ -1,4 +1,4 @@
-require 'iupac/version'
+require_relative 'iupac/version'
 
 module Iupac_convention
 
