@@ -1,5 +1,6 @@
 class Chemical_name< String
 #Compund name would be inherited from string class of ruby
+#and also using the first module 
 
 
 find_length =
@@ -19,7 +20,7 @@ find_length =
 
 }
 
-a= Chemical_name.new("octa-1,2-ol")
+# x= Chemical_name.new("methane")
 
 find_length.each_pair do |k,v|
   x=~/#{v}/
@@ -27,4 +28,5 @@ find_length.each_pair do |k,v|
 end
 
 end
+
 
