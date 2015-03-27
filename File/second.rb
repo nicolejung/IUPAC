@@ -27,6 +27,4 @@ find_length.each_pair do |k,v|
   puts "The given compound has #{k} carbons"
 end
 
-end
-
 
