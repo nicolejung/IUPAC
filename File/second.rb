@@ -1,4 +1,4 @@
-class Chemical_name< String
+#class Chemical_name< String
 #Compund name would be inherited from string class of ruby
 #and also using the first module 
 
