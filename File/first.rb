@@ -30,7 +30,7 @@ end
 a= Chemical_name.new("octa-1,2-ol")
 a.find_position
 
-Suffix
+Suffix=
 {
     :alkane => "ane",
     :alcohol => "ol",
@@ -47,10 +47,6 @@ Suffix
 #this would search the whole strings of compound and search the 
 
 Suffix.each_pair do |k,v|
-  a=~/#{v}
-  puts "The given compound is an #{k}"
+  a=~/#{v}/
+  puts "The given compound is an #{k}" if $&
 end
-
-
-end
-
