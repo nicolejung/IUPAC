@@ -3,7 +3,10 @@ class Chemical_name < String
 
     # regular expression definition
     all_pos=/^[\\(\\[]*(.*?)[\\.,;:!\\?\\)\\]]*$/
-    single_pos=/^(?>\s|-|,)*(\d+)/
+    
+    
+    
+    #single_pos=/^(?>\s|-|,)*(\d+)/
 
     # match for position at the end of the chemical_name
     if pos=self.match(all_pos)
