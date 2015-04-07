@@ -1,8 +1,10 @@
 require_relative 'iupac/version'
 require_relative 'iupac/nomenclature.rb'
+require_relative 'iupac/analysis.rb'
 require_relative 'iupac/name_iupac.rb'
 require_relative 'iupac/name_smiles.rb'
 require_relative 'iupac/test.rb'
+
 
 
 puts "hello world iupac"

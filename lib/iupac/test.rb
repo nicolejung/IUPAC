@@ -5,13 +5,14 @@ def test_iupac
   puts "testing starts" 
   # this method, when called, will instantiate a couple of IupacName and test whether it understands the associated names
    alcane_test_name = ["methane","ethane", "propane"]
-   #alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethan-1, 2-diol", "propanol", "propan-2-ol"]
+   alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol", "propanol", "propan-2-ol", "pentane-2,3,3-triol"]
      
-  alcane_test_name.each{|s|  
-                       Name_iupac.new(s).to_ruby
+[alcane_test_name,
+  alcohol_test_name ].each{|s| s.each{|n|  
+                       Name_iupac.new(n).to_ruby
                        
                        }
-    
+}
     #
    puts "testing ends"
  end #of test_iupac
