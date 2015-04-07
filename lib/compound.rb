@@ -1,3 +1,4 @@
+=begin
 class Sample
   def Hello
   end
@@ -17,6 +18,8 @@ end
 
 ob =Sample.new
 ob.Hello
+
+=end 
 
 class Chemical_name < String
   def find_position
@@ -43,7 +46,10 @@ class Chemical_name < String
 
 end
 
-a= Chemical_name.new("penta-1,2-")
+#a=gets
+a=Chemical_name.new(gets.chomp)
+
+#a= Chemical_name 
 puts a.find_position.to_s
 
 Suffix=
@@ -83,8 +89,20 @@ find_length =
   :dodeca=> "12",
 
 }
+
+
 puts a
 find_length.each_pair do |k,v|
   a=~/#{k}/
   puts "The given compound has #{v} carbons" if $&
 end
+
+find_abc=
+{
+  :bi=> "2",
+  :tri=> "3",
+  :tetra=> "4",
+  :penta=> "5",
+  :hex=> "6",
+  
+}
