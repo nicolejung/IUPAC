@@ -8,7 +8,7 @@ class Name_iupac < String
    #@rigth_fragment
    #
   def to_ruby
-    ###method calling other functions to analyse the input string and store the resutl into some ruby class
+    ###method calling other functions to analyse the input string and store the result into some ruby class
     frag=self
     puts "compound is "+ self
    

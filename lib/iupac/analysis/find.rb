@@ -2,7 +2,7 @@
   
   class Name_iupac  < String
  
-  
+    
   def find_suffix(suf=nil)
     
     if !suf
