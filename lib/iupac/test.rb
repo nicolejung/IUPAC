@@ -6,9 +6,19 @@ def test_iupac
   # this method, when called, will instantiate a couple of IupacName and test whether it understands the associated names
    alcane_test_name = ["methane","ethane", "propane"]
    alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol", "propanol", "propan-2-ol", "pentane-2,3,3-triol"]
-     
-[alcane_test_name,
-  alcohol_test_name ].each{|s| s.each{|n|  
+    ultimate_braket_name =[ "4,4'-{1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl]-2-[(4'-cyanobiphenyl-4-yl)oxy]ethylene}dihexanoic acid",
+        "1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl] ethane",
+        ]
+     sec_fg_name = ["2-oxo-3-hydroxybutanoic acid", "2,4 dicyanopentanoic acid", " 2-hydroxypropane-1,2,3-tricarboxylic acid",
+       "18-bromo-12-butyl-11-chloro-4,8-diethyl-5-hydroxy-15-methoxytricosan-3,9-dione",
+       ]  
+        
+[
+  #alcane_test_name,
+  sec_fg_name,
+  #alcohol_test_name,
+  #ultimate_braket_name,
+  ].each{|s| s.each{|n|  
                        Name_iupac.new(n).to_ruby
                        
                        }

@@ -19,10 +19,15 @@
 #ob.Hello
 #
 #
+
+class Chemical_name < String
+  
+  
+  
 Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
 
 #Reg_bracket=/\-|\(|\)|\-|\{|\}|\[|\]|\,/
-class Chemical_name < String
+
   attr_reader :obrk, :cbrk
   
   
@@ -31,7 +36,7 @@ class Chemical_name < String
      @obrk+=1 if @temp[1]=="(" || @temp[1]=="[" ||@temp[1]=="{"  
      @obrk-=1 if  @temp[1]==")" || @temp[1]=="]" ||@temp[1]=="}"
   end
-   puts @obrk.to_s
+   #puts @obrk.to_s
   end
   
   def find_block
@@ -47,7 +52,8 @@ class Chemical_name < String
      split_at_bracket(@temp[2])
      r<<@temp[0]<<@temp[1]
      count_level_br
-     puts r.to_s
+     puts 
+     r.to_s.each  
      if @obrk==0
       puts "level 0"
        return r 
@@ -109,3 +115,6 @@ puts "The close brackets are #{t.cbrk}"
 
 
 puts t.find_block.to_s
+
+
+
