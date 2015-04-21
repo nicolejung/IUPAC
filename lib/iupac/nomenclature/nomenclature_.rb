@@ -45,25 +45,32 @@ Functional_groups = [
   #  8   Acid halides
        [ :Acyl_halides                                ,   "halocarbonyl"                ,   "oyl halide"             ,     ""      ]     ,
        [ :Acyl_chlorides                              ,   "chlorocarbonyl"              ,   "oyl chloride"           ,     ""      ]     ,         
-       [ :Amides                                      ,   "carbamoyl"                   ,   "amide"                  ,     ""      ]     ,       [ :Imides                                      ,   "imido"                       ,   "imide"                  ,     ""      ]     ,       [ :Amidines                                    ,   "amidino"                     ,   "amidine"                ,     ""      ]     ,       [ :Nitriles                                    ,   "cyano"                       ,   "nitrile"                ,     ""      ]     ,       [ :Isocyanides                                 ,   "isocyano"                    ,   "isocyanide"             ,     ""      ]     ,       [ :Aldehydes                                   ,   "formyl"                      ,   "al"                     ,     ""      ]     ,       [ :Thioaldehydes                               ,   "thioformyl"                  ,   "thial"                  ,     ""      ]     ,       [ :Ketones                                     ,   "oxo"                         ,   "one"                    ,     ""      ]     ,       [ :Thiones                                     ,   "sulfanylidene"               ,   "thione"                 ,     ""      ]     ,       [ :Selones                                     ,   "selanylidene"                ,   "selone"                 ,     ""      ]     ,       [ :Tellones                                    ,   "tellanylidene"               ,   "tellone"                ,     ""      ]     ,
+       [ :Amides                                      ,   "carbamoyl"                   ,   "amide"                  ,     ""      ]     ,       [ :Imides                                      ,   "imido"                       ,   "imide"                  ,     ""      ]     ,       [ :Amidines                                    ,   "amidino"                     ,   "amidine"                ,     ""      ]     ,       [ :Nitriles                                    ,   "cyano"                       ,   "nitrile"                ,     "CN"      ]     ,       [ :Isocyanides                                 ,   "isocyano"                    ,   "isocyanide"             ,     ""      ]     ,       [ :Aldehydes                                   ,   "formyl"                      ,   "al"                     ,     ""      ]     ,       [ :Thioaldehydes                               ,   "thioformyl"                  ,   "thial"                  ,     ""      ]     ,       [ :Ketones                                     ,   "oxo"                         ,   "one"                    ,     "=O"      ]     ,       [ :Thiones                                     ,   "sulfanylidene"               ,   "thione"                 ,     ""      ]     ,       [ :Selones                                     ,   "selanylidene"                ,   "selone"                 ,     ""      ]     ,       [ :Tellones                                    ,   "tellanylidene"               ,   "tellone"                ,     ""      ]     ,
   #  15  Alcohols
        [ :Alcohols                                     ,   "hydroxy"                          ,   "ol"                    ,     "OH"      ]     ,
-         
-         
-         
-         
-       [ :Alkynes                                     ,   "yn"                         ,   "yne"                    ,     ""      ]     ,  
-       [ :Alkenes                                     ,   "en"                          ,  "ene"                    ,     ""      ]     ,
-       [ :Alkanes                                     ,   "an"                          ,   "ane"                    ,     "C"      ]     ,
-       [ :Alkanes_                                    ,   "ane"                          ,   "ane"                    ,     "C"      ]     ,  
+  
+   #  16 Halogens 
+       [ :Flouride                                    ,   "flouro"                ,   "flouride"                 ,     ":F"      ]     ,               
+       [ :Chloride                                    ,   "chloro"                ,   "chloride"                 ,     ":Cl"     ]     ,  
+       [ :Bromide                                      ,   "bromo"                ,   "bromide"                  ,     ":B"      ]     ,
+       [ :Iodide                                       ,   "iodo"                 ,   "iodide"                   ,     ":I"      ]     ,
+       
+    
+    # 20 ether      
+       [ :Methoxy                                     ,   "methoxy"                          ,   nil                    ,     "OH"      ]     ,
+  
+       [ :Alkynes                                     ,   "ynyl"                         ,   "yne"                    ,     ""      ]     ,  
+       [ :Alkenes                                     ,   "enyl"                          ,  "ene"                    ,     ""      ]     ,
+       [ :Alkanes                                     ,   "yl"                          ,   "ane"                    ,     "C"      ]     ,
+      # [ :Alkanes_                                    ,   "yl"                          ,   "ane"                    ,     "C"      ]     ,  
      
    ]
 
   #Functional_groups.each{|fg| }
-  Suffix = Array.new(Functional_groups.size){|e| Functional_groups[e][2]}
+  Suffix = Array.new(Functional_groups.size){|e| Functional_groups[e][2]}.compact
   Affix =  Array.new(Functional_groups.size){|e| Functional_groups[e][1]} 
   Fg =     Array.new(Functional_groups.size){|e| Functional_groups[e][0]}
-  Smiles = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}
+  Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}
   Fg_suffix=Hash[Fg.zip(Suffix).flatten]
   
 class Alkanes
@@ -120,6 +127,7 @@ end #of class Alcohols
    "Octadec"        =>    18          ,
    "Eicos"          =>    20          ,
    "Docos"          =>    22          ,
+   "Tricos"         =>    23          ,
    "Tetracos"       =>    24          ,
    "Hexacos"        =>    26          ,
    "Octacos"        =>    28          ,
