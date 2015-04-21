@@ -39,18 +39,33 @@ Functional_groups = [
        [ :Carboxylic_acid                             ,   "carboxy"                     ,   "carboxylic acid"        ,     "C(O)O"     ]     ,
        [ :Carboxylic_acids                            ,   "carboxy"                     ,   "oic acid"               ,     "(O)O"      ]     ,
        [ :Carbothioic_S_acids                         ,   "sulfanylcarbonyl"            ,   "thioic S-acid"          ,     "(O)S"      ]     ,
-       [ :Carboselenoic_Se_acids                      ,   "selanylcarbonyl"             ,   "selenoic Se-acid"       ,     ""      ]     ,       [ :Sulfonic_acids                              ,   "sulfo"                       ,   "sulfonic acid"          ,     ""      ]     ,       [ :Sulfinic_acids                              ,   "sulfino"                     ,   "sulfinic acid"          ,     ""      ]     ,       
+       [ :Carboselenoic_Se_acids                      ,   "selanylcarbonyl"             ,   "selenoic Se-acid"       ,     ""      ]     ,
+       [ :Sulfonic_acids                              ,   "sulfo"                       ,   "sulfonic acid"          ,     ""      ]     ,
+       [ :Sulfinic_acids                              ,   "sulfino"                     ,   "sulfinic acid"          ,     ""      ]     ,
+       
   #  7   Esters   
-       [ :Esters                                      ,   "oxycarbonyl"                 ,   "oate"                   ,     ""      ]     ,      
+       [ :Esters                                      ,   "oxycarbonyl"                 ,   "oate"                   ,     ""      ]     ,
+      
   #  8   Acid halides
        [ :Acyl_halides                                ,   "halocarbonyl"                ,   "oyl halide"             ,     ""      ]     ,
-       [ :Acyl_chlorides                              ,   "chlorocarbonyl"              ,   "oyl chloride"           ,     ""      ]     ,         
-       [ :Amides                                      ,   "carbamoyl"                   ,   "amide"                  ,     ""      ]     ,       [ :Imides                                      ,   "imido"                       ,   "imide"                  ,     ""      ]     ,       [ :Amidines                                    ,   "amidino"                     ,   "amidine"                ,     ""      ]     ,       [ :Nitriles                                    ,   "cyano"                       ,   "nitrile"                ,     "CN"      ]     ,       [ :Isocyanides                                 ,   "isocyano"                    ,   "isocyanide"             ,     ""      ]     ,       [ :Aldehydes                                   ,   "formyl"                      ,   "al"                     ,     ""      ]     ,       [ :Thioaldehydes                               ,   "thioformyl"                  ,   "thial"                  ,     ""      ]     ,       [ :Ketones                                     ,   "oxo"                         ,   "one"                    ,     "=O"      ]     ,       [ :Thiones                                     ,   "sulfanylidene"               ,   "thione"                 ,     ""      ]     ,       [ :Selones                                     ,   "selanylidene"                ,   "selone"                 ,     ""      ]     ,       [ :Tellones                                    ,   "tellanylidene"               ,   "tellone"                ,     ""      ]     ,
+       [ :Acyl_chlorides                              ,   "chlorocarbonyl"              ,   "oyl chloride"           ,     ""      ]     ,
+         
+       [ :Amides                                      ,   "carbamoyl"                   ,   "amide"                  ,     ""      ]     ,
+       [ :Imides                                      ,   "imido"                       ,   "imide"                  ,     ""      ]     ,
+       [ :Amidines                                    ,   "amidino"                     ,   "amidine"                ,     ""      ]     ,
+       [ :Nitriles                                    ,   "cyano"                       ,   "nitrile"                ,     "CN"      ]     ,
+       [ :Isocyanides                                 ,   "isocyano"                    ,   "isocyanide"             ,     ""      ]     ,
+       [ :Aldehydes                                   ,   "formyl"                      ,   "al"                     ,     ""      ]     ,
+       [ :Thioaldehydes                               ,   "thioformyl"                  ,   "thial"                  ,     ""      ]     ,
+       [ :Ketones                                     ,   "oxo"                         ,   "one"                    ,     "=O"      ]     ,
+       [ :Thiones                                     ,   "sulfanylidene"               ,   "thione"                 ,     ""      ]     ,
+       [ :Selones                                     ,   "selanylidene"                ,   "selone"                 ,     ""      ]     ,
+       [ :Tellones                                    ,   "tellanylidene"               ,   "tellone"                ,     ""      ]     ,
   #  15  Alcohols
        [ :Alcohols                                     ,   "hydroxy"                          ,   "ol"                    ,     "OH"      ]     ,
   
    #  16 Halogens 
-       [ :Flouride                                    ,   "flouro"                ,   "flouride"                 ,     ":F"      ]     ,               
+       [ :Fluoride                                    ,   "fluoro"                ,   "fluoride"                 ,     ":F"      ]     ,               
        [ :Chloride                                    ,   "chloro"                ,   "chloride"                 ,     ":Cl"     ]     ,  
        [ :Bromide                                      ,   "bromo"                ,   "bromide"                  ,     ":B"      ]     ,
        [ :Iodide                                       ,   "iodo"                 ,   "iodide"                   ,     ":I"      ]     ,
