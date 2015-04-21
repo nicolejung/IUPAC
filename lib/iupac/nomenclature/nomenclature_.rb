@@ -62,8 +62,7 @@ Functional_groups = [
        [ :Alkynes                                     ,   "ynyl"                         ,   "yne"                    ,     ""      ]     ,  
        [ :Alkenes                                     ,   "enyl"                          ,  "ene"                    ,     ""      ]     ,
        [ :Alkanes                                     ,   "yl"                          ,   "ane"                    ,     "C"      ]     ,
-      # [ :Alkanes_                                    ,   "yl"                          ,   "ane"                    ,     "C"      ]     ,  
-     
+           
    ]
 
   #Functional_groups.each{|fg| }

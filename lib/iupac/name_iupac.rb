@@ -6,9 +6,10 @@ include Nomenclature
 class Name_iupac < String
   #@left_fragment
   #@rigth_fragment
-  #
+  
   def to_ruby
     ###method calling other functions to analyse the input string and store the result into some ruby class
+  
     frag=self
     puts "compound is "+ self
 
@@ -61,7 +62,7 @@ class Name_iupac < String
        end
       end
       
-      #find multi
+      #find multiplier
       
       m=frag.find_multiplier
       frag=m[0]if m
@@ -82,7 +83,8 @@ class Name_iupac < String
     puts "Chemical is "+chemical.to_s
 
     # todo change this
-
+    
+    
   end # to_ruby
 
   def to_smiles
