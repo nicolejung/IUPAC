@@ -40,7 +40,7 @@ def my_test
     ].each{|s| s.each{|n|  
                          temp=Name_iupac.new(n)
                          temp.countbracket
-                         temp.find_block.to_s
+                         temp.find_block.to_s 
                          }
   }
       #

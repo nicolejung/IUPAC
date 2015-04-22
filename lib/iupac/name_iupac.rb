@@ -7,9 +7,12 @@ class Name_iupac < String
   #@left_fragment
   #@rigth_fragment
   
+  Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
+  
   def to_ruby
     ###method calling other functions to analyse the input string and store the result into some ruby class
-  
+    
+    
     frag=self
     puts "compound is "+ self
 
@@ -76,7 +79,7 @@ class Name_iupac < String
       if pr
         if position != []
           position.each{|po| chemical[po-1]+=[prefix]}
-        end
+        end #if 
       end
     end
 
