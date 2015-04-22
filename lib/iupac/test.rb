@@ -55,5 +55,5 @@ def random_generator_iupac_name(option={})
     
     
     
->>>>>>> 758981858c6e2e3d869113aa5618a26dc68bbf5a
+
 end
