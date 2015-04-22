@@ -60,6 +60,7 @@ if suffix=="ene"
   multe=mult
   positione=position
 end
+frag=frag.find_suffix(["an","a","ane"])[0] || frag
 parent=frag.find_parent
     frag=parent[0] if parent
     l=parent[1]  if parent
@@ -67,12 +68,12 @@ parent=frag.find_parent
     secundary_fg=frag
 
 puts "length is %i, suffix is %s position is %s 
-           %i alkyne bonds  at positions %s
-    %i alkene bonds at positions %s" % [l,suffix,position.to_s,positiony.length,positiony.to_s,positione.length,positione.to_s]
+                %s alkyne bonds at positions %s
+                %s alkene bonds at positions %s" % [l.to_i,suffix,position.to_s,positiony.length,positiony.to_s,positione.length,positione.to_s]
     l||=0
-
+    return (puts "did not find parent chain \n *****aborting analysis of "+self) if l.to_i == 0
     chemical=Array.new(l,[:C])
-
+    
     if position
       position.each{|po| chemical[po-1]+=[suffix]}
     end
