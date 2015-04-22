@@ -15,7 +15,13 @@
     
      suffix.each{|s| self.match(/#{s}\s*\z/)
                      if $& 
+                       print "suffix is "
+                       puts $&
+                       print "left is "
+                       puts $`
+                       
                       return  [ $`, s, $'] 
+
                      end
                     }
       return nil
@@ -42,6 +48,10 @@ def find_position
   
       # match for position at the end of the chemical_name
       if pos=self.match(all_pos)
+        print "Position is "
+        puts $&
+        print "Left is "
+        puts $`
         ret=[$`]
         pos[1].match(single_pos)
       end
@@ -83,6 +93,8 @@ def find_parent
   
   Length.each{|k,v| self.match(/#{k}\s*\z/i)
                if $&
+                 print "PARENT is "
+                 puts $&
                return [$`,v]
   
                end}

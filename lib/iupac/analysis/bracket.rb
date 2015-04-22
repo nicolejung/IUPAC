@@ -16,6 +16,20 @@ Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
    puts @obrk.to_s
   end
   
+def split_at_bracket(str=nil)
+    if str
+      a=str
+    else
+    a=self 
+    end
+    a=~Reg_bracket
+    if $&
+      @temp1=[$1,$2,$']
+    end
+    @temp1||=[a,"",""]
+  end
+  
+  
   def find_block
    @obrk=0 
    r=""
@@ -29,8 +43,7 @@ Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
      split_at_bracket(@temp1[2])
      r<<@temp1[0]<<@temp1[1]
      count_level_br
-     puts 
-     r.to_s.each
+    puts r.to_s
      if @obrk==0
       puts "level 0"
        return r 
@@ -39,18 +52,6 @@ Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
    
   end
   
-  def split_at_bracket(str=nil)
-    if str
-      a=str
-    else
-    a=self 
-    end
-    a=~Reg_bracket
-    if $&
-      @temp1=[$1,$2,$']
-    end
-    @temp1||=[a,"",""]
-  end
   
   def countbracket
     @obrk=0

@@ -1,5 +1,4 @@
-module Nomenclature
-
+  module Nomenclature
   ## list of functional group in decreasing order of priority for choosing the suffix (principal functional group), highest priority at the top
   ##http://www.acdlabs.com/iupac/nomenclature/93/r93_326.htm
   #  1  Radicals
@@ -25,60 +24,37 @@ module Nomenclature
   #  21  Peroxides followed by Disulfides, Diselenides, and Ditellurides
   
   
-  ## [ functional_group symbol                ,   iupac  prefix /affix                  , iupac suffix           , smiles  substitution      ]
+  ## [ functional_group symbol                ,   iupac  prefix /affix           , iupac suffix           , smiles  substitution      ]
                                                                                                                                 
-Functional_groups = [                                                                                                                         
-
+Functional_groups = [ 
   #  1  Radicals                                                                                                                       
-        [ :Alkynes                                     ,   "yn"                         ,   "ylidyne"                    ,     ""      ]     ,  
-        [ :Alkenes                                     ,   "en"                         ,   "ylidene"                    ,     ""      ]     ,
-        [ :Alkanes                                     ,   "ylo"                        ,   "yl"                         ,     ""      ]     ,  
-   
-  
-  #  5   Acids (in the order COOH, C(O)O2H; then their S and Se derivatives followed by sulfonic, sulfinic, selenonic, etc., phosphonic, arsonic, etc., acids)
-       [ :Carboxylic_acid                             ,   "carboxy"                     ,   "carboxylic acid"        ,     "C(O)O"     ]     ,
-       [ :Carboxylic_acids                            ,   "carboxy"                     ,   "oic acid"               ,     "(O)O"      ]     ,
-       [ :Carbothioic_S_acids                         ,   "sulfanylcarbonyl"            ,   "thioic S-acid"          ,     "(O)S"      ]     ,
-       [ :Carboselenoic_Se_acids                      ,   "selanylcarbonyl"             ,   "selenoic Se-acid"       ,     ""      ]     ,
-       [ :Sulfonic_acids                              ,   "sulfo"                       ,   "sulfonic acid"          ,     ""      ]     ,
-       [ :Sulfinic_acids                              ,   "sulfino"                     ,   "sulfinic acid"          ,     ""      ]     ,
-       
-  #  7   Esters   
-       [ :Esters                                      ,   "oxycarbonyl"                 ,   "oate"                   ,     ""      ]     ,
-      
-  #  8   Acid halides
-       [ :Acyl_halides                                ,   "halocarbonyl"                ,   "oyl halide"             ,     ""      ]     ,
-       [ :Acyl_chlorides                              ,   "chlorocarbonyl"              ,   "oyl chloride"           ,     ""      ]     ,
-         
-       [ :Amides                                      ,   "carbamoyl"                   ,   "amide"                  ,     ""      ]     ,
-       [ :Imides                                      ,   "imido"                       ,   "imide"                  ,     ""      ]     ,
-       [ :Amidines                                    ,   "amidino"                     ,   "amidine"                ,     ""      ]     ,
-       [ :Nitriles                                    ,   "cyano"                       ,   "nitrile"                ,     "CN"      ]     ,
-       [ :Isocyanides                                 ,   "isocyano"                    ,   "isocyanide"             ,     ""      ]     ,
-       [ :Aldehydes                                   ,   "formyl"                      ,   "al"                     ,     ""      ]     ,
-       [ :Thioaldehydes                               ,   "thioformyl"                  ,   "thial"                  ,     ""      ]     ,
-       [ :Ketones                                     ,   "oxo"                         ,   "one"                    ,     "=O"      ]     ,
-       [ :Thiones                                     ,   "sulfanylidene"               ,   "thione"                 ,     ""      ]     ,
-       [ :Selones                                     ,   "selanylidene"                ,   "selone"                 ,     ""      ]     ,
-       [ :Tellones                                    ,   "tellanylidene"               ,   "tellone"                ,     ""      ]     ,
-  #  15  Alcohols
-       [ :Alcohols                                     ,   "hydroxy"                          ,   "ol"                    ,     "OH"      ]     ,
-  
-   #  16 Halogens 
-       [ :Fluoride                                    ,   "fluoro"                ,   "fluoride"                 ,     ":F"      ]     ,               
-       [ :Chloride                                    ,   "chloro"                ,   "chloride"                 ,     ":Cl"     ]     ,  
-       [ :Bromide                                      ,   "bromo"                ,   "bromide"                  ,     ":B"      ]     ,
-       [ :Iodide                                       ,   "iodo"                 ,   "iodide"                   ,     ":I"      ]     ,
-       
-    
-    # 20 ether      
-       [ :Methoxy                                     ,   "methoxy"                          ,   nil                    ,     "OH"      ]     ,
-  
-       [ :Alkynes                                     ,   "ynyl"                         ,   "yne"                    ,     ""      ]     ,  
-       [ :Alkenes                                     ,   "enyl"                          ,  "ene"                    ,     ""      ]     ,
-       [ :Alkanes                                     ,   "yl"                          ,   "ane"                    ,     "C"      ]     ,
-           
-   ]
+        [ :Alkynes                             ,   "yn"                        , "ylidyne"            ,   ""      ]    ,  
+        [ :Alkenes                             ,   "en"                        , "ylidene"            ,   ""      ]    ,
+        [ :Alkanes                             ,   "ylo"                       , "yl"                 ,   ""      ]    ,  
+ #  5   Acids (in the order COOH, C(O)O2H; ...                                ,                      ,           
+       [ :Carboxylic_acid                      ,   "carboxy"                   ,  "carboxylic acid"   ,   "C(O)O" ]    ,
+       [ :Carboxylic_acids                     ,   "carboxy"                   ,  "oic acid"          ,   "(O)O"  ]    ,
+       [ :Carbothioic_S_acids                  ,   "sulfanylcarbonyl"          ,  "thioic S-acid"     ,   "(O)S"  ]    ,
+       [ :Carboselenoic_Se_acids               ,   "selanylcarbonyl"           ,  "selenoic Se-acid"  ,   ""      ]    ,       [ :Sulfonic_acids                       ,   "sulfo"                     ,  "sulfonic acid"     ,   ""      ]    ,       [ :Sulfinic_acids                       ,   "sulfino"                   ,  "sulfinic acid"     ,   ""      ]    ,
+  #  7   Esters                                                                ,                      ,           ]    ,
+       [ :Esters                               ,   "oxycarbonyl"               ,  "oate"              ,   ""      ]    ,
+  #  8   Acid halides                                                          ,                      ,           ]    ,
+       [ :Acyl_halides                         ,   "halocarbonyl"              ,  "oyl halide"        ,   ""      ]    ,
+       [ :Acyl_chlorides                       ,   "chlorocarbonyl"            ,  "oyl chloride"      ,   ""      ]    ,
+       [ :Amides                               ,   "carbamoyl"                 ,  "amide"             ,   ""      ]    ,       [ :Imides                               ,   "imido"                     ,  "imide"             ,   ""      ]    ,       [ :Amidines                             ,   "amidino"                   ,  "amidine"           ,   ""      ]    ,       [ :Nitriles                             ,   "cyano"                     ,  "nitrile"           ,   "CN"    ]    ,       [ :Isocyanides                          ,   "isocyano"                  ,  "isocyanide"        ,   ""      ]    ,       [ :Aldehydes                            ,   "formyl"                    ,  "al"                ,   ""      ]    ,       [ :Thioaldehydes                        ,   "thioformyl"                ,  "thial"             ,   ""      ]    ,       [ :Ketones                              ,   "oxo"                       ,  "one"               ,   "=O"    ]    ,       [ :Thiones                              ,   "sulfanylidene"             ,  "thione"            ,   ""      ]    ,       [ :Selones                              ,   "selanylidene"              ,  "selone"            ,   ""      ]    ,       [ :Tellones                             ,   "tellanylidene"             ,  "tellone"           ,   ""      ]    ,
+  #  15  Alcohols                                                              ,                      ,           ]    ,
+       [ :Alcohols                              ,   "hydroxy"                  ,  "ol"                ,   "OH"    ]    ,                                                                                                                  
+   #  16 Halogens                                                              ,                      ,           ]    ,
+       [ :Fluoride                             ,   "fluoro"                    ,  "fluoride"          ,     "F"   ]    ,      
+       [ :Chloride                             ,   "chloro"                    ,  "chloride"          ,     "Cl"  ]    ,
+       [ :Bromide                              ,   "bromo"                     ,  "bromide"           ,     "B"   ]    ,
+       [ :Iodide                               ,   "iodo"                      ,  "iodide"            ,     "I"   ]    ,
+    # 20 ether                                                                 ,                      ,           ]    ,
+       [ :Methoxy                              ,   "methoxy"                   ,   nil                ,    "OH"   ]    ,
+       [ :Alkynes                              ,   "ynyl"                      ,   "yne"              ,    ""     ]    ,
+       [ :Alkenes                              ,   "enyl"                      ,   "ene"              ,    ""     ]    ,
+       [ :Alkanes                              ,   "yl"                        ,   "ane"              ,    "C"    ]  
+         ]                                                                                         
 
   #Functional_groups.each{|fg| }
   Suffix = Array.new(Functional_groups.size){|e| Functional_groups[e][2]}.compact
@@ -86,6 +62,7 @@ Functional_groups = [
   Fg =     Array.new(Functional_groups.size){|e| Functional_groups[e][0]}
   Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}
   Fg_suffix=Hash[Fg.zip(Suffix).flatten]
+  Fg_suffix_affix=Hash[Fg.zip(Suffix.zip(Affix)).flatten]
   
 class Alkanes
 
