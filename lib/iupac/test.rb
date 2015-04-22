@@ -1,5 +1,6 @@
     
 
+
 Alcane_test_name = ["methane","ethane", "propane"]
 Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol", "propanol", "propan-2-ol", "pentane-2,3,3-triol"]
 Ultimate_braket_name =[ "4,4'-{1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl]-2-[(4'-cyanobiphenyl-4-yl)oxy]ethylene}dihexanoic acid",
@@ -54,4 +55,7 @@ def random_generator_iupac_name(option={})
   option= {:fg=> [:alkohol], :max_length =>12, :max_multipl => [4], :count => 10 }.merge(option)
     
     
+    
+
 end
+
