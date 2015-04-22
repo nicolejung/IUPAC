@@ -1,26 +1,3 @@
-=begin
-class Sample
-  def Hello
-  end
-  puts "Hello World"
-
-  z=10
-  if z>2
-    puts "z is greater than 2"
-  else
-    if z<=2
-      puts "z is 1"
-    else puts "I can't guess z"
-    end
-
-  end
-end
-
-ob =Sample.new
-ob.Hello
-
-=end 
-
 class Chemical_name < String
   def find_position
 
