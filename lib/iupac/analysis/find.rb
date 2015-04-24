@@ -13,7 +13,7 @@
     suffix=suf
     end
     
-     suffix.each{|s| self.match(/#{s}\s*\z/)
+     suffix.each{|s| match(/#{s}\s*\z/)
                      if $& 
                       return  [ $`, s, $'] 
                      end
@@ -41,7 +41,7 @@ def find_position
       single_pos=/^(?>\s|-|,)*(\d+)/
   
       # match for position at the end of the chemical_name
-      if pos=self.match(all_pos)
+      if pos= match(all_pos)
         ret=[$`]
         pos[1].match(single_pos)
       end

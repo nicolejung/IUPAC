@@ -11,12 +11,20 @@ class Name_iupac < String
   
   def to_ruby
     ###method calling other functions to analyse the input string and store the result into some ruby class
+     frag=self 
+     
+          
+   
+            
+    x=frag.find_block.to_s
+     
+       
+ def final  
     
-    
-    frag=self
+       
     puts "compound is "+ self
 
-    s=frag.find_suffix
+    s=self.find_suffix
     frag=s[0] if s
     suffix=s[1] if s
 
@@ -87,7 +95,8 @@ class Name_iupac < String
 
     # todo change this
     
-    
+end #final 
+
   end # to_ruby
 
   def to_smiles

@@ -9,18 +9,28 @@ Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
   
   
   def count_level_br
+       @xbrk=0
+       @cbrk=0
+       a=self
+       a.each_char do |i|
+            if (i=='(') ||(i=='[')||(i=='{') then    @xbrk+=1
+         elsif (i==')') ||(i==']') ||(i=='}')  then   @cbrk+=1
+           #else continue
+         end
+       end
   if  @temp1 
      @obrk+=1 if @temp1[1]=="(" || @temp1[1]=="[" ||@temp1[1]=="{"  
-     @obrk-=1 if  @temp1[1]==")" || @temp1[1]=="]" ||@temp1[1]=="}"
-  end
+     @obrk-=1 if @temp1[1]==")" || @temp1[1]=="]" ||@temp1[1]=="}"
+   end
    puts @obrk.to_s
+   #puts @cbrk.to_s
   end
   
 def split_at_bracket(str=nil)
     if str
       a=str
     else
-    a=self 
+    a=self
     end
     a=~Reg_bracket
     if $&
@@ -39,13 +49,14 @@ def split_at_bracket(str=nil)
     
          count_level_br
    while @obrk!=0
-    
-     split_at_bracket(@temp1[2])
+          
+      split_at_bracket(@temp1[2])
      r<<@temp1[0]<<@temp1[1]
      count_level_br
     puts r.to_s
      if @obrk==0
-      puts "level 0"
+      puts "Level 0 has reached"
+      #puts "Close brackets are #{@cbrk}"
        return r 
      end
    end
@@ -65,7 +76,10 @@ def split_at_bracket(str=nil)
     end
     puts "The open brackets are #{@obrk}"
     puts "The close brackets are #{@cbrk}"
-
+        if (@obrk != @cbrk)
+          puts "The compound is invalid, please enter a valid compound"
+          exit (0)
+        end 
   end # count bracket
 
 end #class Name_iupacc < String
