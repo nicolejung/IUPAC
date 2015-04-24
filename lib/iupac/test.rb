@@ -11,15 +11,17 @@ def test_iupac
     ultimate_braket_name =[ "4,4'-{1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl]-2-[(4'-cyanobiphenyl-4-yl)oxy]ethylene}dihexanoic acid",
         "1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl] ethane",
         ]
-     sec_fg_name = ["2-oxo-3-hydroxybutanoic acid", "2,4 dicyanopentanoic acid", " 2-hydroxypropane-1,2,3-tricarboxylic acid",
-       "18-bromo-12-butyl-11-chloro-4,8-diethyl-5-hydroxy-15-methoxytricosan-3,9-dione",
-       ]  
+     sec_fg_name = ["2-oxo-3-hydroxybutanoic acid", "2,4 dicyanopentanoic acid", " 2-hydroxypropan-1,2,3-tricarboxylic acid",
+       #"18-bromo-12-butyl-11-chloro-4,8-diethyl-5-hydroxy-15-methoxytricosa-6,13-dien-19-yne-3,9-dione",
+       ] 
+       current_test_name=["18-bromo-12-butyl-11-chloro-4,8-diethyl-5-hydroxy-15-methoxytricosa-6,13-dien-19-yn-3,9-dione"] 
         
-[
+
   #alcane_test_name,
-  sec_fg_name,
+  #sec_fg_name,
   #alcohol_test_name,
   #ultimate_braket_name,
+ [ current_test_name
   ].each{|s| s.each{|n|  
                        Name_iupac.new(n).to_ruby
                        

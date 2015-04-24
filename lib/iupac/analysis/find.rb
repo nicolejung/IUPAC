@@ -13,15 +13,9 @@
     suffix=suf
     end
     
-     suffix.each{|s| self.match(/#{s}\s*\z/)
-                     if $& 
-                       print "suffix is "
-                       puts $&
-                       print "left is "
-                       puts $`
-                       
+     suffix.each{|s| match(/#{s}\s*\z/)
+                     if $&   
                       return  [ $`, s, $'] 
-
                      end
                     }
       return nil
@@ -47,11 +41,7 @@ def find_position
       single_pos=/^(?>\s|-|,)*(\d+)/
   
       # match for position at the end of the chemical_name
-      if pos=self.match(all_pos)
-        print "Position is "
-        puts $&
-        print "Left is "
-        puts $`
+      if pos=match(all_pos)
         ret=[$`]
         pos[1].match(single_pos)
       end
@@ -88,7 +78,9 @@ def find_next_position
       ret || [self]
    
 end # of find position
-
+def find_bond
+  find_suffix(Bond)
+end
 def find_parent
   
   Length.each{|k,v| self.match(/#{k}\s*\z/i)
