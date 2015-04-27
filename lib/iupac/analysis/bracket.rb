@@ -59,7 +59,8 @@ def split_at_bracket(str=nil)
       #puts "Close brackets are #{@cbrk}"
        return r 
      end
-   end
+   end #end
+   
    
   end
   
