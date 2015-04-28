@@ -12,17 +12,9 @@ class Name_iupac < String
   def to_ruby
     ###method calling other functions to analyse the input string and store the result into some ruby class
      frag=self 
-     
-          
-   
-            
-    x=frag.find_block.to_s
-     
+      
        
- def final  
-    
-       
-    puts "compound is "+ self
+    puts "Compound is "+ self
 
     s=self.find_suffix
     frag=s[0] if s
@@ -42,7 +34,7 @@ class Name_iupac < String
     parent=frag.find_parent
     frag=parent[0] if parent
     l=parent[1]  if parent
-
+        
     secundary_fg=frag
     puts "Suffix is %s Length is %i position is %s" % [suffix,l.to_i,position.to_s]
 
@@ -56,9 +48,16 @@ class Name_iupac < String
     #chemical||=["failed"]
 
     while frag != ""
-
+#check bracket
+      
+    if (frag[1]=="(" || frag[1]=="[" ||frag[1]=="{") || (frag[1]==")" || frag[1]=="]" ||frag[1]=="}") 
+        frag.abc
+        puts "Sidechain is " + frag.abc 
+     
+      else     #if no bracket
       pr=frag.find_affix
       break if !pr
+      
       frag=pr[0] if pr
       prefix=pr[1] if pr
       if prefix == "yl"
@@ -72,7 +71,13 @@ class Name_iupac < String
        prefix=nx_pos[2]+prefix
        end
       end
+    end#if bracket 
+      #find corresponding bracket & group
       
+    o=frag.find_block
+    frag=o[0] if o
+    brack=(o && o[1]) || 1 
+    
       #find multiplier
       
       m=frag.find_multiplier
@@ -94,8 +99,6 @@ class Name_iupac < String
     puts "Chemical is "+chemical.to_s
 
     # todo change this
-    
-end #final 
 
   end # to_ruby
 
@@ -107,4 +110,3 @@ end #final
   end #to_iupac
 
 end # of class Name_iupac
-

@@ -1,7 +1,47 @@
 
 class Name_iupac < String
+    
+    def xyz(ab=nil)
+       
+  reg1 = /(\([a-z0-9\'\-\[\]\{\}]+\))/ # for parenthesis
+  reg2 = /(\[[a-z0-9\'\-\(\)\{\}]+\])/ # for square brackets
+  reg3 = /(\{[a-z0-9\'\-\(\)\[\]]+\})/ # for curly braces  
   
+  a=Array.new
+  s=self     
+        
+  x = reg1.match(s)
+  a << x.to_s
+  str = x.to_s.chop.reverse.chop.reverse
+  while x != nil do
+      x = reg1.match(str)
+      a << x.to_s
+      str = x.to_s.chop
+  end
   
+  x = reg2.match(s)
+  a << x.to_s
+  str = x.to_s.chop.reverse.chop.reverse
+  while x != nil do
+          x = reg2.match(str)
+          a << x.to_s
+          str = x.to_s.chop
+  end
+  
+  x = reg3.match(s)
+  a << x.to_s
+  str = x.to_s.chop.reverse.chop.reverse
+  while x != nil do
+          x = reg3.match(str)
+          a << x.to_s
+          str = x.to_s.chop
+  end
+  
+  puts a
+  
+  end
+  
+
   
 Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
 
@@ -27,7 +67,8 @@ Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
   end
   
 def split_at_bracket(str=nil)
-    if str
+  @temp1=nil  
+  if str
       a=str
     else
     a=self
@@ -37,6 +78,8 @@ def split_at_bracket(str=nil)
       @temp1=[$1,$2,$']
     end
     @temp1||=[a,"",""]
+  
+    
   end
   
   

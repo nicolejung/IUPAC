@@ -7,6 +7,10 @@ Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol
     "18-bromo-12-butyl-11-chloro-4,8-diethyl-5-hydroxy-15-methoxytricosan-3,9-dione",
       
     ] 
+    Bracket =[
+      "10-bromo-5-(2-hydroxyhept-2-ol)-dodeca-3,9,12-tricarboxylic acid",
+      "10-bromo-5-(2-hydroxy)heptyl-dodeca-3,9,12-tricarboxylic acid",
+      ]
 
 
 def test_iupac
@@ -18,7 +22,8 @@ def test_iupac
   #Alcane_test_name,
   #Sec_fg_name,
   #Alcohol_test_name,
-  Ultimate_braket_name,
+  #Ultimate_braket_name,
+  Bracket,
   ].each{|s| s.each{|n|  
                        Name_iupac.new(n).to_ruby
                        
@@ -38,9 +43,10 @@ def my_test
     #Sec_fg_name,
     #Alcohol_test_name,
     Ultimate_braket_name,
+    #Bracket
     ].each{|s| s.each{|n|  
                          temp=Name_iupac.new(n)
-                         temp.countbracket
+                         #temp.xyz
                          temp.find_block.to_s 
                          }
   }

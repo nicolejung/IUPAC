@@ -25,7 +25,7 @@ module Nomenclature
   #  21  Peroxides followed by Disulfides, Diselenides, and Ditellurides
   
   
-  ## [ functional_group symbol                ,   iupac  prefix /affix                  , iupac suffix           , smiles  substitution      ]
+  ## [ functional_group symbol                ,   iupac  prefix /affix                  , iupac suffix           , smiles    ]
                                                                                                                                 
 Functional_groups = [                                                                                                                         
 
@@ -50,7 +50,7 @@ Functional_groups = [
        [ :Alcohols                                     ,   "hydroxy"                          ,   "ol"                    ,     "OH"      ]     ,
   
    #  16 Halogens 
-       [ :Flouride                                    ,   "flouro"                ,   "flouride"                 ,     ":F"      ]     ,               
+       [ :Fluoride                                    ,   "fluoro"                ,   "fluoride"                 ,     ":F"      ]     ,               
        [ :Chloride                                    ,   "chloro"                ,   "chloride"                 ,     ":Cl"     ]     ,  
        [ :Bromide                                      ,   "bromo"                ,   "bromide"                  ,     ":B"      ]     ,
        [ :Iodide                                       ,   "iodo"                 ,   "iodide"                   ,     ":I"      ]     ,
@@ -117,9 +117,9 @@ end #of class Alcohols
    "Oct"            =>    8           ,
    "Non"            =>    9           ,
    "Dec"            =>    10          ,
-   "Undec"          =>    11          ,
-   "Dodec"          =>    12          ,
-   "Tridec"         =>    13          ,
+   "Undeca"          =>    11          ,
+   "Dodeca"          =>    12          ,
+   "Trideca"         =>    13          ,
    "Tetradec"       =>    14          ,
    "Hexadec"        =>    16          ,
    "Heptadec"       =>    17          ,
