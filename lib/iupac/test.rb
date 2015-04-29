@@ -20,7 +20,7 @@ def test_iupac
         
 [
   #Alcane_test_name,
-  #Sec_fg_name,
+  Sec_fg_name,
   #Alcohol_test_name,
   #Ultimate_braket_name,
   Bracket,

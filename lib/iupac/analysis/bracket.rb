@@ -64,6 +64,7 @@ Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
    end
    puts @obrk.to_s
    #puts @cbrk.to_s
+   
   end
   
 def split_at_bracket(str=nil)
@@ -83,7 +84,7 @@ def split_at_bracket(str=nil)
   end
   
   
-  def find_block
+  def find_block(str=nil)
    @obrk=0 
    r=""
    @temp1||=["",""]
@@ -98,7 +99,7 @@ def split_at_bracket(str=nil)
      count_level_br
     puts r.to_s
      if @obrk==0
-      puts "Level 0 has reached"
+      #puts "Level 0 has reached"
       #puts "Close brackets are #{@cbrk}"
        return r 
      end

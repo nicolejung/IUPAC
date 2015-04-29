@@ -56,6 +56,12 @@ Functional_groups = [
        [ :Iodide                                       ,   "iodo"                 ,   "iodide"                   ,     ":I"      ]     ,
        
     
+  #  17 Aryls 
+        [ :Benzene                                    ,   "benz"                ,   "benzene"                 ,     "C1=CC=CC=C1"      ]     ,            
+        [ :Napthalene                                 ,   "napth"               ,   " napthalene"             ,       "c1ccc2ccccc2c1" ]     ,
+            
+          
+          
     # 20 ether      
        [ :Methoxy                                     ,   "methoxy"                          ,   nil                    ,     "OH"      ]     ,
   

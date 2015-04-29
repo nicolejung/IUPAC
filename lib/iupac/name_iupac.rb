@@ -50,11 +50,11 @@ class Name_iupac < String
     while frag != ""
 #check bracket
       
-    if (frag[1]=="(" || frag[1]=="[" ||frag[1]=="{") || (frag[1]==")" || frag[1]=="]" ||frag[1]=="}") 
-        frag.abc
-        puts "Sidechain is " + frag.abc 
-     
-      else     #if no bracket
+   # if (frag=="(" || frag=="[" ||frag=="{") || (frag==")" || frag=="]" ||frag=="}") 
+        frag.find_block(self)
+        puts "Sidechain is " + frag.find_block.to_s
+         
+        #if no bracket
       pr=frag.find_affix
       break if !pr
       
@@ -71,18 +71,20 @@ class Name_iupac < String
        prefix=nx_pos[2]+prefix
        end
       end
-    end#if bracket 
-      #find corresponding bracket & group
+    #if bracket 
+
+    #find corresponding bracket & group
       
-    o=frag.find_block
-    frag=o[0] if o
-    brack=(o && o[1]) || 1 
+    r=frag.find_block(self)
+    frag=r[0] if r
+    brack=(r && r[1]) || 1 
     
       #find multiplier
       
       m=frag.find_multiplier
       frag=m[0]if m
       mult=(m && m[1]) || 1
+      
       
       #find position
       p=frag.find_position
@@ -98,7 +100,7 @@ class Name_iupac < String
 
     puts "Chemical is "+chemical.to_s
 
-    # todo change this
+    # todo change this thing
 
   end # to_ruby
 
