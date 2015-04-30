@@ -37,7 +37,7 @@ class Name_iupac < String
           str = x.to_s.chop
   end
   
-  puts a
+  return a
   
   end
   

@@ -51,8 +51,8 @@ class Name_iupac < String
 #check bracket
       
    # if (frag=="(" || frag=="[" ||frag=="{") || (frag==")" || frag=="]" ||frag=="}") 
-        frag.find_block(self)
-        puts "Sidechain is " + frag.find_block.to_s
+        frag.xyz(self)
+        puts "Sidechain is " + frag.xyz.to_s
          
         #if no bracket
       pr=frag.find_affix

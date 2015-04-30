@@ -22,7 +22,7 @@ def test_iupac
   #Alcane_test_name,
   Sec_fg_name,
   #Alcohol_test_name,
-  #Ultimate_braket_name,
+  Ultimate_braket_name,
   Bracket,
   ].each{|s| s.each{|n|  
                        Name_iupac.new(n).to_ruby
