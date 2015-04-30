@@ -56,14 +56,15 @@ def find_position
       ret || [self]
    
 end # of find position
-def find_next_position
+def find_group
   
       # regular expression definition
-      all_pos=/((?>\d|-|,|\s)*\d+)(?>\s|-)*([^0-9]*)\z/
-      single_pos=/^(?>\s|-|,)*(\d+)/
-  
+      #all_pos=/((?>\d|-|,|\s)*\d+)(?>\s|-)*([^0-9]*)\z/
+      #single_pos=/^(?>\s|-|,)*(\d+)/
+      extract=/(?<=\s|,|-)((?>(\d+)(-|\s|,))+(\w+|\s))\z/
+      
       # match for position at the end of the chemical_name
-      if pos=self.match(all_pos)
+      if pos=self.match(extract)
         ret=[$`,$1,$2]
         #pos[1].match(single_pos)
       end
@@ -81,6 +82,14 @@ end # of find position
 def find_bond
   find_suffix(Bond)
 end
+
+def extra_pos
+  single_pos=/((?>-|\s|,))\z/
+  if pos=self.match(single_pos)
+    ret=[$`,$1,$2]
+end
+end
+
 def find_parent
   
   Length.each{|k,v| self.match(/#{k}\s*\z/i)

@@ -32,7 +32,7 @@ module Nomenclature
     #  1  Radicals                                                                                                                       
           [ :Alkynes                             ,   "yn"                        , "ylidyne"            ,   ""      ]    ,  
           [ :Alkenes                             ,   "en"                        , "ylidene"            ,   ""      ]    ,
-          [ :Alkanes                             ,   "a"                        , "yl"                 ,   ""      ]    ,  
+          [ :Alkanes                             ,   "ylo"                        , "yl"                 ,   ""      ]    ,  
    #  5   Acids (in the order COOH, C(O)O2H; ...                                ,                      ,           
          [ :Carboxylic_acid                      ,   "carboxy"                   ,  "carboxylic acid"   ,   "C(O)O" ]    ,
          [ :Carboxylic_acids                     ,   "carboxy"                   ,  "oic acid"          ,   "(O)O"  ]    ,
@@ -76,8 +76,12 @@ module Nomenclature
     Fg =     Array.new(Functional_groups.size){|e| Functional_groups[e][0]}
     Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}
     #
-      $i=0
-    Bond=     Array.new(3){|e| Functional_groups[e][1]} 
+Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
+    Bond_o=     Array.new(3){|e| Functional_groups[e][1]} 
+Bond.concat(Bond_o)
+#puts "________"
+#Bond.each {|e| puts e}
+#puts "----------"
         #
     Fg_suffix=Hash[Fg.zip(Suffix).flatten]
     Fg_suffix_affix=Hash[Fg.zip(Suffix.zip(Affix)).flatten]
@@ -96,7 +100,7 @@ module Nomenclature
      return "C"
   end  
   
-  end #of class Alcohols
+  end #of class Alkanes
       
       class Alcohols
       
@@ -154,5 +158,4 @@ module Nomenclature
       "tri",
       "tetra",
       ]
-      
   end

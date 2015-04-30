@@ -1,31 +1,35 @@
 #require_relative 'nomenclature.rb'
 #require_relative 'name_smiles.rb'
-#include Hide_and_seek
 include Nomenclature
+#include Hide_and_seek
+
 class Name_iupac < String
   #@left_fragment
   #@rigth_fragment
-  #
+  
+  Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
   def to_ruby
     ###method calling other functions to analyse the input string and store the result into some ruby class
-    #frag=self
+    frag=self
 
     puts "## start analyzing compound: "+ self
    
     s=find_suffix 
     frag=s[0] if s
     suffix=s[1] if s
-   
+    suffix||=nil
 
+if s
     m=frag.find_multiplier
     frag=m[0]if m
-    mult=(m && m[1]) || 1
+    mult=(m && m[1]) || 1 if m
 
     p=frag.find_position
     frag=p[0] if p
-    position=p[1..-1] if p
-    position||=[]
+    position=p[1..-1] if p || 1
       
+end 
+
 =begin     
     if suffix=="yne"
       multy=mult
@@ -37,6 +41,7 @@ class Name_iupac < String
       positione=position
     end
 =end
+  #storing bond information in a hash    
       
 bonds=Hash.new
 
@@ -46,31 +51,44 @@ while frag != "" do
         break if !b
         frag=b[0] if b
         bond=b[1] if b
-        
+
+#puts  "------"
+#print "bond is "
+#print bond
+#puts "---------"   
+      if b  
         # finding bond multiplier
         mb=frag.find_multiplier 
         frag=mb[0] if mb
         multb=(mb && mb[1]) || 1
+
         
         #finding bond position
          pb=frag.find_position 
          frag=pb[0] if pb
-         positionb=pb[1..-1] if pb    
+         positionb=pb[1..-1] if pb 
+         bonds[bond]=positionb  
          positionb||=[]
-         bonds[bond]=positionb
+
+        # bonds[bond]=positionb
 =begin  
          if pb
             if positionb != []
-               positionb.each{|po| chemical[po-1]+=[prefix]}
+               positionb.each{|po| chemical[po-1]+=[bond]}
             end
          end
 =end 
       puts "Bond is %s and  Position is %s" % [bond.to_s,positionb.to_s]
 end
- #  puts "_________________"
+end
+#   puts "_________________"
 #bonds.each{|k,v| puts k,v}
- # puts "___________________"
+#  puts "___________________"
 
+x=frag.find_suffix(["ane","an","a"])
+  frag=x[0] if x
+  #frag||= frag
+  
 parent=frag.find_parent
     frag=parent[0] if parent
     l=parent[1]  if parent
@@ -95,11 +113,18 @@ chemical||=["failed"]
         prefix=pr[1] if pr      
         
         if prefix == "yl"
-          nx_pos=frag.find_next_position
+          yl_=frag.find_group
+          #nx_pos=frag.find_next_position
           #   "+nx_pos.to_s
-            if nx_pos
-              frag=Name_iupac.new(nx_pos[0..1].join)
-              prefix=nx_pos[2]+prefix
+            if yl_ #nx_pos        
+              #frag=Name_iupac.new(nx_pos[0..1].join)
+              #frag.to_ruby
+              frag=yl_[0]
+              yl_group=Name_iupac.new(yl_[1...-1].join)
+              yl_group.to_ruby
+              y=frag.extra_pos
+              frag=y[0] if y
+              #prefix=nx_pos[2]+prefix
             end
          end
          
@@ -118,18 +143,17 @@ chemical||=["failed"]
                positionp.each{|po| chemical[po-1]+=[prefix]}
             end
          end
-      
       puts "Prefix is %s and  Position is %s" % [prefix,positionp.to_s]
      
     end
     
-   #  bonds.each_pair{|k,v| chemical[v-1]+=["!!!"]}
-  
-            
+bonds.each_pair do |k,v| v.each do |pos| chemical[pos-1]+=[k] end #puts v#chemical[v-1]+=[k]
+end
+             
     puts "Chemical is "+chemical.to_s
 
     # todo change this
-
+puts "Testing end"
   end # to_ruby]
 
 
