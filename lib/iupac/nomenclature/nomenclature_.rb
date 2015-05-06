@@ -26,12 +26,12 @@ module Nomenclature
   #  21  Peroxides followed by Disulfides, Diselenides, and Ditellurides
   
   
-  ## [ functional_group symbol                ,   iupac  prefix /affix                  , iupac suffix           , smiles  substitution      ]
+  ## [ functional_group symbol                ,   iupac  prefix /affix          , iupac suffix        , smiles  substitution,   representation]
                                                                                                                                 
   Functional_groups = [ 
     #  1  Radicals                                                                                                                       
-          [ :Alkynes                             ,   "yn"                        , "ylidyne"            ,   ""      ]    ,  
-          [ :Alkenes                             ,   "en"                        , "ylidene"            ,   ""      ]    ,
+          [ :Alkynes                             ,   "yn"                        , "ylidyne"            ,   ""      , "*="]    ,  
+          [ :Alkenes                             ,   "en"                        , "ylidene"            ,   ""      , "="]    ,
           [ :Alkanes                             ,   "ylo"                        , "yl"                 ,   ""      ]    ,  
    #  5   Acids (in the order COOH, C(O)O2H; ...                                ,                      ,           
          [ :Carboxylic_acid                      ,   "carboxy"                   ,  "carboxylic acid"   ,   "C(O)O" ]    ,
@@ -65,8 +65,8 @@ module Nomenclature
          [ :Iodide                               ,   "iodo"                      ,  "iodide"            ,     "I"   ]    ,
       # 20 ether                                                                 ,                      ,           ]    ,
          [ :Methoxy                              ,   "methoxy"                   ,   nil                ,    "OH"   ]    ,
-         [ :Alkynes                              ,   "ynyl"                      ,   "yne"              ,    ""     ]    ,
-         [ :Alkenes                              ,   "enyl"                      ,   "ene"              ,    ""     ]    ,
+         [ :Alkynes                              ,   "ynyl"                      ,   "yne"              ,    ""     , "*="]    ,
+         [ :Alkenes                              ,   "enyl"                      ,   "ene"              ,    ""     , "="]    ,
          [ :Alkanes                              ,   "yl"                        ,   "ane"              ,    "C"    ]  
            ]                                                                                         
   
@@ -79,10 +79,6 @@ module Nomenclature
 Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
     Bond_o=     Array.new(3){|e| Functional_groups[e][1]} 
 Bond.concat(Bond_o)
-#puts "________"
-#Bond.each {|e| puts e}
-#puts "----------"
-        #
     Fg_suffix=Hash[Fg.zip(Suffix).flatten]
     Fg_suffix_affix=Hash[Fg.zip(Suffix.zip(Affix)).flatten]
     
@@ -118,7 +114,14 @@ Bond.concat(Bond_o)
       
       end #of class Alcohols
       
-      
+   Repr = {
+     "yn"      =>      "*=",
+     "yne"     =>      "*=",
+     "en"      =>      "=",
+     "ene"     =>      "=",
+     
+   }
+   
    Length = {
        
      "Meth"           =>    1           ,

@@ -61,7 +61,7 @@ def find_group
       # regular expression definition
       #all_pos=/((?>\d|-|,|\s)*\d+)(?>\s|-)*([^0-9]*)\z/
       #single_pos=/^(?>\s|-|,)*(\d+)/
-      extract=/(?<=\s|,|-)((?>(\d+)(-|\s|,))+(\w+|\s))\z/
+      extract=/(?<=\d|\s|,|-)((?>(\w+|\s)))\z/
       
       # match for position at the end of the chemical_name
       if pos=self.match(extract)
@@ -101,6 +101,11 @@ def find_parent
                end}
   nil
 end #find_parent
+
+def find_rep(bond_hash={})
+bond_hash.keys.each{|k| bond_hash[Repr[k]]=bond_hash.delete(k) if Repr[k]}
+bond_hash.each {|k,v| puts k}
+end
 
 end # of class Name_iupac
  

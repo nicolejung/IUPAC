@@ -30,17 +30,6 @@ if s
       
 end 
 
-=begin     
-    if suffix=="yne"
-      multy=mult
-      positiony=position
-    end
-    
-    if suffix=="ene"
-      multe=mult
-      positione=position
-    end
-=end
   #storing bond information in a hash    
       
 bonds=Hash.new
@@ -52,17 +41,12 @@ while frag != "" do
         frag=b[0] if b
         bond=b[1] if b
 
-#puts  "------"
-#print "bond is "
-#print bond
-#puts "---------"   
       if b  
         # finding bond multiplier
         mb=frag.find_multiplier 
         frag=mb[0] if mb
         multb=(mb && mb[1]) || 1
-
-        
+      
         #finding bond position
          pb=frag.find_position 
          frag=pb[0] if pb
@@ -70,20 +54,12 @@ while frag != "" do
          bonds[bond]=positionb  
          positionb||=[]
 
-        # bonds[bond]=positionb
-=begin  
-         if pb
-            if positionb != []
-               positionb.each{|po| chemical[po-1]+=[bond]}
-            end
-         end
-=end 
+           #finding bond representation
+           find_rep(bonds)
+
       puts "Bond is %s and  Position is %s" % [bond.to_s,positionb.to_s]
 end
 end
-#   puts "_________________"
-#bonds.each{|k,v| puts k,v}
-#  puts "___________________"
 
 x=frag.find_suffix(["ane","an","a"])
   frag=x[0] if x
@@ -95,25 +71,27 @@ parent=frag.find_parent
     l||=0
     
 puts "length of main chain is %i, 
-suffix is %s position is %s" % [l,suffix,position.to_s]# positiony.length] #positiony.to_s,positione.length,positione.to_s]
-#%i alkyne bonds  at positions %s
-#%i alkene bonds at positions %s
+suffix is %s position is %s" % [l,suffix,position.to_s]
 
 chemical=Array.new(l,[:C])
   if position
     position.each{|po| chemical[po-1]+=[suffix]}
   end
 chemical||=["failed"]  
-  
-      while frag != ""
-      #finding prefix
+  prefix=Array.new
+      
+  while frag != ""
+    #prefix=nil
+    #finding prefix
         pr=frag.find_affix
         break if !pr
-        frag=pr[0] if pr
-        prefix=pr[1] if pr      
         
-        if prefix == "yl"
+        frag=pr[0] if pr 
+        prefix=[pr[1]] if pr      
+        
+        if prefix[0] == "yl"
           yl_=frag.find_group
+       
           #nx_pos=frag.find_next_position
           #   "+nx_pos.to_s
             if yl_ #nx_pos        
@@ -122,8 +100,10 @@ chemical||=["failed"]
               frag=yl_[0]
               yl_group=Name_iupac.new(yl_[1...-1].join)
               yl_group.to_ruby
+        #      prefix=chemical.to_s
               y=frag.extra_pos
               frag=y[0] if y
+              
               #prefix=nx_pos[2]+prefix
             end
          end
@@ -138,24 +118,33 @@ chemical||=["failed"]
          frag=pp[0] if pp
          positionp=pp[1..-1] if pp    
          positionp||=[]
-         if pr
-            if positionp != []
+         
+          #finding representation 
+          if pr
+            if positionp != [] 
                positionp.each{|po| chemical[po-1]+=[prefix]}
             end
          end
       puts "Prefix is %s and  Position is %s" % [prefix,positionp.to_s]
      
     end
-    
-bonds.each_pair do |k,v| v.each do |pos| chemical[pos-1]+=[k] end #puts v#chemical[v-1]+=[k]
-end
-             
+
+    #representation for bonds   
+bonds.each_pair do |k,v| v.each do |pos| chemical[pos-1]+=[k] end end
+
+
+ #prefix=chemical.to_s
+#prefix.map! {chemical.to_s}
+#prefix.map!{ |element| element=chemical.each{|elem|}
+ #}
+  #         puts "******"
+   #        p prefix
+    #       puts "******"
+            
     puts "Chemical is "+chemical.to_s
 
-    # todo change this
-puts "Testing end"
+puts "---Testing end---"
   end # to_ruby]
-
 
   def to_smiles
 
