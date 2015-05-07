@@ -8,8 +8,8 @@ Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol
       
     ] 
     Bracket =[
-      "10-bromo-5-(2-hydroxyhept-2-ol)-dodeca-3,9,12-tricarboxylic acid",
-      "10-bromo-5-(2-hydroxy)heptyl-dodeca-3,9,12-tricarboxylic acid",
+      "10-bromo-5-(2-hydroxyhept-2-yl)dodeca-3,9,12-tricarboxylic acid",
+      "10-bromo-5-(2-hydroxy)heptyldodeca-3,9,12-tricarboxylic acid",
       ]
 
 

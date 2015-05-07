@@ -43,18 +43,36 @@ class Name_iupac < String
     chemical=Array.new(l,[:C])
 
     if position
-      position.each{|po| chemical[po-1]+=[suffix]}
+      position.each{|po| chemical[po-1]+=[Suffix_Formula[suffix]]} 
     end
     #chemical||=["failed"]
 
     while frag != ""
-#check bracket
+              #check bracketsa
+      if frag.match(/([\]})])\s*\z/)
+        puts  "found bracket"
+      temp= frag.reverse.find_block
       
-   # if (frag=="(" || frag=="[" ||frag=="{") || (frag==")" || frag=="]" ||frag=="}") 
-        frag.xyz(self)
-        puts "Sidechain is " + frag.xyz.to_s
+      prefix = temp[0].reverse
+      frag = temp[1].reverse
+      
+      m=frag.find_multiplier
+          frag=m[0]if m
+      p=frag.find_position
+      frag=p[0] if p
+       position= (p && p[1..-1]) || []
+      if prefix
+        if position != []
+          position.each{|po| chemical[po-1]+=[prefix]}
+        end #if 
+      end
+      position=[]
+      end
+      # if (frag=="(" || frag=="[" ||frag=="{") || (frag==")" || frag=="]" ||frag=="}") 
+     #   frag.xyz(self)
+      #  puts "Sidechain is " + frag.xyz.to_s
          
-        #if no bracket
+      #if no bracket
       pr=frag.find_affix
       break if !pr
       
@@ -62,23 +80,15 @@ class Name_iupac < String
       prefix=pr[1] if pr
       if prefix == "yl"
        nx_pos=frag.find_next_position
-       
-        #   "+nx_pos.to_s
        if nx_pos
-       frag=Name_iupac.new(nx_pos[0..1].join)
-       
-       
-       prefix=nx_pos[2]+prefix
+         frag=Name_iupac.new(nx_pos[0..1].join)
+         prefix=nx_pos[2]+prefix
        end
       end
     #if bracket 
 
     #find corresponding bracket & group
-      
-    r=frag.find_block(self)
-    frag=r[0] if r
-    brack=(r && r[1]) || 1 
-    
+          
       #find multiplier
       
       m=frag.find_multiplier
@@ -91,9 +101,10 @@ class Name_iupac < String
       frag=p[0] if p
       position= (p && p[1..-1]) || []
       puts "Prefix is %s and  Position is %s" % [prefix,position.to_s]
+     
       if pr
         if position != []
-          position.each{|po| chemical[po-1]+=[prefix]}
+          position.each{|po| chemical[po-1]+=[Affix_Formula[prefix]]}
         end #if 
       end
     end

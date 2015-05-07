@@ -52,7 +52,7 @@ Functional_groups = [
    #  16 Halogens 
        [ :Fluoride                                    ,   "fluoro"                ,   "fluoride"                 ,     ":F"      ]     ,               
        [ :Chloride                                    ,   "chloro"                ,   "chloride"                 ,     ":Cl"     ]     ,  
-       [ :Bromide                                      ,   "bromo"                ,   "bromide"                  ,     ":B"      ]     ,
+       [ :Bromide                                      ,   "bromo"                ,   "bromide"                  ,     ":Br"      ]     ,
        [ :Iodide                                       ,   "iodo"                 ,   "iodide"                   ,     ":I"      ]     ,
        
     
@@ -72,12 +72,15 @@ Functional_groups = [
    ]
 
   #Functional_groups.each{|fg| }
-  Suffix = Array.new(Functional_groups.size){|e| Functional_groups[e][2]}.compact
   Affix =  Array.new(Functional_groups.size){|e| Functional_groups[e][1]} 
   Fg =     Array.new(Functional_groups.size){|e| Functional_groups[e][0]}
+  Suffix=  Array.new(Functional_groups.size){|e| Functional_groups[e][2]}  
   Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}
   Fg_suffix=Hash[Fg.zip(Suffix).flatten]
+  Affix_Formula=Hash[Affix.zip(Formula)]
+  Suffix_Formula=Hash[Suffix.zip(Formula)]
   
+
 class Alkanes
 
 def self.suffix
