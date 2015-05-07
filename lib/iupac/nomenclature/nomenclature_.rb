@@ -61,7 +61,7 @@ module Nomenclature
      #  16 Halogens                                                              ,                      ,           ]    ,
          [ :Fluoride                             ,   "fluoro"                    ,  "fluoride"          ,     "F"   ]    ,      
          [ :Chloride                             ,   "chloro"                    ,  "chloride"          ,     "Cl"  ]    ,
-         [ :Bromide                              ,   "bromo"                     ,  "bromide"           ,     "B"   ]    ,
+         [ :Bromide                              ,   "bromo"                     ,  "bromide"           ,     "Br"   ]    ,
          [ :Iodide                               ,   "iodo"                      ,  "iodide"            ,     "I"   ]    ,
       # 20 ether                                                                 ,                      ,           ]    ,
          [ :Methoxy                              ,   "methoxy"                   ,   nil                ,    "OH"   ]    ,
@@ -81,7 +81,7 @@ Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
 Bond.concat(Bond_o)
     Fg_suffix=Hash[Fg.zip(Suffix).flatten]
     Fg_suffix_affix=Hash[Fg.zip(Suffix.zip(Affix)).flatten]
-    
+Affix_smiles=Hash[Affix.zip(Formula)]
   class Alkanes
   
   def self.suffix
@@ -159,6 +159,6 @@ Bond.concat(Bond_o)
   Multipliers= [
       "di",
       "tri",
-      "tetra",
-      ]
+      "tetra"
+  ]
   end

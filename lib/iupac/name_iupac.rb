@@ -78,14 +78,15 @@ chemical=Array.new(l,[:C])
     position.each{|po| chemical[po-1]+=[suffix]}
   end
 chemical||=["failed"]  
+  
   prefix=Array.new
       
   while frag != ""
     #prefix=nil
     #finding prefix
+  
         pr=frag.find_affix
-        break if !pr
-        
+      break if !pr
         frag=pr[0] if pr 
         prefix=[pr[1]] if pr      
         
@@ -99,7 +100,7 @@ chemical||=["failed"]
               #frag.to_ruby
               frag=yl_[0]
               yl_group=Name_iupac.new(yl_[1...-1].join)
-              yl_group.to_ruby
+              prefix=yl_group.to_ruby
         #      prefix=chemical.to_s
               y=frag.extra_pos
               frag=y[0] if y
@@ -122,7 +123,7 @@ chemical||=["failed"]
           #finding representation 
           if pr
             if positionp != [] 
-               positionp.each{|po| chemical[po-1]+=[prefix]}
+               positionp.each{|po| chemical[po-1]+=[prefix]} #Affix_smiles[prefix]
             end
          end
       puts "Prefix is %s and  Position is %s" % [prefix,positionp.to_s]
@@ -134,17 +135,18 @@ bonds.each_pair do |k,v| v.each do |pos| chemical[pos-1]+=[k] end end
 
 
  #prefix=chemical.to_s
-#prefix.map! {chemical.to_s}
 #prefix.map!{ |element| element=chemical.each{|elem|}
  #}
-  #         puts "******"
+ # prefix=chemical.to_s   
+  #puts "******"
    #        p prefix
     #       puts "******"
             
     puts "Chemical is "+chemical.to_s
 
 puts "---Testing end---"
-  end # to_ruby]
+  chemical.to_s
+end # to_ruby]
 
   def to_smiles
 
