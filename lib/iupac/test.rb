@@ -22,10 +22,10 @@ def test_iupac
   #alcohol_test_name,
   #ultimate_braket_name,
          #,current_test_name
- [ #alcane_test_name,
-   #sec_fg_name,
-   #alcohol_test_name,
-   #ultimate_braket_name, 
+ [ alcane_test_name,
+   sec_fg_name,
+   alcohol_test_name,
+   ultimate_braket_name, 
    current_test_name
   ].each{|s| s.each{|n|  
                        Name_iupac.new(n).to_ruby
