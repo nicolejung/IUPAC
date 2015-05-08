@@ -14,7 +14,11 @@
     end
     
      suffix.each{|s| match(/#{s}\s*\z/)
+<<<<<<< HEAD
                      if $&   
+=======
+                     if $& 
+>>>>>>> origin/mohit_iupac
                       return  [ $`, s, $'] 
                      end
                     }
@@ -41,7 +45,11 @@ def find_position
       single_pos=/^(?>\s|-|,)*(\d+)/
   
       # match for position at the end of the chemical_name
+<<<<<<< HEAD
       if pos=match(all_pos)
+=======
+      if pos= match(all_pos)
+>>>>>>> origin/mohit_iupac
         ret=[$`]
         pos[1].match(single_pos)
       end
