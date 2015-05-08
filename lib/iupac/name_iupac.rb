@@ -1,3 +1,4 @@
+
 #require_relative 'nomenclature.rb'
 #require_relative 'name_smiles.rb'
 include Nomenclature
@@ -49,9 +50,11 @@ class Name_iupac < String
 
     while frag != ""
               #check bracketsa
-      if frag.match(/(\(|\{|\[|\]|\}|\)\s*\z)/) #(/([\]})])\s*\z/)
-        puts  "found bracket"
-      temp= frag.reverse.find_block
+      if frag.match(/([\]})])\s*\z/) #(/(\(|\{|\[|\]|\}|\)\s*\z)/) #(/([\]})])\s*\z/)
+        puts "found bracket"
+        
+     
+        temp=frag.reverse.find_block
       
       prefix = temp[0].reverse
       frag = temp[1].reverse
@@ -115,9 +118,11 @@ class Name_iupac < String
     puts "Chemical is "+chemical.to_s
 
     # todo change this thing
-
+  puts chemical.to_s  
   end # to_ruby
 
+  
+  
   def to_smiles
 
     ## return a Name_smiles(String) Object
@@ -126,3 +131,4 @@ class Name_iupac < String
   end #to_iupac
 
 end # of class Name_iupac
+
