@@ -1,6 +1,6 @@
 Alcane_test_name = ["methane","ethane", "propane"]
 Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol", "propanol", "propan-2-ol", "pentane-2,3,3-triol"]
- Ultimate_braket_name =[ "4,4'{-1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl]-2-[(4'-cyanobiphenyl-4-yl)oxy]ethylene}dihexanoic acid",
+ Ultimate_braket_name =[ "4,4-{-1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl] dihexanoic acid",
      "1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl] ethane",
      ]
   Sec_fg_name = ["2-oxo-3-hydroxybutanoic acid", "2,4 dicyanopentanoic acid", " 2-hydroxypropane-1,2,3-tricarboxylic acid",
@@ -8,8 +8,8 @@ Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol
       
     ] 
     Bracket =[
-      "10-bromo-5-(2-hydroxyhept-2-yl)dodeca-3,9,12-tricarboxylic acid",
-      "10-bromo-5-(2-hydroxy)heptyldodeca-3,9,12-tricarboxylic acid",
+      "10-bromo-5-(2-hydroxyhept-2-yl) dodeca-3,9,12-tricarboxylic acid",
+      "10-bromo-5-(2-hydroxy) heptyldodeca-3,9,12-tricarboxylic acid",
       ]
 
 

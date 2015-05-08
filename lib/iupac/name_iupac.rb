@@ -49,13 +49,14 @@ class Name_iupac < String
 
     while frag != ""
               #check bracketsa
-      if frag.match(/([\]})])\s*\z/)
+      if frag.match(/(\(|\{|\[|\]|\}|\)\s*\z)/) #(/([\]})])\s*\z/)
         puts  "found bracket"
       temp= frag.reverse.find_block
       
       prefix = temp[0].reverse
       frag = temp[1].reverse
       
+               
       m=frag.find_multiplier
           frag=m[0]if m
       p=frag.find_position
@@ -66,6 +67,8 @@ class Name_iupac < String
           position.each{|po| chemical[po-1]+=[prefix]}
         end #if 
       end
+      
+      
       position=[]
       end
       # if (frag=="(" || frag=="[" ||frag=="{") || (frag==")" || frag=="]" ||frag=="}") 
@@ -74,7 +77,7 @@ class Name_iupac < String
          
       #if no bracket
       pr=frag.find_affix
-      break if !pr
+      break if !pr 
       
       frag=pr[0] if pr
       prefix=pr[1] if pr
