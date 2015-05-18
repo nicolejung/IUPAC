@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #require_relative 'nomenclature.rb'
 #require_relative 'name_smiles.rb'
 include Nomenclature
@@ -35,7 +34,8 @@ end
       
 bonds=Hash.new
 
-while frag != "" do
+while frag != "" 
+  
       #finding bond
         b=frag.find_bond
         break if !b
@@ -75,21 +75,42 @@ puts "length of main chain is %i,
 suffix is %s position is %s" % [l,suffix,position.to_s]
 
 chemical=Array.new(l,[:C])
-  if position
-    position.each{|po| chemical[po-1]+=[suffix]}
-  end
+if position
+      position.each{|po| chemical[po-1]+=[Suffix_Formula[suffix]]} 
+    end
 chemical||=["failed"]  
   
   prefix=Array.new
       
   while frag != ""
-    #prefix=nil
-    #finding prefix
+    
+    #check brackets
+    if frag.match(/([\]})])\s*\z/) #(/(\(|\{|\[|\]|\}|\)\s*\z)/) #(/([\]})])\s*\z/)
+            puts "found bracket"
+            
+         temp=frag.reverse.find_block
+          
+          prefix = temp[0].reverse
+          frag = temp[1].reverse
+          
+                   
+          m=frag.find_multiplier
+              frag=m[0]if m
+          p=frag.find_position
+          frag=p[0] if p
+           position= (p && p[1..-1]) || []
+          if prefix
+            if position != []
+              position.each{|po| chemical[po-1]+=[prefix]}
+            end #if 
+          end
+end
   
         pr=frag.find_affix
       break if !pr
         frag=pr[0] if pr 
         prefix=[pr[1]] if pr      
+       # prefix_sub=[Affix_Formula[pr[1]]] if pr
         
         if prefix[0] == "yl"
           yl_=frag.find_group
@@ -102,12 +123,13 @@ chemical||=["failed"]
               frag=yl_[0]
               yl_group=Name_iupac.new(yl_[1...-1].join)
               prefix=yl_group.to_ruby
-        #      prefix=chemical.to_s
               y=frag.extra_pos
-              frag=y[0] if y
-              
-              #prefix=nx_pos[2]+prefix
+              frag=y[0] if y 
+              #prefix=n
+              #x_pos[2]+prefix
             end
+        else 
+          prefix=[Affix_Formula[prefix[0]]]
          end
          
         # finding prefix multiplier
@@ -122,11 +144,14 @@ chemical||=["failed"]
          positionp||=[]
          
           #finding representation 
-          if pr
-            if positionp != [] 
-               positionp.each{|po| chemical[po-1]+=[prefix]} #Affix_smiles[prefix]
-            end
-         end
+          if pr && positionp != []
+            #  if yl_            
+                positionp.each{|po| chemical[po-1]+=[prefix]} 
+             # else 
+              #  positionp.each{|po| chemical[po-1]+=[Affix_Formula[prefix]]} 
+              #end          
+          end 
+
       puts "Prefix is %s and  Position is %s" % [prefix,positionp.to_s]
      
     end
@@ -156,55 +181,8 @@ end # to_ruby]
   end #to_iupac
 
 end # of class Name_iupac
-=======
-#require_relative 'nomenclature.rb'
-#require_relative 'name_smiles.rb'
-include Nomenclature
-#include Hide_and_seek
 
-class Name_iupac < String
-  #@left_fragment
-  #@rigth_fragment
-  
-  Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
-  
-  def to_ruby
-    ###method calling other functions to analyse the input string and store the result into some ruby class
-     frag=self 
-      
-       
-    puts "Compound is "+ self
-
-    s=self.find_suffix
-    frag=s[0] if s
-    suffix=s[1] if s
-
-    m=frag.find_multiplier
-    frag=m[0]if m
-    mult=(m && m[1]) || 1
-
-    p=frag.find_position
-    frag=p[0] if p
-    position= (p && p[1..-1]) || []
-
-    a=frag.find_suffix(["ane","an", "en","yne"])
-    frag=a[0] if a
-    
-    parent=frag.find_parent
-    frag=parent[0] if parent
-    l=parent[1]  if parent
-        
-    secundary_fg=frag
-    puts "Suffix is %s Length is %i position is %s" % [suffix,l.to_i,position.to_s]
-
-    l||=0
-
-    chemical=Array.new(l,[:C])
-
-    if position
-      position.each{|po| chemical[po-1]+=[Suffix_Formula[suffix]]} 
-    end
-    #chemical||=["failed"]
+=begin
 
     while frag != ""
               #check bracketsa
@@ -267,19 +245,5 @@ class Name_iupac < String
         end #if 
       end
     end
-
-    puts "Chemical is "+chemical.to_s
-
-    # todo change this thing
-
-  end # to_ruby
-
-  def to_smiles
-
-    ## return a Name_smiles(String) Object
-    #Name_smiles.new(...)
-
-  end #to_iupac
-
-end # of class Name_iupac
->>>>>>> origin/mohit_iupac
+    
+=end
