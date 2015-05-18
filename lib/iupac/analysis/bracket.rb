@@ -97,7 +97,7 @@ class Name_iupac < String
       
         
       end
-    
+
       
       def find_block
        @obrk=0 

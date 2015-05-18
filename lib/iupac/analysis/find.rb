@@ -67,12 +67,7 @@ def find_next_position
         #pos[1].match(single_pos)
       end
   
-      #if positions found, loop to extract each integer
-      #while $1
-       # n=$'
-        #ret<<$1.to_i
-        #n.match(single_pos)
-      #end
+      
       # return the array, if ret is nil (no match) return [self]
       ret || [self]
    
@@ -81,23 +76,14 @@ end # of find position
   def find_group
 
     # regular expression definition
-    #all_pos=/((?>\d|-|,|\s)*\d+)(?>\s|-)*([^0-9]*)\z/
-    #single_pos=/^(?>\s|-|,)*(\d+)/
     extract=/(?<=\d|\s|,|-)((?>(\w+|\s)))\z/
 
     # match for position at the end of the chemical_name
     if pos=self.match(extract)
       ret=[$`,$1,$2]
-      #pos[1].match(single_pos)
+    
     end
 
-    #if positions found, loop to extract each integer
-    #while $1
-    # n=$'
-    #ret<<$1.to_i
-    #n.match(single_pos)
-    #end
-    # return the array, if ret is nil (no match) return [self]
     ret || [self]
 
   end # of find position
