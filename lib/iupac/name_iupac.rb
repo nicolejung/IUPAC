@@ -62,9 +62,9 @@ while frag != ""
 end
 end
 
-x=frag.find_suffix(["ane","an","a"])
+x=frag.find_suffix(["ane","an","a"," "])
   frag=x[0] if x
-  #frag||= frag
+  
   
 parent=frag.find_parent
     frag=parent[0] if parent
@@ -85,7 +85,7 @@ chemical||=["failed"]
   while frag != ""
     
     #check brackets
-    if frag.match(/([\]})])\s*\z/) #(/(\(|\{|\[|\]|\}|\)\s*\z)/) #(/([\]})])\s*\z/)
+    if frag.match(/([\]})])\s*\z/) 
             puts "found bracket"
             
          temp=frag.reverse.find_block
@@ -110,23 +110,16 @@ end
       break if !pr
         frag=pr[0] if pr 
         prefix=[pr[1]] if pr      
-       # prefix_sub=[Affix_Formula[pr[1]]] if pr
         
         if prefix[0] == "yl"
           yl_=frag.find_group
        
-          #nx_pos=frag.find_next_position
-          #   "+nx_pos.to_s
-            if yl_ #nx_pos        
-              #frag=Name_iupac.new(nx_pos[0..1].join)
-              #frag.to_ruby
+            if yl_ 
               frag=yl_[0]
               yl_group=Name_iupac.new(yl_[1...-1].join)
               prefix=yl_group.to_ruby
               y=frag.extra_pos
               frag=y[0] if y 
-              #prefix=n
-              #x_pos[2]+prefix
             end
         else 
           prefix=[Affix_Formula[prefix[0]]]
@@ -144,12 +137,8 @@ end
          positionp||=[]
          
           #finding representation 
-          if pr && positionp != []
-            #  if yl_            
-                positionp.each{|po| chemical[po-1]+=[prefix]} 
-             # else 
-              #  positionp.each{|po| chemical[po-1]+=[Affix_Formula[prefix]]} 
-              #end          
+          if pr && positionp != []           
+                positionp.each{|po| chemical[po-1]+=[prefix]}                 
           end 
 
       puts "Prefix is %s and  Position is %s" % [prefix,positionp.to_s]
@@ -157,22 +146,13 @@ end
     end
 
     #representation for bonds   
-bonds.each_pair do |k,v| v.each do |pos| chemical[pos-1]+=[k] end end
+    bonds.each_pair do |k,v| v.each do |pos| chemical[pos-1]+=[k] end end
 
-
- #prefix=chemical.to_s
-#prefix.map!{ |element| element=chemical.each{|elem|}
- #}
- # prefix=chemical.to_s   
-  #puts "******"
-   #        p prefix
-    #       puts "******"
-            
     puts "Chemical is "+chemical.to_s
 
-puts "---Testing end---"
-  chemical.to_s
-end # to_ruby]
+    puts "---Testing end---"
+    chemical.to_a
+end # to_ruby
 
   def to_smiles
 
@@ -181,69 +161,3 @@ end # to_ruby]
   end #to_iupac
 
 end # of class Name_iupac
-
-=begin
-
-    while frag != ""
-              #check bracketsa
-      if frag.match(/([\]})])\s*\z/)
-        puts  "found bracket"
-      temp= frag.reverse.find_block
-      
-      prefix = temp[0].reverse
-      frag = temp[1].reverse
-      
-      m=frag.find_multiplier
-          frag=m[0]if m
-      p=frag.find_position
-      frag=p[0] if p
-       position= (p && p[1..-1]) || []
-      if prefix
-        if position != []
-          position.each{|po| chemical[po-1]+=[prefix]}
-        end #if 
-      end
-      position=[]
-      end
-      # if (frag=="(" || frag=="[" ||frag=="{") || (frag==")" || frag=="]" ||frag=="}") 
-     #   frag.xyz(self)
-      #  puts "Sidechain is " + frag.xyz.to_s
-         
-      #if no bracket
-      pr=frag.find_affix
-      break if !pr
-      
-      frag=pr[0] if pr
-      prefix=pr[1] if pr
-      if prefix == "yl"
-       nx_pos=frag.find_next_position
-       if nx_pos
-         frag=Name_iupac.new(nx_pos[0..1].join)
-         prefix=nx_pos[2]+prefix
-       end
-      end
-    #if bracket 
-
-    #find corresponding bracket & group
-          
-      #find multiplier
-      
-      m=frag.find_multiplier
-      frag=m[0]if m
-      mult=(m && m[1]) || 1
-      
-      
-      #find position
-      p=frag.find_position
-      frag=p[0] if p
-      position= (p && p[1..-1]) || []
-      puts "Prefix is %s and  Position is %s" % [prefix,position.to_s]
-     
-      if pr
-        if position != []
-          position.each{|po| chemical[po-1]+=[Affix_Formula[prefix]]}
-        end #if 
-      end
-    end
-    
-=end
