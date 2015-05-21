@@ -117,4 +117,3 @@ end # of find position
   end
 
 end # of class Name_iupac
-

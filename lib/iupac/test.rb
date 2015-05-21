@@ -1,6 +1,6 @@
 
 
-Alcane_test_name = ["methane","ethane", "propane"]
+Alcane_test_name = ["methane","ethane", "propane", "Eth-2-ene", "But 2,3-yl"]
 Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol", "propanol", "propan-2-ol", "pentane-2,3,3-triol"]
  Ultimate_braket_name =[ "4,4-{-1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl] dihexanoic acid",
      "1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl] ethane",
@@ -10,8 +10,8 @@ Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol
       
     ] 
     Bracket =[
-      "10-bromo-5-(2-hydroxyhept-2-yl) dodeca-3,9,12-tricarboxylic acid",
-      "10-bromo-5-(2-hydroxy)heptyldodeca-3,9,12-tricarboxylic acid",
+      "10-bromo-5-(2-hydroxyhept-2-yl) tricos-3,9,12-tricarboxylic acid",
+      "10-bromo-5-(2-hydroxy) tetracosa-3,9,12-tricarboxylic acid",
       ]
 
 
@@ -22,9 +22,9 @@ def test_iupac
         
 [
   Alcane_test_name,
-  Sec_fg_name,
-  Alcohol_test_name,
-  Ultimate_braket_name,
+  #Sec_fg_name,
+  #Alcohol_test_name,
+  #Ultimate_braket_name,
   Bracket,
   ].each{|s| s.each{|n|  
                        Name_iupac.new(n).to_ruby
