@@ -1,8 +1,11 @@
 
 
-Alcane_test_name = ["methane","ethane", "propane", "Eth-2-ene", "But 2,3-yl"]
-Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol", "propanol", "propan-2-ol", "pentane-2,3,3-triol"]
- Ultimate_braket_name =[ "4,4-{-1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl] dihexanoic acid",
+Alcane_test_name = ["methane","ethane", "propane","ethene","propyl", "Eth-2-ene", "But 2,3-yl"]
+
+  Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol", "propanol", "propan-2-ol", "pentane-2,3,3-triol"]
+ 
+    Ultimate_braket_name =[  #"5-(1-methylhydroxy)-8-(2-methylpropyl)-3-(1,1-dimethylethyl)dodecane",
+      " 4-(1,1-dimethylethyl)-5-ethylnonane",
      "1-[({5-[(4'-cyanobiphenyl-4-yl)oxy]pentyl}oxy)carbonyl] ethane",
      ]
   Sec_fg_name = ["2-oxo-3-hydroxybutanoic acid", "2,4 dicyanopentanoic acid", " 2-hydroxypropane-1,2,3-tricarboxylic acid",
@@ -10,8 +13,8 @@ Alcohol_test_name = ["ethanol", "ethan-1-ol", "ethan-1,2-diol","ethane-1, 2-diol
       
     ] 
     Bracket =[
-      "10-bromo-5-(2-hydroxyhept-2-yl) tricos-3,9,12-tricarboxylic acid",
-      "10-bromo-5-(2-hydroxy) tetracosa-3,9,12-tricarboxylic acid",
+      "10-bromo-5-(2-hydroxyhept-2-yl) dodeca-3,9,7-tricarboxylic acid",
+      "10-bromo-5-hydroxytetracosa-3,9,12-tricarboxylic acid",
       ]
 
 
@@ -21,10 +24,10 @@ def test_iupac
  
         
 [
-  Alcane_test_name,
+  #Alcane_test_name,
   #Sec_fg_name,
   #Alcohol_test_name,
-  #Ultimate_braket_name,
+  Ultimate_braket_name,
   Bracket,
   ].each{|s| s.each{|n|  
                        Name_iupac.new(n).to_ruby
@@ -41,11 +44,11 @@ def my_test
      
           
   [
-    #Alcane_test_name,
-    #Sec_fg_name,
-    #Alcohol_test_name,
+    Alcane_test_name,
+    Sec_fg_name,
+    Alcohol_test_name,
     Ultimate_braket_name,
-    #Bracket
+    Bracket
     ].each{|s| s.each{|n|  
                          temp=Name_iupac.new(n)
                          #temp.xyz

@@ -103,8 +103,7 @@ end # of find position
 
     Length.each{|k,v| self.match(/#{k}\s*\z/i)
       if $&
-        print "parent is "
-        puts $&
+        print "Parent is "+ $& + " "
         return [$`,v]
 
       end}

@@ -1,4 +1,4 @@
-
+#require_relative 'name_iupac.rb'
 class Name_iupac < String
     
     def xyz(b=")")
@@ -118,6 +118,7 @@ class Name_iupac < String
           #puts "Close brackets are #{@cbrk}"
            
            return [r, @temp1[2]]
+          
          end
        end #end
        
