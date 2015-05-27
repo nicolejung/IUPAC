@@ -75,15 +75,19 @@ module Nomenclature
          [ :Benzene                                    ,   "benz"                ,   "benzene"                 ,     "C1=CC=CC=C1"      ]     ,            
          [ :Napthalene                                 ,   "napth"               ,   " napthalene"             ,       "c1ccc2ccccc2c1" ]     ,
              
-           
+   #  18 Special Names 
+            [ :Carbonyl                                 ,   "carbonyl"                ,   "carbonyl"                 ,     ":C=O"      ]     ,            
+              
            
      # 20 ether      
         [ :Methoxy                                     ,   "methoxy"                          ,   nil                    ,     "OH"      ]     ,
    
-        [ :Alkynes                                     ,   "ynyl"                         ,   "yne"                    ,     ""      ]     ,  
-        [ :Alkenes                                     ,   "enyl"                          ,  "ene"                    ,     ""      ]     ,
-        [ :Alkanes                                     ,   "yl"                          ,   "ane"                    ,     "C"      ]     ,
+        [ :Alkynes                                     ,   "ynyl"                          ,   "yne"                     ,     "#"      ]     ,  
+        [ :Alkenes                                     ,   "enyl"                           ,  "ene"                     ,     "="      ]     ,
+        [ :Alkanes                                     ,   "yl"                             ,   "ane"                    ,     "C"      ]     ,
             
+          
+          
     ]
  
    #Functional_groups.each{|fg| }
@@ -95,11 +99,12 @@ module Nomenclature
    Affix_Formula=Hash[Affix.zip(Formula)]
    Suffix_Formula=Hash[Suffix.zip(Formula)]                                                                                
    
-   Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
+    Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
     Bond_o=     Array.new(3){|e| Functional_groups[e][1]} 
     Bond.concat(Bond_o)
-
+   
     Fg_suffix_affix=Hash[Fg.zip(Suffix.zip(Affix)).flatten]
+    Affix_smiles=Hash[Affix.zip(Formula)]
 
 
  
@@ -138,8 +143,8 @@ class Alkanes
       end #of class Alcohols
       
    Repr = {
-     "yn"      =>      "*=",
-     "yne"     =>      "*=",
+     "yn"      =>      "#",
+     "yne"     =>      "#",
      "en"      =>      "=",
      "ene"     =>      "=",
      
@@ -147,8 +152,10 @@ class Alkanes
 
    Length = {
        
-     "Meth"           =>    1           ,
+     
+     
      "Eth"            =>    2           ,
+     "Meth"           =>    1           ,
      "Prop"           =>    3           ,
      "But"            =>    4           ,
      "Pent"           =>    5           ,
@@ -164,7 +171,6 @@ class Alkanes
      "Heptadec"       =>    17          ,
      "Octadec"        =>    18          ,
      "Dec"            =>    10          ,
-
      "Eicos"          =>    20          ,
      "Docos"          =>    22          ,
      "Tricos"         =>    23          ,
