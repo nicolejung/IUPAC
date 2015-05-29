@@ -36,34 +36,35 @@ module Nomenclature
     
    
    #  5   Acids (in the order COOH, C(O)O2H; then their S and Se derivatives followed by sulfonic, sulfinic, selenonic, etc., phosphonic, arsonic, etc., acids)
-        [ :Carboxylic_acid                             ,   "carboxy"                     ,   "carboxylic acid"        ,     "C(O)O"     ]     ,
-        [ :Carboxylic_acids                            ,   "carboxy"                     ,   "oic acid"               ,     "(O)O"      ]     ,
+        [ :Carboxylic_acid                             ,   "carboxy"                     ,   "carboxylic acid"        ,     "C(=O)O"     ]     ,
+        [ :Carboxylic_acids                            ,   "carboxy"                     ,   "oic acid"               ,     "(=O)O"      ]     ,
         [ :Carbothioic_S_acids                         ,   "sulfanylcarbonyl"            ,   "thioic S-acid"          ,     "(O)S"      ]     ,
-        [ :Carboselenoic_Se_acids                      ,   "selanylcarbonyl"             ,   "selenoic Se-acid"       ,     ""      ]     ,
-        [ :Sulfonic_acids                              ,   "sulfo"                       ,   "sulfonic acid"          ,     ""      ]     ,
-        [ :Sulfinic_acids                              ,   "sulfino"                     ,   "sulfinic acid"          ,     ""      ]     ,
-        
+        [ :Carboselenoic_Se_acids                      ,   "selanylcarbonyl"             ,   "selenoic Se-acid"       ,     "COSe"      ]     ,
+        [ :Sulfonic_acids                              ,   "sulfo"                       ,   "sulfonic acid"          ,     "S(=O)O"      ]     ,
+        [ :Sulfinic_acids                              ,   "sulfino"                     ,   "sulfinic acid"          ,     "SO(O)"      ]     ,
+        [ :Phosphonic_acids                            ,   "phosphonic"                  ,   "phosphonic acid"        ,     "P(=O)(O)O"      ]     , 
    #  7   Esters   
-        [ :Esters                                      ,   "oxycarbonyl"                 ,   "oate"                   ,     ""      ]     ,
+        [ :Esters                                      ,   "oxycarbonyl"                 ,   "oate"                   ,     "(COO)"      ]     ,
        
    #  8   Acid halides
-        [ :Acyl_halides                                ,   "halocarbonyl"                ,   "oyl halide"             ,     ""      ]     ,
-        [ :Acyl_chlorides                              ,   "chlorocarbonyl"              ,   "oyl chloride"           ,     ""      ]     ,
+        [ :Acyl_halides                                ,   "carbonyl"                    ,   "oyl"                    ,     "CO"      ]     ,
+        [ :Acyl_chlorides                              ,   "chlorocarbonyl"              ,   "oyl chloride"           ,     "COCl"      ]     ,
           
-        [ :Amides                                      ,   "carbamoyl"                   ,   "amide"                  ,     ""      ]     ,
-        [ :Imides                                      ,   "imido"                       ,   "imide"                  ,     ""      ]     ,
+        [ :Amides                                      ,   "carbamoyl"                   ,   "amide"                  ,     "CoNH="      ]     ,
+        [ :Imides                                      ,   "imido"                       ,   "imide"                  ,     "CON=C"      ]     ,
         [ :Amidines                                    ,   "amidino"                     ,   "amidine"                ,     ""      ]     ,
         [ :Nitriles                                    ,   "cyano"                       ,   "nitrile"                ,     "CN"      ]     ,
-        [ :Isocyanides                                 ,   "isocyano"                    ,   "isocyanide"             ,     ""      ]     ,
+        [ :Isocyanides                                 ,   "isocyano"                    ,   "isocyanide"             ,     "NC"      ]     ,
         [ :Aldehydes                                   ,   "formyl"                      ,   "al"                     ,     ""      ]     ,
         [ :Thioaldehydes                               ,   "thioformyl"                  ,   "thial"                  ,     ""      ]     ,
         [ :Ketones                                     ,   "oxo"                         ,   "one"                    ,     "=O"      ]     ,
-        [ :Thiones                                     ,   "sulfanylidene"               ,   "thione"                 ,     ""      ]     ,
-        [ :Selones                                     ,   "selanylidene"                ,   "selone"                 ,     ""      ]     ,
-        [ :Tellones                                    ,   "tellanylidene"               ,   "tellone"                ,     ""      ]     ,
+        [ :Thiones                                     ,   "sulfanylidene"               ,   "thione"                 ,     "=S"      ]     ,
+        [ :Selones                                     ,   "selanylidene"                ,   "selone"                 ,     "=Se"      ]     ,
+        [ :Tellones                                    ,   "tellanylidene"               ,   "tellone"                ,     "=Te"      ]     ,
    #  15  Alcohols
-        [ :Alcohols                                     ,   "hydroxy"                          ,   "ol"                    ,     "OH"      ]     ,
-   
+        [ :Alcohols                                     ,   "hydroxy"                    ,        "ol"               ,     "OH"      ]     ,
+        
+          
     #  16 Halogens 
         [ :Fluoride                                    ,   "fluoro"                ,   "fluoride"                 ,     ":F"      ]     ,               
         [ :Chloride                                    ,   "chloro"                ,   "chloride"                 ,     ":Cl"     ]     ,  
@@ -72,15 +73,20 @@ module Nomenclature
         
      
    #  17 Aryls 
-         [ :Benzene                                    ,   "benz"                ,   "benzene"                 ,     "C1=CC=CC=C1"      ]     ,            
+         [ :Benzene                                     ,   "benz"                ,   "benzene"                 ,     "c1ccccc1"      ]     ,            
          [ :Napthalene                                 ,   "napth"               ,   " napthalene"             ,       "c1ccc2ccccc2c1" ]     ,
              
    #  18 Special Names 
-            [ :Carbonyl                                 ,   "carbonyl"                ,   "carbonyl"                 ,     ":C=O"      ]     ,            
-              
+            [ :Carbonyl                                 ,   "carbonyl"                ,   "carbonyl"                 ,     "C=O"          ] ,            
+            [ :Nicotin                                  ,    "nicotin"                ,    "nicotino"                 ,    "cc1=cN=cc=c1" ] ,
+            [ :Methacryl                                ,    "methacryl"              ,     ""                        ,    "CC(C)=C"      ],
+            [ :Pivalo                                    ,    "pivalo"                 , "pival"                       , "CC(C)(C)C"      ],
+            [ :Vinyl                                     ,      "vinyl"                 ,    ""                         ,  "C=C"           ]  ,
+            [ :IsoPropenyl                               ,      "propenyl"              ,    ""                          ,  "C(C)=C"  ] ,        
+             
            
      # 20 ether      
-        [ :Methoxy                                     ,   "methoxy"                          ,   nil                    ,     "OH"      ]     ,
+        [ :Oxy_Oate                                     ,   "oxy"                          ,   "oxy"                   ,     "(O)"      ]     ,
    
         [ :Alkynes                                     ,   "ynyl"                          ,   "yne"                     ,     "#"      ]     ,  
         [ :Alkenes                                     ,   "enyl"                           ,  "ene"                     ,     "="      ]     ,
@@ -152,10 +158,8 @@ class Alkanes
 
    Length = {
        
-     
-     
-     "Eth"            =>    2           ,
      "Meth"           =>    1           ,
+     "Eth"            =>    2           ,
      "Prop"           =>    3           ,
      "But"            =>    4           ,
      "Pent"           =>    5           ,
@@ -190,6 +194,8 @@ Multipliers= [
     "di",
     "tri",
     "tetra",
+    "quad",
+    
     ]
     
 end

@@ -27,7 +27,7 @@ class Name_iupac < String
       p=frag.find_position
       frag=p[0] if p
       position=p[1..-1] if p || 1
-
+          
     end
 
     #storing bond information in a hash
@@ -70,8 +70,7 @@ class Name_iupac < String
     l=parent[1]  if parent
     l||=0
 
-    puts "Length is %i,
-Suffix is %s Position is %s" % [l,suffix,position.to_s]
+    puts "Length is %i, Suffix is %s Position is %s" % [l.to_i,suffix,position.to_s]
 
     chemical=Array.new(l,[:C])
 
@@ -101,7 +100,7 @@ Suffix is %s Position is %s" % [l,suffix,position.to_s]
         position= (p && p[1..-1]) || []
         if prefix
           if position != []
-                     
+
             temp = Name_iupac.new(prefix.strip[1..-2]).to_ruby
             position.each{|po| chemical[po-1]+=[temp]}
           end #if
@@ -140,11 +139,27 @@ Suffix is %s Position is %s" % [l,suffix,position.to_s]
       positionp||=[]
 
       #finding representation
-      if pr && positionp != []
+      if pp && positionp != []
         positionp.each{|po| chemical[po-1]+=[prefix]}
       end
 
       puts "Prefix is %s and  Position is %s" % [prefix,positionp.to_s]
+
+        x=frag.find_chain
+        break if !x
+        frag=s[0] if x
+        chain=s[1] if x
+
+        p1=frag.find_position
+        frag=p1[0] if p1
+        position1= (p1 && p1[1..-1]) || []
+
+        if position1 && position1 != []
+          position1.each{|po| chemical[po-1]+=[chain]}
+        end
+
+        puts "Secondary chain is %s and position is" % [chain, position1.to_s]
+     
 
     end
 
@@ -153,14 +168,13 @@ Suffix is %s Position is %s" % [l,suffix,position.to_s]
       end
     end
 
-    
     puts "Chemical is" + chemical.to_s
-=begin    
+=begin
     ret_out = "Chemical is \n"
     chemical.each_with_index{|c,i| ret_out<<(i+1).to_s<<": "<<c.to_s<<"\n"}
     puts ret_out
 =end
-        
+
     chemical
 
     #puts chemical.flatten

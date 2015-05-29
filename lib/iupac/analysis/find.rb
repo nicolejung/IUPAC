@@ -103,13 +103,17 @@ end # of find position
 
     Length.each{|k,v| self.match(/#{k}\s*\z/i)
       if $&
-        print "Parent is "+ $& + " "
+        #print "Parent is "+ $& + " "
         return [$`,v]
 
       end}
     nil
   end #find_parent
 
+def find_chain
+  find_suffix(Length)
+   end 
+  
   def find_rep(bond_hash={})
     bond_hash.keys.each{|k| bond_hash[Repr[k]]=bond_hash.delete(k) if Repr[k]}
     bond_hash.each {|k,v| puts k}

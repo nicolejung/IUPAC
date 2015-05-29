@@ -9,7 +9,7 @@ require_relative 'iupac/test.rb'
 
 puts "Hello World iupac"
 
-puts "Random iupac testing? [y/n/c]"
+puts "Random iupac testing? [Y/N/C]"
 answer=gets
 if answer =~/^y/
 test_iupac
