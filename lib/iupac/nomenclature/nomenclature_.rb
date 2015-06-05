@@ -43,6 +43,7 @@ module Nomenclature
         [ :Sulfonic_acids                              ,   "sulfo"                       ,   "sulfonic acid"          ,     "S(=O)O"      ]     ,
         [ :Sulfinic_acids                              ,   "sulfino"                     ,   "sulfinic acid"          ,     "SO(O)"      ]     ,
         [ :Phosphonic_acids                            ,   "phosphonic"                  ,   "phosphonic acid"        ,     "P(=O)(O)O"      ]     , 
+   
    #  7   Esters   
         [ :Esters                                      ,   "oxycarbonyl"                 ,   "oate"                   ,     "(COO)"      ]     ,
        
@@ -74,7 +75,10 @@ module Nomenclature
      
    #  17 Aryls 
          [ :Benzene                                     ,   "benz"                ,   "benzene"                 ,     "c1ccccc1"      ]     ,            
-         [ :Napthalene                                 ,   "napth"               ,   " napthalene"             ,       "c1ccc2ccccc2c1" ]     ,
+         [ :Napthalene                                 ,   "napth"                 ,   " napthalene"             ,       "c1ccc2ccccc2c1" ]     ,
+         [ :Phenyl                                     ,   "phenyl"                 ,     nil               ,           "c1ccccc1"   ], 
+         [ :Amines                                     ,     "amino"                  ,   "amine"                  ,             "NH"      ]  ,
+           
              
    #  18 Special Names 
             [ :Carbonyl                                 ,   "carbonyl"                ,   "carbonyl"                 ,     "C=O"          ] ,            

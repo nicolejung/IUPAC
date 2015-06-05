@@ -12,7 +12,7 @@ class Name_iupac < String
     ###method calling other functions to analyse the input string and store the result into some ruby class
     frag=self
 
-    puts "Compound is "+ self
+    puts "Compound is "+ self 
 
     s=find_suffix
     frag=s[0] if s
@@ -144,7 +144,8 @@ class Name_iupac < String
       end
 
       puts "Prefix is %s and  Position is %s" % [prefix,positionp.to_s]
-
+=begin
+      
         x=frag.find_chain
         break if !x
         frag=s[0] if x
@@ -160,7 +161,7 @@ class Name_iupac < String
 
         puts "Secondary chain is %s and position is" % [chain, position1.to_s]
      
-
+=end
     end
 
     #representation for bonds
@@ -168,7 +169,7 @@ class Name_iupac < String
       end
     end
 
-    puts "Chemical is" + chemical.to_s
+   # puts "Chemical is" + chemical.to_s
 =begin
     ret_out = "Chemical is \n"
     chemical.each_with_index{|c,i| ret_out<<(i+1).to_s<<": "<<c.to_s<<"\n"}
@@ -176,23 +177,20 @@ class Name_iupac < String
 =end
 
     chemical
+    
 
-    #puts chemical.flatten
-=begin
-           concatenated = Array.new
-           chemical.each do |chemical|
-           concatenated.concat(chemical)
-           end
-
-puts concatenated
-=end
 
   end # to_ruby
 
-  def to_smiles
+  def outputs
 
-    ## return a Name_smiles(String) Object
-    #Name_smiles.new(...)
-  end #to_iupac
+    frag=self
+    chemical=Array.new(l,[:C])
+    
+      frag.to_ruby
+      puts "Chemical is" + chemical.to_s
+    
+    
+  end #outputs
 
 end # of class Name_iupac

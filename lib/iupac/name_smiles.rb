@@ -1,28 +1,26 @@
 require_relative 'name_iupac.rb'
-
-class Name_smiles < String
-class Array
+include Nomenclature
+class Name_iupac < String
+  
 
   def to_smiles
-  
+    
+    frag=self
+    
    
+   x=frag.to_ruby
+   
+    puts x.flatten
+    
+        concatenated = Array.new
+        x.each do |x|
+        concatenated.concat(x)
+        end
 
-          #self
+    puts concatenated
+
+
+    
   end
-end
-end 
 
-        
-=begin
-  def to_iupac
-    
-    ###method calling other function to analyse the input string
-    
-    
-    
-    name="prop-2-ol"
-    # return a Name_iupac(String) Object
-    Name_iupac.new(name)
-  end #to_iupac
-=end     
-      
+  end
