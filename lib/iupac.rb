@@ -7,14 +7,18 @@ require_relative 'iupac/test.rb'
 
 
 
-puts "hello world iupac"
 
-puts "random iupac testing? [y/n]"
+puts "Hello World iupac"
+
+puts "Random iupac testing? [y/n/c]"
 answer=gets
 if answer =~/^y/i
 test_iupac
+elsif answer =~/^c/
+puts "My customed testing"
+my_test
 else
-  puts "enter a chemical name"
+  puts "Enter a chemical name"
   answer=gets  
   test_name=Name_iupac.new(answer)
   test_name.to_ruby

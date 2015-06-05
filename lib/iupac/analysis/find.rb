@@ -11,6 +11,7 @@
  #   elsif suf.is_a?(Array)
   #    suffix=[suf]  
   else 
+
     suffix= suffix
     end
   # Abc=Hash.new
@@ -25,6 +26,7 @@
                          #suffixes[a]<<index+1
                       #        end
                      return  k 
+
                      end
                     }
                     return nil
@@ -90,7 +92,8 @@ end# of find_multiplier
       single_pos=/^(?>\s|-|,)*(\d+)/
   
       # match for position at the end of the chemical_name
-      if pos=match(all_pos)
+
+      if pos= match(all_pos)
         ret=[$`]
         pos[1].match(single_pos)
       end

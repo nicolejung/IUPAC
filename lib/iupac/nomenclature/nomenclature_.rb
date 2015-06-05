@@ -28,8 +28,7 @@ module Nomenclature
   
   ## [ functional_group symbol                ,   iupac  prefix /affix          , iupac suffix        , smiles  substitution,   representation]
                                                                                                                                 
-  Functional_groups = [ 
-    #  1  Radicals                                                                                                                       
+  Functional_groups = [                                                                                                                         
           [ :Alkynes                             ,   "yn"                        , "ylidyne"            ,   ""      , "*="]    ,  
           [ :Alkenes                             ,   "en"                        , "ylidene"            ,   ""      , "="]    ,
           [ :Alkanes                             ,   "ylo"                        , "yl"                 ,   ""      ]    ,  
@@ -67,14 +66,17 @@ module Nomenclature
          [ :Methoxy                              ,   "methoxy"                   ,   nil                ,    "OH"   ]    ,
          [ :Alkynes                              ,   "ynyl"                      ,   "yne"              ,    ""     , "*="]    ,
          [ :Alkenes                              ,   "enyl"                      ,   "ene"              ,    ""     , "="]    ,
-         [ :Alkanes                              ,   "yl"                        ,   "ane"              ,    "C"    ]  
+         [ :Alkanes                              ,   "yl"                        ,   "ane"              ,    "C"    ]  ,
            ]                                                                                         
+  
+    
   
     #Functional_groups.each{|fg| }
     Affix =  Array.new(Functional_groups.size){|e| Functional_groups[e][1]} 
     Fg =     Array.new(Functional_groups.size){|e| Functional_groups[e][0]}
     Suffix=  Array.new(Functional_groups.size){|e| Functional_groups[e][2]}  
-    Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}.zip
+    Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}
+
     Fg_suffix=Hash[Fg.zip(Suffix).flatten]
     Affix_Formula=Hash[Affix.zip(Formula)]
     Suffix_Formula=Hash[Suffix.zip(Formula)]
@@ -82,11 +84,14 @@ module Nomenclature
     Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
     Bond_o=     Array.new(3){|e| Functional_groups[e][1]} 
     Bond.concat(Bond_o)
+    
     Fg_suffix=Hash[Fg.zip(Suffix).flatten]
     Fg_suffix_affix=Hash[Fg.zip(Suffix.zip(Affix)).flatten]
     Affix_smiles=Hash[Affix.zip(Formula)]
-  class Alkanes
-  
+
+
+class Alkanes
+
   def self.suffix
   return "an"
   end
@@ -124,6 +129,7 @@ module Nomenclature
      "ene"     =>      "=",
      
    }
+
    
 Length = {
 =begin
@@ -158,8 +164,7 @@ Length = {
   "Tetracont"      =>    40          , 
 =end
   
-
-    "Tetracont"      =>    40          , 
+     "Tetracont"      =>    40          , 
      "Pentatriacont"  =>    35          ,
      "Tetratriacont"  =>    34          ,
      "Tritriacont"    =>    33          ,
@@ -188,8 +193,6 @@ Length = {
      "Prop"           =>    3           ,
      "Meth"           =>    1           ,
      "Eth"            =>    2           ,
-  
-  
   }
   
   Multipliers= [
@@ -198,4 +201,4 @@ Length = {
       "tetra"
   ]
   end
-  
+
