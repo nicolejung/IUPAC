@@ -1,8 +1,8 @@
-class Name_iupac < String
+class Name_iupac < Array
   
   
   
-Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
+Reg_brackets=/([^(){}\[\]]*)([(){}\[\]])/
 
   attr_reader :obrk, :cbrk
   

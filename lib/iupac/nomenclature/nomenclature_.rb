@@ -35,7 +35,7 @@ module Nomenclature
           [ :Alkanes                             ,   "ylo"                        , "yl"                 ,   ""      ]    ,  
    #  5   Acids (in the order COOH, C(O)O2H; ...                                ,                      ,           
          [ :Carboxylic_acid                      ,   "carboxy"                   ,  "carboxylic acid"   ,   "C(O)O" ]    ,
-         [ :Carboxylic_acids                     ,   "carboxy"                   ,  "oic acid"          ,   "(O)O"  ]    ,
+         [ :Carboxylic_acids                     ,   "carboxy_"                   ,  "oic acid"          ,   "(O)O"  ]    ,
          [ :Carbothioic_S_acids                  ,   "sulfanylcarbonyl"          ,  "thioic S-acid"     ,   "(O)S"  ]    ,
          [ :Carboselenoic_Se_acids               ,   "selanylcarbonyl"           ,  "selenoic Se-acid"  ,   ""      ]    ,
          [ :Sulfonic_acids                       ,   "sulfo"                     ,  "sulfonic acid"     ,   ""      ]    ,
@@ -71,17 +71,20 @@ module Nomenclature
            ]                                                                                         
   
     #Functional_groups.each{|fg| }
-    Suffix = Array.new(Functional_groups.size){|e| Functional_groups[e][2]}.compact
     Affix =  Array.new(Functional_groups.size){|e| Functional_groups[e][1]} 
     Fg =     Array.new(Functional_groups.size){|e| Functional_groups[e][0]}
-    Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}
-    #
-Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
+    Suffix=  Array.new(Functional_groups.size){|e| Functional_groups[e][2]}  
+    Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}.zip
+    Fg_suffix=Hash[Fg.zip(Suffix).flatten]
+    Affix_Formula=Hash[Affix.zip(Formula)]
+    Suffix_Formula=Hash[Suffix.zip(Formula)]
+    
+    Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
     Bond_o=     Array.new(3){|e| Functional_groups[e][1]} 
-Bond.concat(Bond_o)
+    Bond.concat(Bond_o)
     Fg_suffix=Hash[Fg.zip(Suffix).flatten]
     Fg_suffix_affix=Hash[Fg.zip(Suffix.zip(Affix)).flatten]
-Affix_smiles=Hash[Affix.zip(Formula)]
+    Affix_smiles=Hash[Affix.zip(Formula)]
   class Alkanes
   
   def self.suffix
@@ -115,45 +118,78 @@ Affix_smiles=Hash[Affix.zip(Formula)]
       end #of class Alcohols
       
    Repr = {
-     "yn"      =>      "*=",
-     "yne"     =>      "*=",
+     "yn"      =>      "#",
+     "yne"     =>      "#",
      "en"      =>      "=",
      "ene"     =>      "=",
      
    }
    
-   Length = {
-       
+Length = {
+=begin
+  "Eth"            =>    2           ,
+  "Meth"           =>    1           ,
+  "Prop"           =>    3           ,
+  "But"            =>    4           ,
+  "Pent"           =>    5           ,
+  "Hex"            =>    6           ,
+  "Hept"           =>    7           ,
+  "Oct"            =>    8           ,
+  "Non"            =>    9           ,
+  "Dec"            =>    10          ,
+  "Undec"          =>    11          ,
+  "Dodec"          =>    12          ,
+  "Tridec"         =>    13          ,
+  "Tetradec"       =>    14          ,
+  "Hexadec"        =>    16          ,
+  "Heptadec"       =>    17          ,
+  "Octadec"        =>    18          ,
+  "Eicos"          =>    20          ,
+  "Docos"          =>    22          ,
+  "Tricos"         =>    23          ,
+  "Tetracos"       =>    24          ,
+  "Hexacos"        =>    26          ,
+  "Octacos"        =>    28          ,
+  "Triacont"       =>    30          ,
+  "Dotriacont"     =>    32          ,
+  "Tritriacont"    =>    33          ,
+  "Tetratriacont"  =>    34          ,
+  "Pentatriacont"  =>    35          ,
+  "Tetracont"      =>    40          , 
+=end
+  
+
+    "Tetracont"      =>    40          , 
+     "Pentatriacont"  =>    35          ,
+     "Tetratriacont"  =>    34          ,
+     "Tritriacont"    =>    33          ,
+     "Dotriacont"     =>    32          ,
+     "Triacont"       =>    30          ,
+     "Octacos"        =>    28          ,
+     "Hexacos"        =>    26          ,
+     "Tetracos"       =>    24          ,
+     "Tricos"         =>    23          ,
+     "Docos"          =>    22          ,
+     "Eicos"          =>    20          ,
+     "Octadec"        =>    18          ,
+     "Heptadec"       =>    17          ,
+     "Hexadec"        =>    16          ,
+     "Tetradec"       =>    14          ,
+     "Tridec"         =>    13          ,
+     "Dodec"          =>    12          ,
+     "Undec"          =>    11          ,
+     "Dec"            =>    10          ,
+     "Non"            =>    9           ,
+     "Oct"            =>    8           ,
+     "Hept"           =>    7           ,
+     "Hex"            =>    6           ,
+     "Pent"           =>    5           ,
+     "But"            =>    4           ,
+     "Prop"           =>    3           ,
      "Meth"           =>    1           ,
      "Eth"            =>    2           ,
-     "Prop"           =>    3           ,
-     "But"            =>    4           ,
-     "Pent"           =>    5           ,
-     "Hex"            =>    6           ,
-     "Hept"           =>    7           ,
-     "Oct"            =>    8           ,
-     "Non"            =>    9           ,
-     "Dec"            =>    10          ,
-     "Undec"          =>    11          ,
-     "Dodec"          =>    12          ,
-     "Tridec"         =>    13          ,
-     "Tetradec"       =>    14          ,
-     "Hexadec"        =>    16          ,
-     "Heptadec"       =>    17          ,
-     "Octadec"        =>    18          ,
-     "Eicos"          =>    20          ,
-     "Docos"          =>    22          ,
-     "Tricos"         =>    23          ,
-     "Tetracos"       =>    24          ,
-     "Hexacos"        =>    26          ,
-     "Octacos"        =>    28          ,
-     "Triacont"       =>    30          ,
-     "Dotriacont"     =>    32          ,
-     "Tritriacont"    =>    33          ,
-     "Tetratriacont"  =>    34          ,
-     "Pentatriacont"  =>    35          ,
-     "Tetracont"      =>    40          ,
-     
+  
+  
   }
   
   Multipliers= [
@@ -162,3 +198,4 @@ Affix_smiles=Hash[Affix.zip(Formula)]
       "tetra"
   ]
   end
+  

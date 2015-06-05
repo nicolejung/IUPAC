@@ -11,7 +11,7 @@ puts "hello world iupac"
 
 puts "random iupac testing? [y/n]"
 answer=gets
-if answer =~/^y/
+if answer =~/^y/i
 test_iupac
 else
   puts "enter a chemical name"

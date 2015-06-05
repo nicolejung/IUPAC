@@ -1,6 +1,6 @@
 require_relative 'name_iupac.rb'
 
-class Name_smiles < String
+class Name_smiles < Array
 
 
   def to_iupac
