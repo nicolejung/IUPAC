@@ -1,4 +1,3 @@
-
 module Nomenclature
 
   ## list of functional group in decreasing order of priority for choosing the suffix (principal functional group), highest priority at the top
@@ -75,7 +74,8 @@ module Nomenclature
     Affix =  Array.new(Functional_groups.size){|e| Functional_groups[e][1]} 
     Fg =     Array.new(Functional_groups.size){|e| Functional_groups[e][0]}
     Suffix=  Array.new(Functional_groups.size){|e| Functional_groups[e][2]}  
-    Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}
+    Formula = Array.new(Functional_groups.size){|e| Functional_groups[e][3]}.zip
+      
 
     Fg_suffix=Hash[Fg.zip(Suffix).flatten]
     Affix_Formula=Hash[Affix.zip(Formula)]
@@ -201,4 +201,3 @@ Length = {
       "tetra"
   ]
   end
-
