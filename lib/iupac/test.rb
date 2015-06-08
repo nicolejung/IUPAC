@@ -5,7 +5,7 @@ def test_iupac
   # this method, when called, will instantiate a couple of IupacName and test whether it understands the associated names
 
 test_chem=[[[:C, "OH"], [:C, "Cl"]]]
-  complicated_test_name=[[[:C, "OH"], [:C, "C(O)O","OH"], [:C, "C(O)O"], [:C, "Cl"]] ]#, [[:C], [:C], [:C, "=O"], [:C], [:C, "OH"], [:C], [:C], [:C], [:C, "=O"], [:C], [:C, "Cl"], [:C], [:C], [:C], [:C, "OH"], [:C], [:C], [:C, "Br"], [:C], [:C], [:C], [:C], [:C]]]
+  complicated_test_name=[[[:C, "OH"], [:C, "C(O)O","OH"], [:C, "C(O)O"], [:C, "Cl"]] , [[:C], [:C], [:C, "=O"], [:C], [:C, "OH"], [:C], [:C], [:C], [:C, "=O"], [:C], [:C, "Cl"], [:C], [:C], [:C], [:C, "OH"], [:C], [:C], [:C, "Br"], [:C], [:C], [:C], [:C], [:C]]]
   
  [ test_chem, complicated_test_name ].each{|s| s.each{|n|  
                        Name_iupac.new(n).to_ruby
