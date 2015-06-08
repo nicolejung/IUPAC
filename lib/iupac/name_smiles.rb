@@ -9,24 +9,25 @@ class Name_iupac < String
    comp=frag.to_ruby
    
     
-    def format_step(e) # Expects an array, since all the elements of data are arrays.
-      e.map do |x| # So for each element, get the following
+    def format_step(e) 
+      e.map do |x| 
         if x.is_a?(Array)
-          "(#{ format_step(x) })" # ...then call the same function on it
+          "(#{ format_step(x) })" # calling the same function 
         else
           x.to_s # convert to string and return
         end
-      end.join # this way map returns an array of strings here, join them
+      end.join # map returns an array of strings, join
     end
     
-    def reformat(data) # This rule is only for the first level and is a bit different
-      data.map do |element| # For each element of the root array
-        format_step(element) # do this
-      end.join(' ') # ..and join the results with spaces
+    def reformat(data) 
+      data.map do |element| 
+        format_step(element) 
+      end.join('') #Joining with space 
     end
      
-    puts format_step(comp)
+    #puts format_step(comp)
     puts reformat(comp)
+    
         #x.inspect.gsub(/^\[|\]$|[\:\,\s]/,"").gsub("[","(").gsub("]",")")
        #puts x
         
