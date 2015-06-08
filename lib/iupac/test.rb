@@ -33,7 +33,7 @@ def test_iupac
   ].each{|s| s.each{|n|  
                        #Name_iupac.new(n).to_ruby
                        Name_iupac.new(n).to_smiles
-                       
+                       #Name_iupac.new(n).outputs 
                        }
 }
     

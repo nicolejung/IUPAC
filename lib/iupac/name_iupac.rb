@@ -185,10 +185,10 @@ class Name_iupac < String
   def outputs
 
     frag=self
-    chemical=Array.new(l,[:C])
-    
-      frag.to_ruby
-      puts "Chemical is" + chemical.to_s
+        
+      comp=frag.to_ruby
+      puts "Chemical is" + comp.to_s
+     # puts comp[1].to_s
     
     
   end #outputs
