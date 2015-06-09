@@ -28,6 +28,7 @@ class Name_iupac < String
     #puts format_step(comp)
     puts reformat(comp)
     
+    
         #x.inspect.gsub(/^\[|\]$|[\:\,\s]/,"").gsub("[","(").gsub("]",")")
        #puts x
         

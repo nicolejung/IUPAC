@@ -110,7 +110,8 @@ module Nomenclature
     [ :Alkynes                                     ,   "ynyl"                          ,   "yne"                     ,     "#"      ]     ,
     [ :Alkenes                                     ,   "enyl"                           ,  "ene"                     ,     "="      ]     ,
     [ :Alkanes                                     ,   "yl"                             ,   "ane"                    ,     "C"      ]     ,
-
+    
+    
   ]
 
   #Functional_groups.each{|fg| }
@@ -166,6 +167,57 @@ module Nomenclature
     "ene"     =>      "=",
 
   }
+  
+Replacement_comp = {
+ 
+  "F"    =>   "fluora" ,   "W"   =>    "tungsta" ,
+  "Cl"   =>  "chlora"  ,   "V"   =>   "vanada"   ,
+  "Br"   =>  "broma"   ,   "Nb"  =>    "nioba"   ,
+  "I"    =>  "ioda"    ,   "Ta"  =>    "tantala" ,
+  "At"   =>  "astata"  ,   "Ti"  =>   "titana"   ,
+  "O"    =>  "oxa"     ,   "Zr"  =>   "zircona"  ,
+  "S"    =>  "thia"    ,   "Hf"  =>   "hafna"  ,
+  "Se"   =>  "selena"  ,   "Sc"  =>   "scanda"  ,
+  "Te"   =>  "tellura" ,   "Y"   =>   "yttra"  ,
+  "Po"   =>  "polona"  ,   "La"  =>   "lanthana"  ,
+  "N"    =>  "aza"     ,   "Ce"  =>   "cera"  ,
+  "P"    =>  "phospha" ,   "Pr"  =>   "praseodyma"  ,
+  "As"   =>  "arsa  "  ,   "Nd"  =>   "neodyma"  ,
+  "Sb"   =>  "stiba"   ,   "Pm"  =>   "prometha"  ,
+  "Bi"   =>  "bisma"   ,   "Sm"  =>   "samara"  ,
+  "C"    =>  "carba"   ,   "Eu"  =>   "europa"  ,
+  "Si"   =>  "sila"    ,   "Gd"  =>   "gadolina"  ,
+  "Ge"   =>  "germa"   ,   "Tb"  =>   "terba"  ,
+  "Sn"   =>  "stanna"  ,   "Dy"  =>  "dysprosa"  ,
+  "Pb"   =>  "plumba"  ,   "Ho"  =>   "holma"  ,
+  "B"    =>  "bora"    ,   "Er"  =>   "erba"   ,
+ "Al"   =>  "alumina" ,    "Tm"  =>   "thula"  ,
+ "Ga"   =>  "galla"   , "Yb"  =>   "ytterba"  ,
+ "In"  =>  "inda"    , "Lu"  =>   "luteta"  ,
+ "Tl"  =>  "thalla"  , "Ac"  =>   "actina"  ,
+ "Zn"  =>  "zinca"   , "Th"  =>   "thora"  ,
+ "Cd"  =>  "cadma"   , "Pa"   =>  "protactina"  ,
+ "Hg"  =>  "mercura" , "U"   =>   "urana"  ,
+ "Cu"  =>  "cupra"   , "Np"  =>   "neptuna"  ,
+ "Ag"  =>  "argenta" , "Pu"  =>   "plutona"  ,
+ "Au"  =>  "aura"    , "Am"  =>   "america"  ,
+ "Ni"  =>  "nickela" , "Cm"  =>   "cura"  ,
+ "Pd"  =>  "pallada" , "Bk"  =>   "berkela"  ,
+ "Pt"  =>  "platina" , "Cf"  =>   "californa"  ,
+ "Co"  =>  "cobalta" , "Es"  =>   "einsteina"  ,
+ "Rh " =>  "rhoda"   , "Fm"  =>   "ferma"  ,
+ "Ir"  =>  "irida"   , "Md"  =>   "mendeleva"  ,
+ "Fe"  =>  "ferra"   , "No"  =>   "nobela"  ,
+ "Ru"  =>  "ruthena" , "Lr"  =>   "lawrenca"  ,
+ "Os"  =>  "osma"    , "Be"  =>   "berylla"  ,
+ "Mn"  =>  "mangana" , "Mg"  =>   "magnesa"  ,
+ "Tc"  =>  "techneta" , "Ca" =>    "calca"  ,
+ "Re"  =>  "rhena"    , "Sr" =>    "stronta"  ,
+ "Cr"  =>  "chroma"   , "Ba" =>    "bara"  ,
+ "Mo"  =>  "molybda"  , "Ra" =>    "rada"  ,
+
+
+}
 
   Length = {
 
