@@ -25,6 +25,7 @@ class Name_iupac < String
       end.join('') #Joining with space 
     end
      
+    
     #puts format_step(comp)
     puts reformat(comp)
     
@@ -32,14 +33,6 @@ class Name_iupac < String
         #x.inspect.gsub(/^\[|\]$|[\:\,\s]/,"").gsub("[","(").gsub("]",")")
        #puts x
         
-      # concatenated = Array.new
-      # x.each do |x|
-      # concatenated.concat(x)
-      #end
-      
-
-    #puts concatenated
-
 
     
   end

@@ -1,6 +1,6 @@
 
 
-Alcane_test_name = [  "1,2,3-tribromopropane",   "2-methylbut-3-yn-2-ol",  "3-iodo phenyl butylamine"
+Alcane_test_name = [  "1,2,3-tribromopropane",   "2-methylbut-3-yn-2-ol",  "3-iodo phenyl butylamine", "silatetradecane", 
   # "Trimethyl acetate",   
   ]
 
@@ -28,7 +28,7 @@ def test_iupac
    Alcane_test_name,
   #sec_fg_name,
   #Alcohol_test_name,
-   Ultimate_braket_name,
+   #Ultimate_braket_name,
   #Bracket,
   ].each{|s| s.each{|n|  
                        #Name_iupac.new(n).to_ruby

@@ -1,77 +1,70 @@
 class Name_iupac  < String
- 
   def find_suffix(suf=nil)
-      
-      if !suf
-        suffix = Suffix
-      elsif suf.is_a?(String)
-        suffix=[suf]
-    else 
+
+    if !suf
+      suffix = Suffix
+    elsif suf.is_a?(String)
+      suffix=[suf]
+    else
       suffix=suf
-      end
-      
-       suffix.each{|s| match(/#{s}\s*\z/)
-                       if $& 
-                        return  [ $`, s, $'] 
-                       end
-                      }
-        return nil
-      
-       
-    
-      
-    end #of find_suffix
-  
-    def find_affix
-     find_suffix(Affix)
     end
-      
+
+    suffix.each{|s| match(/#{s}\s*\z/)
+      if $&
+        return  [ $`, s, $']
+      end
+    }
+    return nil
+
+  end #of find_suffix
+
+  def find_affix
+    find_suffix(Affix)
+  end
+
   def find_multiplier
     find_suffix(Multipliers)
   end# of find_multiplier
 
-  
+  def find_position
 
-def find_position
-  
-      # regular expression definition
-      all_pos=/((?>\d|-|,|\s)*\d+)(?>\s|-)*\z/
-      single_pos=/^(?>\s|-|,)*(\d+)/
-  
-      # match for position at the end of the chemical_name
-      if pos= match(all_pos)
-        ret=[$`]
-        pos[1].match(single_pos)
-      end
-  
-      #if positions found, loop to extract each integer
-      while $1
-        n=$'
-        ret<<$1.to_i
-        n.match(single_pos)
-      end
-      # return the array, if ret is nil (no match) return [self]
-      ret || [self]
-   
-end # of find position
+    # regular expression definition
+    all_pos=/((?>\d|-|,|\s)*\d+)(?>\s|-)*\z/
+    single_pos=/^(?>\s|-|,)*(\d+)/
 
-def find_next_position
-  
-      # regular expression definition
-      all_pos=/((?>\d|-|,|\s)*\d+)(?>\s|-)*([^0-9]*)\z/
-      single_pos=/^(?>\s|-|,)*(\d+)/
-  
-      # match for position at the end of the chemical_name
-      if pos=self.match(all_pos)
-        ret=[$`,$1,$2]
-        #pos[1].match(single_pos)
-      end
-  
-      
-      # return the array, if ret is nil (no match) return [self]
-      ret || [self]
-   
-end # of find position
+    # match for position at the end of the chemical_name
+    if pos= match(all_pos)
+      ret=[$`]
+      pos[1].match(single_pos)
+    end
+
+    #if positions found, loop to extract each integer
+    while $1
+      n=$'
+      ret<<$1.to_i
+      n.match(single_pos)
+    end
+    # return the array, if ret is nil (no match) return [self]
+    ret || [self]
+
+  end # of find position
+
+  def find_next_position
+
+    # regular expression definition
+    all_pos=/((?>\d|-|,|\s)*\d+)(?>\s|-)*([^0-9]*)\z/
+    single_pos=/^(?>\s|-|,)*(\d+)/
+
+    # match for position at the end of the chemical_name
+    if pos=self.match(all_pos)
+      ret=[$`,$1,$2]
+      #pos[1].match(single_pos)
+    end
+
+    # return the array, if ret is nil (no match) return [self]
+    ret || [self]
+
+  end # of find position
 
   def find_group
 
@@ -81,7 +74,7 @@ end # of find position
     # match for position at the end of the chemical_name
     if pos=self.match(extract)
       ret=[$`,$1,$2]
-    
+
     end
 
     ret || [self]
@@ -109,10 +102,25 @@ end # of find position
       end}
     nil
   end #find_parent
-
+  
+  
 def find_chain
-  find_suffix(Length)
-   end 
+  Length.each{|k,v| self.match(/#{k}\s*\z/i)
+    if $&
+       return [$`,v]
+    end}
+  nil
+end
+
+  
+def find_replace
+  Replacement_comp.each{|k,v| self.match(/#{v}\s*\z/i)
+    if $&
+       return [$`,k]
+    end}
+  nil
+end
+  
   
   def find_rep(bond_hash={})
     bond_hash.keys.each{|k| bond_hash[Repr[k]]=bond_hash.delete(k) if Repr[k]}

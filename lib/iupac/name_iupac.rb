@@ -144,6 +144,34 @@ class Name_iupac < String
       end
 
       puts "Prefix is %s and  Position is %s" % [prefix,positionp.to_s]
+
+
+#begin
+      while frag!=""
+        re=frag.find_replace
+        break if !re
+        frag=s[0] if re
+        replace=s[1] if re
+        
+        mp=frag.find_multiplier
+        frag=mp[0] if mp
+        multp=(mp && mp[1]) || 1
+
+        p1=frag.find_position
+        frag=p1[0] if p1
+        position1= (p1 && p1[1..-1]) || []
+
+        if position1 && position1 != []
+          position1.each{|po| chemical[po-1]+=[replace]}
+        end
+
+        puts "The replaced compound is %s and is at %s " % [chain, position1.to_s]
+end 
+#end
+
+      
+      
+      
 =begin
       
         x=frag.find_chain
@@ -159,7 +187,7 @@ class Name_iupac < String
           position1.each{|po| chemical[po-1]+=[chain]}
         end
 
-        puts "Secondary chain is %s and position is" % [chain, position1.to_s]
+        puts "Secondary chain is %s and position is %s" % [chain, position1.to_s]
      
 =end
     end
