@@ -61,6 +61,21 @@ module Nomenclature
          [ :Chloride                             ,   "chloro"                    ,  "chloride"          ,     "Cl"  ]    ,
          [ :Bromide                              ,   "bromo"                     ,  "bromide"           ,     "Br"   ]    ,
          [ :Iodide                               ,   "iodo"                      ,  "iodide"            ,     "I"   ]    ,
+           
+    #  17 Aryls 
+         [ :Benzene                              ,   "benz"                      ,   "benzene"          ,     "c1ccccc1"      ]     ,            
+         [ :Napthalene                           ,   "napth"                     ,   " napthalene"      ,     "c1ccc2ccccc2c1" ]     ,
+         [ :Phenyl                               ,   "phenyl"                    ,     nil              ,     "c1ccccc1"   ], 
+         [ :Amines                               ,   "amino"                     ,   "amine"            ,     "NH"      ]  ,
+           
+    #  18 Special Names 
+         [ :Carbonyl                             ,   "carbonyl"                  ,   "carbonyl"         ,     "C=O"          ] ,            
+         [ :Nicotin                              ,   "nicotin"                   ,   "nicotino"         ,     "cc1=cN=cc=c1" ] ,
+         [ :Methacryl                            ,   "methacryl"                 ,     ""               ,     "CC(C)=C"      ],
+         [ :Pivalo                               ,   "pivalo"                    ,   "pival"            ,     "CC(C)(C)C"      ],
+         [ :Vinyl                                ,   "vinyl"                     ,    ""                ,     "C=C"           ]  ,
+         [ :IsoPropenyl                          ,   "propenyl"                  ,    ""                ,     "C(C)=C"  ] ,        
+                 
       # 20 ether                                                                 ,                      ,           ]    ,
          [ :Oxy_Oate                              ,   "oxy"                      ,   "oxy"              ,    "(O)"   ]    ,
          [ :Alkynes                              ,   "ynyl"                      ,   "yne"              ,    "#"     , "*="]    ,
@@ -125,9 +140,9 @@ class Alkanes
       
    Repr = {
      "yn"      =>      "#",
-     "yne"     =>      "#",
+    # "yne"     =>      "#",
      "en"      =>      "=",
-     "ene"     =>      "=",
+     #"ene"     =>      "=",
      
    }
 
@@ -197,6 +212,7 @@ Length = {
   }
   
   Multipliers= {
+    
       "di" => 2,
       "tri" => 3,
       "tetra" => 4

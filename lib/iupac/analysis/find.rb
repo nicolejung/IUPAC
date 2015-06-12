@@ -3,34 +3,40 @@ class Name_iupac  < Array
 
   Reg_bracket=/([^\[\]]*)([\[\]])/
   Abc=Hash.new
-def find_suffix(suf,suffix)
+  
+def find_suffix(suf,suffixes)
 
   if !suf
     suffix = Affix_Formula
 else 
-  suffix= suffix
+  suffix= suffixes
+  
   end
 
-   suffix.each{|k,v| a=suf.match(/(#{v})\z/i)
+    suffix.each{|k,v|  suf.match(/^(#{v})+\z/i)
                    if $&
-                   return  k 
-
+                   return  k
                    end
                   }
-                  return nil
-  
+   #else Repr.each{|k,v| suf.match(/#{v}\s*\z/i)
+    # if $&
+     #return  v,k 
+     #end} 
 end #of find_suffix
 
-def find_affix(aff)
-  
+def find_affix(aff=[])
+  c=Array.new
   a=Array.new
     aff.each{|e| 
       b=find_suffix(e,Affix_Formula)
     if b
       a.push(b)
+      #return a
+      elsif x = find_bond(e)   #x=find_suffix(e,Repr)#find_bond(e)
+       c.push(x)
     else break
     end}    
-       return a     
+       return [a,c]     
 end
 
 
@@ -59,8 +65,14 @@ end
 
 
 def find_multiplier(v=[])
-  a=v.count.to_s
-  find_suffix(a,Multipliers)
+  a=v.count.to_s 
+  x=Multipliers.each{|k,v| a.match(/#{v}\z/i)
+    if $&           
+                return k
+    end}
+    nil
+ #x=find_suffix(a,Multipliers)
+ #return x if x
 end# of find_multiplier
 
 
@@ -86,15 +98,22 @@ def find_group
 end # of find position
 
 def find_bond(temp)
-a=Array.new
-      temp.each{|e| 
-        b=find_suffix(e,Repr)
-     if b
-       a.push(b)
-       return a
-     else
-     return ["an"] end}      
-         return a
+  #print "temp is "
+  #p temp
+
+  Repr.each{|k,v| temp.match(/#{v}\z/i)
+    if $&
+          return k
+    end}
+  
+#temp.each{|e|
+ #       b=find_suffix(e,Repr)
+  #   if b
+   #    a.push(b)
+    #   return e,a
+     #else
+     #return ["an"] end}     
+      #   return a
 end
 
 def extra_pos
@@ -107,11 +126,8 @@ end
 def find_parent
 x= self.each {|elem| elem=~Reg_bracket}.length 
   p x
- 
-
 Length.each{|k,v| x.to_s.match(/#{v}\z/i)
-             if $&
-              
+             if $&           
             return k
 end}
 nil
