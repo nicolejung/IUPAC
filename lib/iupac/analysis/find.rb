@@ -120,6 +120,14 @@ def find_replace
     end}
   nil
 end
+
+def simplecycle
+  Simplecyclic.each{|k,v| self.match(/#{v}\s*\z/i)
+    if $&
+       return [$`,k]
+    end}
+  nil
+end
   
   
   def find_rep(bond_hash={})
