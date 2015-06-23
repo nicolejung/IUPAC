@@ -1,3 +1,4 @@
+module Iupac_converter
 class Name_iupac  < String
   def find_suffix(suf=nil)
 
@@ -136,3 +137,4 @@ end
   end
 
 end # of class Name_iupac
+end # module Iupac_converter

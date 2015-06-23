@@ -1,9 +1,12 @@
+
 #require_relative 'nomenclature.rb'
 #require_relative 'name_smiles.rb'
-include Nomenclature
+module Iupac_converter
+
 #include Hide_and_seek
 
 class Name_iupac < String
+  include Nomenclature
   #@left_fragment
   #@rigth_fragment
 
@@ -222,3 +225,4 @@ end
   end #outputs
 
 end # of class Name_iupac
+end
