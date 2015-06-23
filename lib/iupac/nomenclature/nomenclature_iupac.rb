@@ -94,14 +94,65 @@ module Rules_iupac
 #    R-1.2.7 Rearrangement
 #    R-1.2.8 Multiplicative operation
 
+#    R-1.2.1 Substitutive operation
+#The substitutive operation involves the exchange of one or more hydrogen atoms for another atom or group.
+#This process is expressed by a prefix or suffix denoting the atom or group being introduced (see R-3.2 and R-4 for lists of prefixes and suffixes).
+#Examples to R-1.2.1
+#    Cyclohexane     ->     Chlorocyclohexane
+#                          (substitutive prefix = chloro)
+#    Ethane          ->    Ethanethiol
+#                          (substitutive suffix = thiol)  
+
 #  R-1.2.2 Replacement operation
 #
 #The replacement operation involves the exchange of one group of atom or a single nonhydrogen atom for another. This can be expressed in several ways as follow:
-#
 #R-1.2.2.1 By use of "a" prefixes representing the element(s) being introduced, usually signifying replacement of carbon (see R-9.3).  
+#Examples to R-1.2.2.1
+#Cyclohexane ->   Silacyclohexane
+#(replacement prefix = sila)
+#Phenanthrene -> 2,7,9-Triazaphenanthrene
+#(replacement prefix = aza)
 
+#
+#R-1.2.2.2 By use prefixes or infixes signifying replacement of oxygen atoms or oxygen-containing group (see R-3.4). These affixes represent the group(s) being introduced.
+#
+#    Examples to R-1.2.2.2
+#        (CH3)2P(O)(OCH3)                (CH3)2P(NH)(OCH3)
+#        Methyl dimethylphosphinate     Methyl P,P-dimethylphosphinimidate
+#       (replacement infix = imid(o))
+#        C6H5P(O)(OH)2                 C6H5P(N)(OH)
+#        Phenylphosphonic acid        Phenylphosphononitridic acid
+#         (replacement infix = nitrid(o))
+#
+#The chalcogen affixes "thio-", "seleno-", and "telluro-" indicate replacement of an oxygen atom by another chalcogen atom.
+#
+#    Examples to R-1.2.2.2
+#        Benzoic acid            ->   Selenobenzoic acid
+#        2H-Pyran                ->      2H-Thiopyran
+#        Hexanoic acid           ->  Hexane(dithioic) acid
+#        4-Formylbenzoic acid    ->  4-(Selenoformyl)benzoic acid
   
   
+  
+#Table 2 Mononuclear hydrides
+
+#BH3   Borane  OH2   Oxidane, ,
+#CH4   Methane (Carbane)   SH2   Sulfane,
+#SiH4  Silane  SH4   ,
+#GeH4  Germane   SH6   ,
+#SnH4  Stannane  SeH2  Selane, ,
+#PbH4  Plumbane  TeH2  Tellane,
+#NH3   Azane ,   PoH2  Polane,
+#PH3   Phosphane (Phosphine)   FH  Fluorane,
+#PH5   
+#(Phosphorane)   ClH   Chlorane
+#AsH3  Arsane (Arsine)   BrH   Bromane
+#AsH5  (Arsorane)  IH  Iodane
+#SbH3  Stibane (Stibine)   IH3   
+#SbH5  (Stiborane)   IH5   
+#BiH3  Bismuthane
+#(Bismuthine)  AtH   Astatane 
+#  
 #R-9.3 "a" Prefixes Used in Replacement Nomenclature
 #
 #Table 33 "a" Prefixes used in replacement nomenclature.

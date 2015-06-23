@@ -31,15 +31,16 @@ class Name_iupac < String
     parent=frag.find_parent
     frag=parent[0] if parent
     l=parent[1]  if parent
+    l||=1
     
     secundary_fg=frag
     puts "suffix is %s length is %i position is %s" % [suffix,l,position.to_s]
     
-    l||=1
+   
       
     chemical=Array.new(l,[:C]) 
       
-      if position
+    if position
        position.each{|po| chemical[po-1]+=[suffix]}
     end
     chemical||=["failed"]

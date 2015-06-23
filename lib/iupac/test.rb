@@ -24,7 +24,9 @@ def random_generator_iupac_name(option={})
   end
 
   option= {:fg=> [:alkohol], :max_length =>12, :max_multipl => [4], :count => 10 }.merge(option)
+  for i in 0..option[:count] do
     
     
+  end
     
-end
+end # of random_generator
