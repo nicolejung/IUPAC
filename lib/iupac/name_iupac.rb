@@ -1,134 +1,227 @@
 #require_relative 'nomenclature.rb'
 #require_relative 'name_smiles.rb'
+module Iupac_converter
+
 #include Hide_and_seek
-include Nomenclature
+
 class Name_iupac < String
+  include Nomenclature
   #@left_fragment
   #@rigth_fragment
-  #
+
+  Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
   def to_ruby
     ###method calling other functions to analyse the input string and store the result into some ruby class
     frag=self
 
-    puts "## start analyzing compound: "+ self
-   
-    s=frag.find_suffix 
+    puts "Compound is "+ self 
+
+    s=find_suffix
     frag=s[0] if s
     suffix=s[1] if s
-   
+    suffix||=nil
 
-    m=frag.find_multiplier
-    frag=m[0]if m
-    mult=(m && m[1]) || 1
+    if s
+      m=frag.find_multiplier
+      frag=m[0]if m
+      mult=(m && m[1]) || 1 if m
 
-    p=frag.find_position
-    frag=p[0] if p
-
-    position=p[1..-1] if p
-
-     yne=frag.find_suffix("yn")
-    frag=yne[0] if yne
-    alkyne=yne[1] if yne
-
-    my=frag.find_multiplier 
-    frag=my[0] if my
-    multy=(my && my[1]) || 1
-
-py=frag.find_position 
-frag=py[0] if py
-positiony=py[1..-1] if py    
-positiony||=[]  
- 
-ene=frag.find_suffix("en")
-   frag=ene[0] if ene
-   alkene=ene[1] if ene
-
-  me=frag.find_multiplier 
-  frag=me[0] if me
-  multe=(me && me[1]) || 1
-    
-  pe=frag.find_position 
-  frag=pe[0] if pe
-  positione=pe[1..-1] if pe    
-  positione||=[]  
-    
-if suffix=="yne"
-  multy=mult
-  positiony=position
-end
-if suffix=="ene"
-  multe=mult
-  positione=position
-end
-frag=frag.find_suffix(["an","a","ane"])[0] || frag
-parent=frag.find_parent
-    frag=parent[0] if parent
-    l=parent[1]  if parent
-
-    secundary_fg=frag
-
-puts "length is %i, suffix is %s position is %s 
-                %s alkyne bonds at positions %s
-                %s alkene bonds at positions %s" % [l.to_i,suffix,position.to_s,positiony.length,positiony.to_s,positione.length,positione.to_s]
-    l||=0
-    return (puts "did not find parent chain \n *****aborting analysis of "+self) if l.to_i == 0
-    chemical=Array.new(l,[:C])
-    
-    if position
-      position.each{|po| chemical[po-1]+=[suffix]}
+      p=frag.find_position
+      frag=p[0] if p
+      position=p[1..-1] if p || 1
+          
     end
-    #chemical||=["failed"]
+
+    #storing bond information in a hash
+
+    bonds=Hash.new
 
     while frag != ""
+
+      #finding bond
+      b=frag.find_bond
+      break if !b
+      frag=b[0] if b
+      bond=b[1] if b
+
+      if b
+        # finding bond multiplier
+        mb=frag.find_multiplier
+        frag=mb[0] if mb
+        multb=(mb && mb[1]) || 1
+
+        #finding bond position
+        pb=frag.find_position
+        frag=pb[0] if pb
+        positionb=pb[1..-1] if pb
+        bonds[bond]=positionb
+        positionb||=[]
+
+        #finding bond representation
+        find_rep(bonds)
+
+        puts "Bond is %s and  Position is %s" % [bond.to_s,positionb.to_s]
+      end
+    end
+
+    x=frag.find_suffix(["ane","an","a"," "])
+    frag=x[0] if x
+
+    parent=frag.find_parent
+    frag=parent[0] if parent
+    l=parent[1]  if parent
+    l||=0
+
+    puts "Length is %i, Suffix is %s Position is %s" % [l.to_i,suffix,position.to_s]
+
+    chemical=Array.new(l,[:C])
+
+    if position
+      position.each{|po| chemical[po-1]+=[Suffix_Formula[suffix]]}
+    end
+    chemical||=["failed"]
+
+    prefix=Array.new
+
+    while frag != ""
+
+      #check brackets
+      while frag.match(/([\]})])\s*\z/) #(/([\]})])|(\-\s*)\z/)
+        puts "Found bracket"
+
+        temp=frag.reverse.find_block
+
+        prefix = temp[0].reverse
+        puts prefix.inspect
+        frag = temp[1].reverse
+
+        m=frag.find_multiplier
+        frag=m[0]if m
+        p=frag.find_position
+        frag=p[0] if p
+        position= (p && p[1..-1]) || []
+        if prefix
+          if position != []
+
+            temp = Name_iupac.new(prefix.strip[1..-2]).to_ruby
+            position.each{|po| chemical[po-1]+=[temp]}
+          end #if
+        end
+
+      end
 
       pr=frag.find_affix
       break if !pr
       frag=pr[0] if pr
-      prefix=pr[1] if pr
-      if prefix == "yl"
-       nx_pos=frag.find_next_position
-       
-        #   "+nx_pos.to_s
-       if nx_pos
-       frag=Name_iupac.new(nx_pos[0..1].join)
-       
-       
-       prefix=nx_pos[2]+prefix
-       end
+      prefix=[pr[1]] if pr
+
+      if prefix[0] == "yl"
+        yl_=frag.find_group
+
+        if yl_
+          frag=yl_[0]
+          yl_group=Name_iupac.new(yl_[1...-1].join)
+          prefix=yl_group.to_ruby
+          y=frag.extra_pos
+          frag=y[0] if y
+        end
+      else
+        prefix=[Affix_Formula[prefix[0]]]
       end
 
-      
-      
-      #find multi
-      
-      m=frag.find_multiplier
-      frag=m[0]if m
-      mult=(m && m[1]) || 1
-      
+      # finding prefix multiplier
+      mp=frag.find_multiplier
+      frag=mp[0] if mp
+      multp=(mp && mp[1]) || 1
 
-      #find position
-      p=frag.find_position
-      frag=p[0] if p
-      position= (p && p[1..-1]) || []
-      puts "Prefix is %s and  Position is %s" % [prefix,position.to_s]
-      if pr
-        if position != []
-          position.each{|po| chemical[po-1]+=[prefix]}
+      #finding prefix position
+      pp=frag.find_position
+      frag=pp[0] if pp
+      positionp=pp[1..-1] if pp
+      positionp||=[]
+
+      #finding representation
+      if pp && positionp != []
+        positionp.each{|po| chemical[po-1]+=[prefix]}
+      end
+
+      puts "Prefix is %s and  Position is %s" % [prefix,positionp.to_s]
+
+
+#begin
+      while frag!=""
+        re=frag.find_replace
+        break if !re
+        frag=s[0] if re
+        replace=s[1] if re
+        
+        mp=frag.find_multiplier
+        frag=mp[0] if mp
+        multp=(mp && mp[1]) || 1
+
+        p1=frag.find_position
+        frag=p1[0] if p1
+        position1= (p1 && p1[1..-1]) || []
+
+        if position1 && position1 != []
+          position1.each{|po| chemical[po-1]+=[replace]}
         end
+
+        puts "The replaced compound is %s and is at %s " % [chain, position1.to_s]
+end 
+#end
+
+      
+      
+      
+=begin
+      
+        x=frag.find_chain
+        break if !x
+        frag=s[0] if x
+        chain=s[1] if x
+
+        p1=frag.find_position
+        frag=p1[0] if p1
+        position1= (p1 && p1[1..-1]) || []
+
+        if position1 && position1 != []
+          position1.each{|po| chemical[po-1]+=[chain]}
+        end
+
+        puts "Secondary chain is %s and position is %s" % [chain, position1.to_s]
+     
+=end
+    end
+
+    #representation for bonds
+    bonds.each_pair do |k,v| v.each do |pos| chemical[pos-1]+=[k]
       end
     end
 
-    puts "Chemical is "+chemical.to_s
+   # puts "Chemical is" + chemical.to_s
+=begin
+    ret_out = "Chemical is \n"
+    chemical.each_with_index{|c,i| ret_out<<(i+1).to_s<<": "<<c.to_s<<"\n"}
+    puts ret_out
+=end
 
-    # todo change this
+    chemical
+    
+
 
   end # to_ruby
 
-  def to_smiles
+  def outputs
 
-    ## return a Name_smiles(String) Object
-    #Name_smiles.new(...)
-
-  end #to_iupac
+    frag=self
+        
+      comp=frag.to_ruby
+      puts "Chemical is" + comp.to_s
+     # puts comp[1].to_s
+    
+    
+  end #outputs
 
 end # of class Name_iupac
+end

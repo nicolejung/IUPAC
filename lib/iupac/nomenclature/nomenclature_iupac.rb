@@ -1,3 +1,5 @@
+module Iupac_converter
+
 module Rules_iupac
   
 
@@ -207,3 +209,4 @@ module Rules_iupac
 #Mo     molybda  Ra     rada
   
 end # of module IUPAC_rules
+end # module Iupac_converter
