@@ -6,7 +6,7 @@ module Iupac_converter
 class Name_iupac < String
   include Nomenclature
 
-  Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
+  #Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
   def to_ruby
     
     frag=self

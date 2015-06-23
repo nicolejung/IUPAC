@@ -145,8 +145,8 @@ end # of class Name_iupac
 
 
 class Name_iupac_s  < Array
-
-  Reg_bracket=/([^\[\]]*)([\[\]])/
+include Nomenclature
+  Reg_bracket_s=/([^\[\]]*)([\[\]])/
   Abc=Hash.new
 def find_suffix(suf,suffix)
 

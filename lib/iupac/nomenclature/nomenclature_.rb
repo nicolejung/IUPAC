@@ -174,54 +174,14 @@ module Iupac_converter
     Affix_Formula=Hash[Affix.zip(Formula)]
     Suffix_Formula=Hash[Suffix.zip(Formula)]
 
-    Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
-    Bond_o= Array.new(3){|e| Functional_groups[e][1]}
-    Bond.concat(Bond_o)
+   
 
     Fg_suffix_affix=Hash[Fg.zip(Suffix.zip(Affix))]
     Affix_smiles=Hash[Affix.zip(Formula)]
-    Bond=Array.new(2){|e| Functional_groups[-e-2][2]}
-    Bond_o=     Array.new(3){|e| Functional_groups[e][1]} 
+    Bond   = Array.new(2){|e| Functional_groups[-e-2][2]}
+    Bond_o = Array.new(3){|e| Functional_groups[e][1]} 
     Bond.concat(Bond_o)
 
-
-    class Alkanes
-      def self.suffix
-        return "an"
-      end
-
-      def suffix
-        return "an"
-      end
-
-      def self.formula
-        return "C"
-      end
-
-    end #of class Alkanes
-
-    class Alcohols
-      def self.suffix
-        return "ol"
-      end
-
-      def suffix
-        return "ol"
-      end
-
-      def self.formula
-        return "OH"
-      end
-
-    end #of class Alcohols
-
-    Repr = {
-      "yn" => "#",
-      "yne" => "#",
-      "en" => "=",
-      "ene" => "=",
-
-    }
 
     Replacement_comp = {
 
@@ -438,37 +398,37 @@ module Iupac_converter
 
 
 
-class Alkanes
-
-  def self.suffix
-  return "an"
-  end
-  
-  def suffix
-  return "an"
-  end 
-     
-  def self.formula
-     return "C"
-  end  
-  
-  end #of class Alkanes
-      
-      class Alcohols
-      
-      def self.suffix
-      return "ol"
-      end
-      
-      def suffix
-      return "ol"
-      end 
-         
-      def self.formula
-         return "OH"
-      end  
-      
-      end #of class Alcohols
+#class Alkanes
+#
+#  def self.suffix
+#  return "an"
+#  end
+#  
+#  def suffix
+#  return "an"
+#  end 
+#     
+#  def self.formula
+#     return "C"
+#  end  
+#  
+#  end #of class Alkanes
+#      
+#      class Alcohols
+#      
+#      def self.suffix
+#      return "ol"
+#      end
+#      
+#      def suffix
+#      return "ol"
+#      end 
+#         
+#      def self.formula
+#         return "OH"
+#      end  
+#      
+#      end #of class Alcohols
       
    Repr = {
      "yn"      =>      "#",
@@ -514,6 +474,12 @@ Length = {
   }
   
 
+Multipliers ={
+"di" =>2,
+  "tri"=>3,
+  "tetra"=>4,
+ 
+}
 
 end
 end

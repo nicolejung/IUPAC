@@ -1,9 +1,12 @@
 require_relative 'name_iupac.rb'
-class Name_smiles < Array
+
 
 
 module Iupac_converter
   #include Nomenclature
+  class Name_smiles < Array
+    
+  end
   class Name_iupac < String
     include Nomenclature
     def to_smiles
