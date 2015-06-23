@@ -1,4 +1,6 @@
 require_relative 'name_iupac.rb'
+class Name_smiles < Array
+
 
 module Iupac_converter
   #include Nomenclature
@@ -9,6 +11,7 @@ module Iupac_converter
       frag=self
       comp=frag.to_ruby
       reformat(comp)
+
       
     end
       def format_step(e)

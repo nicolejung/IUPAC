@@ -86,10 +86,12 @@ module Iupac_converter
       a=~Reg_bracket
       if $&
         @temp1=[$1,$2,$']
+
       end
       @temp1||=[a,"",""]
 
     end
+
 
     def find_block
       @obrk=0
@@ -97,6 +99,7 @@ module Iupac_converter
       @temp1||=["",""]
       split_at_bracket
       r<<@temp1[0]<<@temp1[1]
+
 
       count_level_br
       while @obrk!=0
@@ -152,3 +155,4 @@ module Iupac_converter
   #t.countbracket
 
 end # 
+
