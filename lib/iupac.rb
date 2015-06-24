@@ -4,11 +4,11 @@ require_relative 'iupac/analysis.rb'
 require_relative 'iupac/name_iupac.rb'
 require_relative 'iupac/name_smiles.rb'
 require_relative 'iupac/name_ruby.rb'
-require_relative 'iupac/test.rb'
+
 
 module Iupac
   include Iupac_converter
-  include Iupac_converter::Test
+  
 
 end #module Iupac
 

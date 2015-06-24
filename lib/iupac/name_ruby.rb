@@ -4,7 +4,7 @@ module Iupac_converter
 
     attr_reader :to_iupac, :to_smiles
     
-    def conv2iupac
+    def conv2iup
       @to_iupac= format2iup
       self
     end

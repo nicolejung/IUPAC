@@ -150,7 +150,7 @@ module Iupac_converter
     end
 
     def find_parent
-      x= self.each {|elem| elem=~Reg_bracket}.length
+      x= self.each {|elem| elem=~Reg_bracket_s}.length
       p x
       #length_rev = Hash[Length.to_a.reverse]
 
