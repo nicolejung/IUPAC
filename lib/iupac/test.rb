@@ -18,6 +18,25 @@ module Iupac_converter
     "10-bromo-5-hydroxytetracosa-3,9,12-tricarboxylic acid",
   ]
 
+    def command_line_app
+         puts "Hello World iupac \nChemical name testing format Iupac, Smiles, or Ruby? (or custom test) [I/S/R/C]"
+         answer=gets
+         if answer =~/^I/i
+           test_iupac
+         elsif answer =~/^C/i
+           puts "My customed testing"
+           my_test
+           elsif answer =~/^R/i
+                 puts "ruby format testing"
+                 test_iupac_2
+         else
+           puts "Enter a iupac chemical name"
+           answer=gets
+           test_name=Name_iupac.new(answer)
+           test_name.to_ruby
+         end
+       end
+  
   def test_iupac
     puts "Testing starts"
     # this method, when called, will instantiate a couple of IupacName and test whether it understands the associated names

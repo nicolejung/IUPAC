@@ -1,44 +1,117 @@
 require_relative 'name_iupac.rb'
 
-
-
 module Iupac_converter
   #include Nomenclature
-  class Name_smiles < Array
-    
-  end
-  class Name_iupac < String
+  class Name_smiles < String
     include Nomenclature
-    def to_smiles
+
+  end # class Name_smiles
+
+  class Name_iupac_s < Array
+    include Nomenclature
+    # Reg_bracket=/([^\[\]]*)([\[\]])/
+    # ABC=Hash.new{|k,v| k[v]=[]}
+    def to_ruby
 
       frag=self
-      comp=frag.to_ruby
-      reformat(comp)
+      print "Start analyzing structure: "
+      p frag
 
-      
-    end
-      def format_step(e)
-        e.map do |x|
-          if x.is_a?(Array)
-            "(#{ format_step(x) })" # calling the same function
-          else
-            x.to_s # convert to string and return
-          end
-        end.join # map returns an array of strings, join
+      #finding parent chain
+      x=find_parent
+      p x
+
+      #finding affix
+      affix=Hash.new{|k,v| k[v]=[]}
+      y=frag.each_with_index {|elem, index| a=find_affix(elem[1..-1])  if elem[1]   #elem[1..-1].each{|x| a=x.find_affix#a=find_affix((elem[1..-1]),index) if elem[1]
+        if a
+          print "affix is "
+          p a
+          print "Position is "
+          p index+1
+          a.each{|x|
+            if affix.has_key?(:x)
+              affix[x]<<index+1
+            else
+              affix[x]<<index+1
+            end}
+        end}
+
+      print "Affixes are "
+      p affix
+      abc=Array.new
+      abc=affix.keys
+      p abc
+
+      #finding suffix:
+      suffix=find_suffix_main(abc)
+      print "Suffix is = "
+      p suffix
+      position=find_position(suffix,affix)
+      print "Position is "
+      p position
+
+      #Adjusting affix hash for accuracy
+      affix.delete_if{|k,v|  k==suffix}
+      p affix
+
+      #Finding bond:
+      bond=Hash.new{|k,v| k[v]=[]}
+      frag.each_with_index{|elem,index| b=find_bond(elem[1..-1])  if elem[1]
+        if b
+          print "Bond is "
+          p b
+          print "Position is "
+          p index+1
+          b.each{|x|
+            if affix.has_key?(:x)
+              bond[x]<<index+1
+            else
+              bond[x]<<index+1
+            end}
+        end}
+      print "Bonds are "
+      p bond
+
+      #Forming name:
+      name=String.new
+      #adding affix names
+      while affix!= {}
+        name<<affix.values[0].join(', ')<<"-"
+        #name<<a
+        name<<affix.keys[0]<<"-"
+        #name<<b
+        affix.delete(affix.keys[0])
+        # print "affix is "
+        #p affix
+
       end
 
-      def reformat(data)
-        data.map do |element|
-          format_step(element)
-        end.join('') #Joining with space
-      end
+      #adding suffix
+      name<<position.join(', ')<<"-"
+      #name<<a
+      name<<suffix<<"-"
+      #name<<b
 
-      #puts format_step(comp)
-      #puts reformat(comp)
+      #adding parent
+      name<<x
+      print "Name is "
+      p name
 
-      #x.inspect.gsub(/^\[|\]$|[\:\,\s]/,"").gsub("[","(").gsub("]",")")
-      #puts x
+      #adding bond
+      bond.each {|k,v| if k!="ane"
+          puts "NO"
+          name<<v.join(', ')<<"-"
+          name<<k<<"-"
+        else
+          puts "YES"
+          name<<"ane"
+          break
+        end}
 
+      puts "---Testing end---"
     end
- 
-end
+
+  end # class Name_iupac_s
+
+end # module Iupac_converter

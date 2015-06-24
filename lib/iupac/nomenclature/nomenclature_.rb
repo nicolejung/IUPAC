@@ -53,7 +53,7 @@ module Iupac_converter
       # 6 Anhydrides
 
       # 7 Esters
-      [ :Esters , "oxycarbonyl" , "oate" , "(COO)" ],
+      [ :Esters , "oxycarbonyl" , "oate" , "C(O)O" ],
 
       # 8 Acid halides
       [ :Acyl_halides , "carbonyl" , "oyl" , "CO" ],
@@ -84,7 +84,7 @@ module Iupac_converter
       # 14 Ketons
 
       # 15 Alcohols
-      [ :Alcohols , "hydroxy" , "ol" , "OH" ],
+      [ :Alcohols , "hydroxy" , "ol" , "O" ],
 
       # 16 Halogens
       [ :Fluoride , "fluoro" , "fluoride" , ":F" ],
