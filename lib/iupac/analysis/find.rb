@@ -4,17 +4,19 @@
  
     
   def find_suffix(suf=nil)
-    
+  
     if !suf
       suffix = Suffix
-    elsif suf.is_a?(String)
-      suffix=[suf]
+   elsif suf.is_a?(String)
+     suffix=[suf]
   else 
     suffix=suf
   end
-  suffix.each{|s| match(/#{s}\s*\z/)
+
+
+  suffix.each{|s|  match(/#{s}\s*\z/)
                      if $& 
-                      return  [ $`, s, $'] 
+                      return  [$`, s, $'] 
                      end
                     }
       return nil

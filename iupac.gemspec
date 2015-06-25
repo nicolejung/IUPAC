@@ -5,11 +5,11 @@ require File.expand_path('../lib/iupac/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.name          = "iupac"
   gem.version       = Iupac::VERSION
-  gem.summary       = %q{TODO: Summary}
-  gem.description   = %q{TODO: Description}
+  gem.summary       = %q{ Summary}
+  gem.description   = %q{ Description}
   gem.license       = "MIT"
-  gem.authors       = [""]
-  gem.email         = ""
+  gem.authors       = ["Sheena"]
+  gem.email         = "shena@email.de"
   gem.homepage      = "https://rubygems.org/gems/iupac"
 
   gem.files         = `git ls-files`.split($/)

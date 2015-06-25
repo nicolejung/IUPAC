@@ -91,15 +91,28 @@ chemical||=["failed"]
          temp=frag.reverse.find_block
           
           prefix = temp[0].reverse
+          #prefix.chomp!(')').reverse.chomp!('(').reverse
+          print "*****"
+          p prefix
           frag = temp[1].reverse
           
-                   
+          #finding multiplier      
           m=frag.find_multiplier
-              frag=m[0]if m
+          frag=m[0]if m
+          
+          #finding position
           p=frag.find_position
           frag=p[0] if p
-           position= (p && p[1..-1]) || []
-          if prefix
+          position= (p && p[1..-1]) || []
+            
+          #finding appropriate repr for prefix
+          brc_group=Name_iupac.new(prefix)
+          prefix=brc_group.to_ruby
+          y=frag.extra_pos
+          frag=y[0] if y  
+            
+          #making substitutions
+            if prefix
             if position != []
               position.each{|po| chemical[po-1]+=[prefix]}
             end #if 

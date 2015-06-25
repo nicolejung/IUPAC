@@ -27,6 +27,7 @@ class Name_iupac < String
   x = reg1.match(s)
   a << x.to_s
   str = x.to_s.chop.reverse.chop.reverse
+  
   while x != nil do
       x = reg1.match(str)
       a << x.to_s
@@ -50,7 +51,7 @@ class Name_iupac < String
           a << x.to_s
           str = x.to_s.chop
   end
-  
+  a.chop!(')').reverse.chop!('(').reverse
   return a
   
   end
@@ -115,7 +116,10 @@ def split_at_bracket(str=nil)
      if @obrk==0
       #puts "Level 0 has reached"
       #puts "Close brackets are #{@cbrk}"
-       
+       print "#########"
+       p r
+       r.chomp!('(').reverse!.chomp!(')').reverse!
+       p r
        return [r, @temp1[2]]
      end
    end #end
