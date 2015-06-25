@@ -3,29 +3,31 @@ require_relative 'iupac/nomenclature.rb'
 require_relative 'iupac/analysis.rb'
 require_relative 'iupac/name_iupac.rb'
 require_relative 'iupac/name_smiles.rb'
-require_relative 'iupac/test.rb'
+require_relative 'iupac/name_ruby.rb'
 
 
 
-puts "Hello World iupac"
-
-puts "Random iupac testing? [Y/N/C]"
-answer=gets
-if answer =~/^y/
-test_iupac
-elsif answer =~/^c/
-puts "My customed testing"
-my_test
-else
-  puts "Enter a chemical name"
-  answer=gets  
-  test_name=Name_iupac.new(answer)
-  #test_name.to_ruby
-  test_name.to_smiles
+module Iupac
   
- 
-end
+  include Iupac_converter
 
+end #module Iupac
 
+module Iupac_converter
+  def self.new_molecule(mol,typ=:iupac)
 
+    case typ
+    when :iupac
+      i=mol.is_a?(String) && Name_iupac.new(mol)
+      molecule=i.conv2rub
+    when :ruby
+      molecule=mol.is_a?(Array) &&Name_ruby.new(mol.to_a)
+    when :smiles
+      s=mol.is_a?(String) &&Name_smiles.new(mol.to_s)
+      molecule=s.conv2rub
+    end
+    molecule
 
+  end
+
+end # module Iupac_converter

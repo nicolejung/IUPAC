@@ -1,19 +1,15 @@
 #require_relative 'nomenclature.rb'
 #require_relative 'name_smiles.rb'
-include Nomenclature
-#include Hide_and_seek
+module Iupac_converter
+
 
 class Name_iupac < String
-  #@left_fragment
-  #@rigth_fragment
+  include Nomenclature
 
-  Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
+  #Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
   def to_ruby
-    ###method calling other functions to analyse the input string and store the result into some ruby class
+    
     frag=self
-
-    puts "Compound is "+ self 
-
     s=find_suffix
     frag=s[0] if s
     suffix=s[1] if s
@@ -23,11 +19,9 @@ class Name_iupac < String
       m=frag.find_multiplier
       frag=m[0]if m
       mult=(m && m[1]) || 1 if m
-
       p=frag.find_position
       frag=p[0] if p
-      position=p[1..-1] if p || 1
-          
+      position=p[1..-1] if p || 1  
     end
 
     #storing bond information in a hash
@@ -197,18 +191,19 @@ end
       end
     end
 
-   # puts "Chemical is" + chemical.to_s
 =begin
     ret_out = "Chemical is \n"
     chemical.each_with_index{|c,i| ret_out<<(i+1).to_s<<": "<<c.to_s<<"\n"}
     puts ret_out
 =end
-
+    #return nested array
     chemical
-    
-
-
+   
   end # to_ruby
+  
+  def conv2rub
+   Name_ruby.new(self.to_ruby).input_iupac(self).conv2smi
+  end
 
   def outputs
 
@@ -220,5 +215,13 @@ end
     
     
   end #outputs
+  
+
+
 
 end # of class Name_iupac
+
+
+
+
+end # module
