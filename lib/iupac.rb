@@ -20,7 +20,8 @@ else
   puts "Enter a chemical name"
   answer=gets  
   test_name=Name_iupac.new(answer)
-  test_name.to_ruby
+  #test_name.to_ruby
+  test_name.to_smiles
   
  
 end
