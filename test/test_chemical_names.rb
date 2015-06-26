@@ -5,7 +5,7 @@ module Test
   Alcane_test_name = [
     "1,2,3-tribromopropane",
     "2-methylbut-3-yn-2-ol",
-    "3-iodo phenyl butylamine",
+    #"3-iodophenylbutane",
     "silatetradecane",
     # "Trimethyl acetate",
   ]

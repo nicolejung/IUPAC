@@ -7,20 +7,27 @@ module Iupac_converter
       
       map do |element|
         format_step(element)
-      end.join(')')
+      end.join('')    #.join(')')
       
     end # format2smi
     
     protected
     
     def format_step(e)
-      e.map do |x|
+      e.map.with_index do |x,i|
+        
         if x.is_a?(Array)
+          #x="("+x[1]+")"
           "(#{ format_step(x) })" # calling the same function
-        else
-          x.to_s # convert to string and return
+        else  
+          if i ==0
+            x.to_s
+          else
+           "("+x.to_s+")"
+          end
+          # convert to string and return
         end
-      end.join('(')   #gsub("", "(").gsub("", ")") # map returns an array of strings, join
+      end.join('')   #gsub("", "(").gsub("", ")") # map returns an array of strings, join
     end
 
   end #class Name_ruby
