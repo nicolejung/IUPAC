@@ -3,12 +3,15 @@ require_relative "test_chemical_names.rb"
 
 module Test
   include Iupac_converter
+  Iupac_converter.class_variable_set(:@@log,true)
+  
+  
   Name_collection ={}
   ##################################
   Name_collection[:iupac] = [
 
     #
-    #Alcane_test_name,
+    Alcane_test_name,
 
     #Sec_fg_name,
     Bond_test_name,
@@ -155,5 +158,6 @@ module Test
   end #of test_iupac_2
 
 end # module Test
-
+ofile=File.open("log", 'w+')
+ofile.close
 Test::command_line_app

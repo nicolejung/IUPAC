@@ -3,13 +3,13 @@ require_relative 'name_iupac.rb'
 module Iupac_converter
   #include Nomenclature
   class Name_smiles < String
-    
+
     include Nomenclature
 
   end # class Name_smiles
 
   class Name_iupac_s < Array
-    
+
     include Nomenclature
     # Reg_bracket=/([^\[\]]*)([\[\]])/
     # ABC=Hash.new{|k,v| k[v]=[]}

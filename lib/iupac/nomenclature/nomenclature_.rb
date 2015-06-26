@@ -77,7 +77,7 @@ module Iupac_converter
 
       # 11 Imides
 
-      # 12 Nirtiles
+      # 12 Nitriles
 
       # 13 Aldehydes
 
@@ -87,35 +87,40 @@ module Iupac_converter
       [ :Alcohols , "hydroxy" , "ol" , "O" ],
 
       # 16 Halogens
-      [ :Fluoride , "fluoro" , "fluoride" , ":F" ],
-      [ :Chloride , "chloro" , "chloride" , ":Cl" ],
-      [ :Bromide , "bromo" , "bromide" , ":Br" ],
-      [ :Iodide , "iodo" , "iodide" , ":I" ],
+      [ :Fluoride , "fluoro" , "fluoride" , "F" ],
+      [ :Chloride , "chloro" , "chloride" , "Cl" ],
+      [ :Bromide , "bromo" , "bromide" , "Br" ],
+      [ :Iodide , "iodo" , "iodide" , "I" ],
 
-      # 17 Aryls
-      [ :Benzene , "benz" , "benzene" , "c1ccccc1" ],
-      [ :Napthalene , "napth" , " napthalene" , "c1ccc2ccccc2c1" ],
-
-      [ :Phenyl , "phenyl" , "" , "c1ccccc1" ],
+      # 17 Amines
 
       [ :Amines , "amino" , "amine" , "NH" ],
 
-      # 18 Special Names
+      # 18 Imimnes
+      # 20 ether
+      # [ :ether , "" , "oxy ether" , "O" ],
+      [ :Oxy_Oate , "oxy" , "oxy" , "O" ],
+
+      #
+      [ :Alkynes , "ynyl" , "yne" , "#"  , "*="],
+      [ :Alkenes , "enyl" , "ene" , "="  , "="],
+      [ :Alkanes , "yl" , "ane" , "C" ],
+    ]
+
+    Aryls=[
+      [ :Phenyl , "phenyl" , "" , "c1ccccc1" ],
+      [ :Benzene , "benz" , "benzene" , "c1ccccc1" ],
+      [ :Napthalene , "napth" , " napthalene" , "c1ccc2ccccc2c1" ],
+    ]
+
+    Special_names = [
       [ :Carbonyl , "carbonyl" , "carbonyl" , "C=O" ],
       [ :Nicotin , "nicotin" , "nicotino" , "cc1=cN=cc=c1" ],
       [ :Methacryl , "methacryl" , "" , "CC(C)=C" ],
       [ :Pivalo , "pivalo" , "pival" , "CC(C)(C)C" ],
       [ :Vinyl , "vinyl" , "" , "C=C" ],
       [ :IsoPropenyl , "propenyl" , "" , "C(C)=C" ],
-
-      # 20 ether
-      [ :Oxy_Oate , "oxy" , "oxy" , "(O)" ],
-
-      [ :Alkynes , "ynyl" , "yne" , "#"  , "*="],
-      [ :Alkenes , "enyl" , "ene" , "="  , "="],
-      [ :Alkanes , "yl" , "ane" , "C" ],
     ]
-
     ## [ functional_group symbol                ,   iupac  prefix /affix          , iupac suffix        , smiles  substitution,   representation]
 
     #  Functional_groups = [

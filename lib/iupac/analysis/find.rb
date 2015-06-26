@@ -1,7 +1,6 @@
 module Iupac_converter
   class Name_iupac  < String
     def find_suffix(suf=nil)
-
       if !suf
         suffix = Suffix
       elsif suf.is_a?(String)
@@ -9,14 +8,14 @@ module Iupac_converter
       else
         suffix=suf
       end
-
+      F_log[:suffix,suffix]
       suffix.each{|s| match(/#{s}\s*\z/)
         if $&
+          F_log[:match, $`, s, $']
           return  [ $`, s, $']
         end
       }
       return nil
-
     end #of find_suffix
 
     def find_affix
@@ -38,7 +37,6 @@ module Iupac_converter
         if $&
           ret=[$`]
           pos[1].match(single_pos)
-
         else return nil
         end
 
@@ -54,7 +52,6 @@ module Iupac_converter
           #ret<<$1.to_i
           n.match(single_pos)
         end
-
       else return nil
       end
 
@@ -145,6 +142,7 @@ module Iupac_converter
     end
 
     def find_rep(bond_hash={})
+      F_log[:bond_hash,bond_hash]
       bond_hash.keys.each{|k| bond_hash[Repr[k]]=bond_hash.delete(k) if Repr[k]}
       bond_hash.each {|k,v| puts k}
     end
