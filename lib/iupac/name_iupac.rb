@@ -23,7 +23,7 @@ class Name_iupac < String
       frag=p[0] if p
       position=p[1..-1] if p || 0 
     end
-
+     
     #storing bond information in a hash
 
     bonds=Hash.new

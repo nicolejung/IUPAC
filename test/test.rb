@@ -6,7 +6,7 @@ module Test
   Name_collection ={}
  ##################################
   Name_collection[:iupac] = [
-    #Alcane_test_name,
+    Alcane_test_name,
     #Sec_fg_name,
     Alcohol_test_name,
     #Ultimate_braket_name,

@@ -20,7 +20,7 @@ module Iupac_converter
         else
           x.to_s # convert to string and return
         end
-      end.join(')')   #gsub("", "(").gsub("", ")") # map returns an array of strings, join
+      end.join('(')   #gsub("", "(").gsub("", ")") # map returns an array of strings, join
     end
 
   end #class Name_ruby
