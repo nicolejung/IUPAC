@@ -19,9 +19,15 @@ class Name_iupac < String
       m=frag.find_multiplier
       frag=m[0]if m
       mult=(m && m[1]) || 1 if m
+      
       p=frag.find_position
-      frag=p[0] if p
-      position=p[1..-1] if p || 1  
+      if p
+      frag=p[0] #if p
+      position=p[1..-1] #if p 
+      else
+      position = [1]  
+      end
+      
     end
 
     #storing bond information in a hash
@@ -35,7 +41,7 @@ class Name_iupac < String
       break if !b
       frag=b[0] if b
       bond=b[1] if b
-
+ 
       if b
         # finding bond multiplier
         mb=frag.find_multiplier
@@ -44,17 +50,20 @@ class Name_iupac < String
 
         #finding bond position
         pb=frag.find_position
-        frag=pb[0] if pb
-        positionb=pb[1..-1] if pb
+        if pb
+        frag=pb[0] #if pb
+        positionb=pb[1..-1] #if p
+        else
+        positionb||=[1]
+        end
         bonds[bond]=positionb
-        positionb||=[]
-
         #finding bond representation
         find_rep(bonds)
 
         puts "Bond is %s and  Position is %s" % [bond.to_s,positionb.to_s]
       end
     end
+    
 
     x=frag.find_suffix(["ane","an","a"," "])
     frag=x[0] if x

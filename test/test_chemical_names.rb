@@ -9,7 +9,10 @@ module Test
     "silatetradecane",
     # "Trimethyl acetate",
   ]
+  
 
+  Bond_test_name = ["ethyne", "eth-1-yne"]
+    
   Alcohol_test_name = [
     "ethanol",
     "ethan-1-ol",

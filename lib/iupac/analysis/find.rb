@@ -35,16 +35,22 @@ module Iupac_converter
 
       # match for position at the end of the chemical_name
       if pos= match(all_pos)
+        if $&
         ret=[$`]
         pos[1].match(single_pos)
+        else return nil
+        end
       end
 
       #if positions found, loop to extract each integer
+      if $1
       while $1
         n=$'
         ret<<$1.to_i
         n.match(single_pos)
       end
+      else return nil
+      end 
       # return the array, if ret is nil (no match) return [self]
       ret || [self]
 

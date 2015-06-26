@@ -95,7 +95,7 @@ module Iupac_converter
       # 17 Aryls
       [ :Benzene , "benz" , "benzene" , "c1ccccc1" ],
       [ :Napthalene , "napth" , " napthalene" , "c1ccc2ccccc2c1" ],
-      [ :Phenyl , "phenyl" , nil , "c1ccccc1" ],
+      [ :Phenyl , "phenyl" , "" , "c1ccccc1" ],
       [ :Amines , "amino" , "amine" , "NH" ],
 
       # 18 Special Names
@@ -474,13 +474,14 @@ Length = {
   }
   
 
-Multipliers ={
+Multiplier ={
 "di" =>2,
   "tri"=>3,
   "tetra"=>4,
  
 }
 
+Multipliers = ["di", "tri", "tetra"]
 end
 end
 
