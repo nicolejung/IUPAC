@@ -6,9 +6,10 @@ require_relative 'iupac/name_smiles.rb'
 require_relative 'iupac/name_ruby.rb'
 
 
+
 module Iupac
-  include Iupac_converter
   
+  include Iupac_converter
 
 end #module Iupac
 

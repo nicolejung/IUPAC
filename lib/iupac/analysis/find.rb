@@ -36,24 +36,33 @@ module Iupac_converter
       # match for position at the end of the chemical_name
       if pos= match(all_pos)
         if $&
-        ret=[$`]
-        pos[1].match(single_pos)
+          ret=[$`]
+          pos[1].match(single_pos)
+
         else return nil
         end
+
       end
 
       #if positions found, loop to extract each integer
       if $1
-      while $1
-        n=$'
-        ret<<$1.to_i
-        n.match(single_pos)
-      end
+        while $1
+          n=$'
+          a=$1
+          a=0 if (a==nil || a==1)
+          ret<<a.to_i
+          #ret<<$1.to_i
+          n.match(single_pos)
+        end
+
       else return nil
-      end 
+      end
+
       # return the array, if ret is nil (no match) return [self]
+
       ret || [self]
 
+      #ret || [self]
     end # of find position
 
     def find_next_position
@@ -121,6 +130,7 @@ module Iupac_converter
     def find_replace
       Replacement_comp.each{|k,v| self.match(/#{v}\s*\z/i)
         if $&
+          puts "found "+k
           return [$`,k]
         end}
       nil

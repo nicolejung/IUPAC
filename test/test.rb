@@ -4,17 +4,19 @@ require_relative "test_chemical_names.rb"
 module Test
   include Iupac_converter
   Name_collection ={}
- ##################################
+  ##################################
   Name_collection[:iupac] = [
+
     #
     #Alcane_test_name,
+
     #Sec_fg_name,
     Bond_test_name,
     Alcohol_test_name,
     #Ultimate_braket_name,
     #Bracket,
   ]
-  
+
   Name_collection[:smiles] = [
     Alcohol_test_name_smiles,
   ]
@@ -32,7 +34,7 @@ module Test
           from    to    enter
           Iupac  -> Ruby
           Iupac  -> Smiles       2
-          Ruby   -> Smiles       3   (Mohit) 
+          Ruby   -> Smiles       3   (Mohit)
           Ruby   -> Iupac        4   (Sheena)
           Smiles -> Ruby         5   (not implemented)
           Smiles -> Iupac        6   (not implemented)
@@ -54,11 +56,10 @@ module Test
     end
 
   end #command_line_app
-  Message=lambda do|mol,iup, rub,smi| 
-       puts  "Analysed: "+mol.inspect+"\niupac: "+iup.inspect+"\nruby: "+rub.inspect+"\nsmiles: "+smi.inspect+"\n"+
+  Message=lambda do|mol,iup, rub,smi|
+    puts  "Analysed: "+mol.inspect+"\niupac: "+iup.inspect+"\nruby: "+rub.inspect+"\nsmiles: "+smi.inspect+"\n"+
     "\n--------------done--------------"   end
-  
-  
+
   def self.simple_test_1(mol)
     mol=mol.strip
     #rub=Name_iupac.new(mol).to_ruby
@@ -74,14 +75,14 @@ module Test
     iup=mol
     smi=rub.to_smiles
     Message[mol,iup,rub,smi]
-   end # simple_test
-   
+  end # simple_test
+
   def self.simple_test_3(mol)
-        rub= Iupac_converter::new_molecule(mol, :ruby)
-        iup=""
-        smi=rub.conv2smi.to_smiles
-        Message[mol,iup,rub,smi]
-end # simple_test
+    rub= Iupac_converter::new_molecule(mol, :ruby)
+    iup=""
+    smi=rub.conv2smi.to_smiles
+    Message[mol,iup,rub,smi]
+  end # simple_test
 
   def self.simple_test_4(mol)
     #rub2iup (Sheena)
@@ -89,10 +90,10 @@ end # simple_test
     iup=Name_iupac_s.new(mol).to_ruby #"not ready yet"  # rub.conv2iup.to_iupac
     smi="" #rub.conv2smi.to_smiles
     Message[mol,iup,rub,smi]
-   end   
+  end
 
   def self.simple_test_5(mol)
-    #smi2rub 
+    #smi2rub
     rub= "not ready yet" #Iupac_converter::new_molecule(mol, :smiles)
     iup=""  # rub.conv2iup.to_iupac
     smi=mol.strip
@@ -100,14 +101,14 @@ end # simple_test
   end # simple_test
 
   def self.simple_test_6(mol)
-    #smi2iup 
+    #smi2iup
     rub="not ready yet" # Iupac_converter::new_molecule(mol, :smiles)
     iup="not ready yet"  # rub.conv2iup.to_iupac
-     smi=mol.strip
-     Message[mol,iup,rub,smi]
+    smi=mol.strip
+    Message[mol,iup,rub,smi]
 
-   end    
-  
+  end
+
   def self.test_iupac(i=1)
     puts "Testing starts"
     # this method, when called, will instantiate a couple of IupacName and test whether it understands the associated names
@@ -116,21 +117,20 @@ end # simple_test
       Name_collection[:iupac].each{ |s| s.each{ |n| simple_test_1(n)  }}
     when 2
       Name_collection[:iupac].each{ |s| s.each{ |n| simple_test_2(n)  }}
-    
-      when 3
-        Name_collection[:ruby].each{ |s| s.each{ |n| simple_test_3(n)  }}
-      when 4
-        Name_collection[:ruby].each{ |s| s.each{ |n| simple_test_4(n)  }}    
-      when 5
-        Name_collection[:smiles].each{ |s| s.each{ |n| simple_test_5(n)  }}
-      when 
-        Name_collection[:smiles].each{ |s| s.each{ |n| simple_test_6(n)  }}
+
+    when 3
+      Name_collection[:ruby].each{ |s| s.each{ |n| simple_test_3(n)  }}
+    when 4
+      Name_collection[:ruby].each{ |s| s.each{ |n| simple_test_4(n)  }}
+    when 5
+      Name_collection[:smiles].each{ |s| s.each{ |n| simple_test_5(n)  }}
+    when
+    Name_collection[:smiles].each{ |s| s.each{ |n| simple_test_6(n)  }}
     end
 
     puts "Testing ends"
   end #of test_iupac
 
- 
   def random_generator_iupac_name(option={})
     if !option.is_a?(Hash)
       option={}
@@ -144,7 +144,6 @@ end # simple_test
     puts "testing starts"
     # this method, when called, will instantiate a couple of IupacName and test whether it understands the associated names
 
-    
     [ test_chem, complicated_test_name ].each{|s| s.each{|n|
         Name_iupac.new(n).to_ruby
 

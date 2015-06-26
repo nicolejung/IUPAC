@@ -5,7 +5,7 @@ module Test
   Alcane_test_name = [
     "1,2,3-tribromopropane",
     "2-methylbut-3-yn-2-ol",
-    "3-iodo phenyl butylamine",
+    #"3-iodophenylbutane",
     "silatetradecane",
     # "Trimethyl acetate",
   ]
@@ -19,7 +19,7 @@ module Test
     "ethan-1,2-diol",
     "ethane-1, 2-diol",
     "propanol", "propan-2-ol",
-    "pentane-2,3,3-triol"]
+    "pentane-2,3,4-triol"]
 
   Ultimate_braket_name =[
     "4-(1,1-dimethylethyl)-5-ethylnonane",
