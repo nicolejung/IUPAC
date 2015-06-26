@@ -16,7 +16,7 @@ module Test
     "ethan-1,2-diol",
     "ethane-1, 2-diol",
     "propanol", "propan-2-ol",
-    "pentane-2,3,3-triol"]
+    "pentane-2,3,4-triol"]
 
   Ultimate_braket_name =[
     "4-(1,1-dimethylethyl)-5-ethylnonane",

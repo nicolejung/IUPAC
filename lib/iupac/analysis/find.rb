@@ -42,12 +42,17 @@ module Iupac_converter
       #if positions found, loop to extract each integer
       while $1
         n=$'
-        ret<<$1.to_i
+        a=$1
+        a=0 if (a==nil || a==1)  
+         ret<<a.to_i
+          #ret<<$1.to_i
         n.match(single_pos)
       end
       # return the array, if ret is nil (no match) return [self]
-      ret || [self]
-
+      
+        ret || [self] 
+        
+        #ret || [self]
     end # of find position
 
     def find_next_position

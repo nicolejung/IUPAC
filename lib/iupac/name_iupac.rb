@@ -21,7 +21,7 @@ class Name_iupac < String
       mult=(m && m[1]) || 1 if m
       p=frag.find_position
       frag=p[0] if p
-      position=p[1..-1] if p || 1  
+      position=p[1..-1] if p || 0 
     end
 
     #storing bond information in a hash
@@ -216,12 +216,6 @@ end
     
   end #outputs
   
-
-
-
 end # of class Name_iupac
-
-
-
 
 end # module

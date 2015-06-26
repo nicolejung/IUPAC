@@ -28,7 +28,7 @@ module Test
     puts "Hello World iupac
          Chemical name formating
           from    to    enter
-          Iupac  -> Ruby
+          Iupac  -> Ruby         
           Iupac  -> Smiles       2
           Ruby   -> Smiles       3   (Mohit) 
           Ruby   -> Iupac        4   (Sheena)

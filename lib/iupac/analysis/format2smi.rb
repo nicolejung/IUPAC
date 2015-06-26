@@ -3,7 +3,7 @@ module Iupac_converter
     
 
     def format2smi
-      # return a SMiles compliant chemical name as a string
+      # return a Smiles compliant chemical name as a string
       
       map do |element|
         format_step(element)
