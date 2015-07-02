@@ -1,8 +1,10 @@
 module Iupac_converter
   class Name_iupac_s  < Array
     include Nomenclature
+    
     Reg_bracket_s=/([^\[\]]*)([\[\]])/
     Abc=Hash.new
+    
     def find_suffix(suf,suffix)
 
       if !suf
@@ -166,6 +168,10 @@ module Iupac_converter
     def find_rep(bond_hash={})
       bond_hash.keys.each{|k| bond_hash[Repr[k]]=bond_hash.delete(k) if Repr[k]}
       bond_hash.each {|k,v| puts k}
+    end
+    
+    def find_parent_s
+      self.match
     end
 
   end # of class Name_iupac

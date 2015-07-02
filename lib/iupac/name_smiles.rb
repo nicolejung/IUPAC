@@ -2,9 +2,18 @@ require_relative 'name_iupac.rb'
 
 module Iupac_converter
   #include Nomenclature
+  
   class Name_smiles < String
-
     include Nomenclature
+    
+    def to_ruby_s
+    frag=self
+    print "Start analyzing structure " +self
+    
+    #finding parent
+    x=find_parent_s
+    
+    end
 
   end # class Name_smiles
 

@@ -1,5 +1,6 @@
 module Iupac_converter
   class Name_iupac  < String
+
     def find_suffix(suf=nil)
       if !suf
         suffix = Suffix
@@ -15,6 +16,7 @@ module Iupac_converter
           return  [ $`, s, $']
         end
       }
+
       return nil
     end #of find_suffix
 

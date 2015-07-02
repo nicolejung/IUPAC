@@ -8,9 +8,11 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{ Summary}
   gem.description   = %q{ Description}
   gem.license       = "MIT"
+
   gem.authors       = ["Sheena Gupta, Mohit Gautam ,Pierre Tremouilhac"]
   gem.email         = "p.tremouilhac@gmail.com"
   gem.homepage      = "http://www.chemotion.net"
+
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

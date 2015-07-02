@@ -3,85 +3,85 @@ module Iupac_converter
   class Name_iupac < String
     def xyz(b=")")
 
-      reg1 = /(\([a-z0-9\'\-\[\]\{\}]+\))/  # for parenthesis
-      reg2 = /(\[[a-z0-9\'\-\(\)\{\}]+\])/ # for square brackets
-      reg3 = /(\{[a-z0-9\'\-\(\)\[\]]+\})/ # for curly braces
-
-      case b
-      when ")"
-        ob = "("
-      when "]"
-        ob = "["
-      when "}"
-        ob = "{"
-      end
-
-      reverse.match(/#{b}|#{ob}/)
-      r=[$`,$']
-
-      a=Array.new
-      s=self
-
-      x = reg1.match(s)
-      a << x.to_s
-      str = x.to_s.chop.reverse.chop.reverse
-      while x != nil do
-        x = reg1.match(str)
-        a << x.to_s
-        str = x.to_s.chop
-      end
-
-      x = reg2.match(s)
-      a << x.to_s
-      str = x.to_s.chop.reverse.chop.reverse
-      while x != nil do
-        x = reg2.match(str)
-        a << x.to_s
-        str = x.to_s.chop
-      end
-
-      x = reg3.match(s)
-      a << x.to_s
-      str = x.to_s.chop.reverse.chop.reverse
-      while x != nil do
-        x = reg3.match(str)
-        a << x.to_s
-        str = x.to_s.chop
-      end
-
-      return a
-
-    end
-
-    Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/
-
-    attr_reader :obrk, :cbrk
-
-    def count_level_br
-      @xbrk=0
-      @cbrk=0
-      a=self
-      a.each_char do |i|
-        if (i=='(') ||(i=='[')||(i=='{') then    @xbrk+=1
-        elsif (i==')') ||(i==']') ||(i=='}')  then   @cbrk+=1
-          #else continue
-        end
-      end
-      if  @temp1
-        @obrk+=1 if @temp1[1]=="(" || @temp1[1]=="[" ||@temp1[1]=="{"
-        @obrk-=1 if @temp1[1]==")" || @temp1[1]=="]" ||@temp1[1]=="}"
-      end
-      #puts @obrk.to_s
-      #puts @cbrk.to_s
-
-    end
-
-    def split_at_bracket(str=nil)
-      @temp1=nil
-      if str
-        a=str
-      else
-        a=self
+      reg1 = /(\([a-z0-9\'\-\[\]\{\}]+\))/  # for parenthesis                          
+      reg2 = /(\[[a-z0-9\'\-\(\)\{\}]+\])/ # for square brackets                       
+      reg3 = /(\{[a-z0-9\'\-\(\)\[\]]+\})/ # for curly braces                          
+                                                                                       
+      case b                                                                           
+      when ")"                                                                         
+        ob = "("                                                                       
+      when "]"                                                                         
+        ob = "["                                                                       
+      when "}"                                                                         
+        ob = "{"                                                                       
+      end                                                                              
+                                                                                       
+      reverse.match(/#{b}|#{ob}/)                                                      
+      r=[$`,$']                                                                        
+                                                                                       
+      a=Array.new                                                                      
+      s=self                                                                           
+                                                                                       
+      x = reg1.match(s)                                                                
+      a << x.to_s                                                                      
+      str = x.to_s.chop.reverse.chop.reverse                                           
+      while x != nil do                                                                
+        x = reg1.match(str)                                                            
+        a << x.to_s                                                                    
+        str = x.to_s.chop                                                              
+      end                                                                              
+                                                                                       
+      x = reg2.match(s)                                                                
+      a << x.to_s                                                                      
+      str = x.to_s.chop.reverse.chop.reverse                                           
+      while x != nil do                                                                
+        x = reg2.match(str)                                                            
+        a << x.to_s                                                                    
+        str = x.to_s.chop                                                              
+      end                                                                              
+                                                                                       
+      x = reg3.match(s)                                                                
+      a << x.to_s                                                                      
+      str = x.to_s.chop.reverse.chop.reverse                                           
+      while x != nil do                                                                
+        x = reg3.match(str)                                                            
+        a << x.to_s                                                                    
+        str = x.to_s.chop                                                              
+      end                                                                              
+        a.chop!(')').reverse.chop!('(').reverse                                                                                
+      return a                                                                         
+                                                                                       
+   end                                                                                
+                                                                                       
+    Reg_bracket=/([^(){}\[\]]*)([(){}\[\]])/                                           
+                                                                                       
+    attr_reader :obrk, :cbrk                                                           
+                                                                                       
+    def count_level_br                                                                 
+      @xbrk=0                                                                          
+      @cbrk=0                                                                          
+      a=self                                                                           
+      a.each_char do |i|                                                               
+        if (i=='(') ||(i=='[')||(i=='{') then    @xbrk+=1                              
+        elsif (i==')') ||(i==']') ||(i=='}')  then   @cbrk+=1                          
+          #else continue                                                               
+        end                                                                            
+      end                                                                              
+      if  @temp1                                                                       
+        @obrk+=1 if @temp1[1]=="(" || @temp1[1]=="[" ||@temp1[1]=="{"                  
+        @obrk-=1 if @temp1[1]==")" || @temp1[1]=="]" ||@temp1[1]=="}"                  
+      end                                                                              
+      #puts @obrk.to_s                                                                 
+      #puts @cbrk.to_s                                                                 
+                                                                                       
+    end                                                                                
+                                                                                       
+    def split_at_bracket(str=nil)                                                      
+      @temp1=nil                                                                       
+      if str                                                                           
+        a=str                                                                          
+      else                                                                             
+        a=self                                                                         
       end
       a=~Reg_bracket
       if $&
