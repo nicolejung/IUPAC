@@ -1,7 +1,8 @@
 module Iupac_converter
   class Name_ruby  < Array
     def format2iup
-      #return a iupac compliant chemical name as a string
+      #returns a ruby array rep of chemical name
+      F_log[:before, :format2_iup, self]
 
     end #format2iup
 

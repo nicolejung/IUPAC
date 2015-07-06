@@ -16,7 +16,7 @@ module Test
     #Sec_fg_name,
     Bond_test_name,
     Alcohol_test_name,
-    #Ultimate_braket_name,
+    Ultimate_braket_name,
     #Bracket,
   ]
 
@@ -97,7 +97,7 @@ module Test
 
   def self.simple_test_5(mol)
     #smi2rub
-    rub= "not ready yet" #Iupac_converter::new_molecule(mol, :smiles)
+    rub= Iupac_converter::new_molecule(mol, :smiles)
     iup=""  # rub.conv2iup.to_iupac
     smi=mol.strip
     Message[mol,iup,rub,smi]

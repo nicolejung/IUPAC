@@ -171,7 +171,9 @@ module Iupac_converter
     end
     
     def find_parent_s
-      self.match
+      x=self.match(/C/)
+      print "*****"
+      p x
     end
 
   end # of class Name_iupac

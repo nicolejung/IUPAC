@@ -3,6 +3,7 @@ module Iupac_converter
     include Nomenclature
 
     attr_reader :to_iupac, :to_smiles
+    
     def conv2iup
       @to_iupac= format2iup
       self
@@ -12,6 +13,11 @@ module Iupac_converter
       @to_smiles= format2smi
       F_log[:to_smiles,@to_smiles]
       self
+    end
+    
+    def conv2rub
+     @to_iupac= format2iup 
+     self
     end
 
     def input_iupac(iupac)
